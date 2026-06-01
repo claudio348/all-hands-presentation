@@ -10,7 +10,7 @@ Abra `index.html` no navegador e aperte **F** pra tela cheia.
 - `F` — tela cheia · `Home`/`End` — primeiro/último slide
 - swipe no mobile · imprimir → PDF (1 slide por página)
 
-## Pauta (22 slides)
+## Pauta (23 slides)
 1. Capa · 2. Pauta
 3. **Onde a Robbin está hoje** — runway, estágio e "não TPV pelo TPV: TPV + Receita + Pulverização"
 4–5. **Rodada** — quebra dos US$ 108M (US$ 100M FIDC + US$ 8M equity: Seed 6,5M Dez/24 + Extensão 1,5M Mar/26) e como funciona o FIDC + alavancagem 6,6×

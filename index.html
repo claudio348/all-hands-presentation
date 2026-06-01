@@ -138,6 +138,56 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .eqrow{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px;font-size:20px;font-weight:800;color:var(--fg)}
 .eqrow .op{opacity:.5}
 /* nav */
+/* press coverage (bento) */
+.slide.press{padding:58px 54px 50px;justify-content:flex-start}
+.press-head{display:flex;justify-content:space-between;align-items:baseline;margin-top:26px}
+.press-kick{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:var(--fg)}
+.press-kick::before{content:"";width:26px;height:2px;background:var(--ac)}
+.press-tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--ac2)}
+.press-h{font-weight:900;font-size:41px;line-height:1.05;letter-spacing:-.025em;margin-top:13px;color:var(--fg)}
+.press-h em{font-style:italic;background:var(--ac);color:var(--bg);padding:0 .12em;border-radius:5px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.press-h u{text-decoration-thickness:4px;text-underline-offset:6px;text-decoration-color:var(--ac)}
+.press-grid{display:grid;grid-template-columns:1.32fr 1fr 1fr;grid-template-rows:1fr 1fr;grid-auto-flow:column;gap:12px;height:298px;margin-top:18px}
+.pcard{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--ac);border-radius:12px;padding:15px 17px;display:flex;flex-direction:column;overflow:hidden}
+.pcard.big{grid-row:1/3;grid-column:1}
+.pcard .pub{font-size:13.5px;font-weight:900;letter-spacing:.01em;margin-bottom:7px;color:var(--fg)}
+.pcard .pub b{font-weight:500;opacity:.72}
+.pcard .ptitle{font-size:14px;font-weight:700;line-height:1.28;color:var(--fg)}
+.pcard.big .ptitle{font-size:19px;line-height:1.2}
+.pcard .pquote{font-size:12.5px;font-style:italic;opacity:.72;border-left:2px solid var(--line);padding-left:10px;margin-top:11px;line-height:1.4;color:var(--fg)}
+.pcard .pmeta{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ac2);font-weight:700;margin-top:auto;padding-top:10px}
+.pcard .psocial{display:flex;gap:15px;font-size:11.5px;color:var(--ac2);font-weight:700;margin-top:auto;padding-top:10px}
+.invband{background:var(--paper);border-radius:13px;margin-top:13px;padding:12px 22px}
+.invband .ihead{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#8a8378;font-weight:800;margin-bottom:9px;display:flex;align-items:center;gap:10px}
+.invband .ihead::before{content:"";width:22px;height:2px;background:#141210}
+.invrow{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.invrow span{font-size:14px;font-weight:900;color:#141210;letter-spacing:.01em;white-space:nowrap}
+.invrow span small{font-weight:500;opacity:.6}
+/* talent / recruiting */
+.slide.talent{padding:50px 54px 46px;justify-content:flex-start}
+.tal-eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:800;color:var(--ac2);margin-top:24px}
+.tal-h{font-weight:900;font-size:54px;line-height:.98;letter-spacing:-.03em;margin-top:6px;color:var(--fg)}
+.tal-h .mk{background:var(--ac);color:var(--bg);padding:0 .1em;border-radius:6px}
+.tal-body{display:grid;grid-template-columns:1fr 1.06fr;gap:34px;margin-top:22px}
+.tal-kick{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--ac2);margin-bottom:12px}
+.tal-kick::before{content:"";width:22px;height:2px;background:var(--ac)}
+.tal-sub{font-size:22px;font-weight:800;line-height:1.18;color:var(--fg)}
+.tal-sub em{font-style:italic}
+.tal-p{font-size:13.5px;line-height:1.5;color:var(--fg);opacity:.78;margin-top:13px;font-weight:500;max-width:44ch}
+.tal-meta{display:flex;gap:26px;margin-top:16px}
+.tal-meta .ml{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ac2);font-weight:800}
+.tal-meta .mv{font-size:14.5px;font-weight:800;color:var(--fg);margin-top:3px}
+.tal-unis{display:flex;gap:9px;margin-top:16px}
+.uni{border:1px solid var(--line);border-radius:10px;padding:10px 0;flex:1;text-align:center;font-weight:900;font-size:13px;color:var(--fg);background:var(--soft)}
+.tal-right{display:flex;flex-direction:column}
+.tal-photos{display:grid;grid-template-columns:1.7fr 1fr;grid-template-rows:1fr 1fr;gap:8px;height:230px}
+.photo{border-radius:11px;background:linear-gradient(135deg,#d3cec3,#bcb6a9);display:flex;align-items:flex-end;padding:11px;color:#6b665c;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:800}
+.photo.big{grid-row:1/3}
+.tal-cap{background:#141210;color:#fff;border-radius:12px;padding:14px 18px;margin-top:8px}
+.tal-cap .ck{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#b9b3a6;font-weight:800}
+.tal-cap .ct{font-size:16.5px;font-weight:800;margin-top:5px;line-height:1.2}
+.tal-cap .ct em{font-style:italic;opacity:.85}
+.tal-cap .cs{font-size:12px;opacity:.72;margin-top:6px;line-height:1.4}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -253,19 +303,81 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     <div class="callout"><small>O recado</small>Notícia velha, mas vale repetir: migramos 100% pro trilho PIX próprio — <b>65% do mix já em março</b>. O cartão foi ponto de partida, não destino.</div>
   </section>
 
-  <!-- 8 · HORA DE IR PRA RUA / PR -->
-  <section class="slide feature tex" data-chrome="dark">
-    <div class="kicker"><span class="knum">05</span><span class="ktxt">Hora de ir pra rua</span></div>
-    <h2 class="head">Construímos a base. <span class="hi">Agora a gente aparece.</span></h2>
-    <div class="cols three" style="margin-top:24px">
-      <div class="card"><span class="tagn">PR &amp; imprensa</span><h3 class="sm">A rodada virou notícia</h3><p>Brazil Journal, Startupi, Bloomberg Línea, Startups.com.br. A porta abriu — agora é amplificar a história de forma proativa.</p></div>
-      <div class="card"><span class="tagn">Todo mundo é porta-voz</span><h3 class="sm">A rede do time conta</h3><p>Compartilhe, comente, engaje. Quando o time fala da Robbin, o alcance se multiplica.</p></div>
-      <div class="card"><span class="tagn">Comercial na rua</span><h3 class="sm">Visibilidade traz marca</h3><p>Mais presença = mais âncoras chegando até nós. É hora de aproveitar o momento.</p></div>
+  <!-- 8 · HORA DE IR PRA RUA · PRESS COVERAGE -->
+  <section class="slide feature press" data-chrome="dark">
+    <div class="press-head">
+      <span class="press-kick">Press coverage · Maio 2026</span>
+      <span class="press-tag">05 · Hora de ir pra rua</span>
     </div>
-    <div class="callout"><small>O recado</small>Saímos do modo cabeça-baixa. A história é boa — está na hora de contar ela pra fora, com consistência.</div>
+    <h2 class="press-h">Um mercado enorme e <em>sem nome.</em><br>A <u>Robbin</u> chegou e está mudando isso.</h2>
+    <div class="press-grid">
+      <div class="pcard big">
+        <div class="pub">Brazil <b>Journal</b></div>
+        <div class="ptitle">A Robbin, de dois ex-Itaú, quer ajudar o varejista a parcelar suas compras</div>
+        <div class="pquote">“Uma fintech fundada por dois ex-bankers da XP e Itaú acaba de captar US$ 8 milhões em sua primeira rodada institucional.”</div>
+        <div class="pmeta">21 Mai 2026 · Pedro Arbex · Negócios</div>
+      </div>
+      <div class="pcard">
+        <div class="pub">Bloomberg Línea</div>
+        <div class="ptitle">Robbin capta US$ 108MM e lidera aportes em IA</div>
+        <div class="pmeta">23 Mai 2026 · Marcos Bonfim</div>
+      </div>
+      <div class="pcard">
+        <div class="pub">Canary</div>
+        <div class="ptitle">Robbin has raised US$ 8M Seed + US$ 100M FIDC to power B2B credit in Brazil</div>
+        <div class="psocial"><span>♥ 2,4K</span><span>↻ 612</span><span>↗ 184</span></div>
+      </div>
+      <div class="pcard">
+        <div class="pub">↑ Startups</div>
+        <div class="ptitle">Fintech Robbin capta US$ 8M com Canary, Atlântico e Caravela</div>
+        <div class="pmeta">Mai 2026 · Rodadas</div>
+      </div>
+      <div class="pcard">
+        <div class="pub">in · LinkedIn</div>
+        <div class="ptitle">Posts dos founders sobre tese B2B alcançam +30.000 impressões</div>
+        <div class="pmeta">Mai 2026 · Buzz orgânico</div>
+      </div>
+    </div>
+    <div class="invband">
+      <div class="ihead">Investors · Seed Round + FIDC</div>
+      <div class="invrow">
+        <span>ATLÂNTICO</span><span>CANARY</span><span>CARAVELA</span><span>ABSeed <small>Ventures</small></span><span>CLOCKTOWER</span><span>NORTE</span><span>Tomorrow <small>Capital</small></span><span>XP <small>Inc.</small></span>
+      </div>
+    </div>
   </section>
 
-  <!-- 9 · TICKET 5x -->
+  <!-- 9 · CAÇANDO TALENTO -->
+  <section class="slide light talent" data-chrome="light">
+    <div class="tal-eyebrow">Talento</div>
+    <h2 class="tal-h">Caçando os melhores <span class="mk">do mercado.</span></h2>
+    <div class="tal-body">
+      <div class="tal-left">
+        <div class="tal-kick">Brand building · Recruiting</div>
+        <div class="tal-sub">Vamos onde estão os <em>melhores</em> — antes de eles saberem que precisam da gente.</div>
+        <p class="tal-p">Os founders estão nas salas de aula, nos eventos, nos podcasts. Construindo marca de empregador e abrindo conversas com talento sênior antes do funil tradicional.</p>
+        <div class="tal-meta">
+          <div><div class="ml">Onde</div><div class="mv">USP · ITA · Insper</div></div>
+          <div><div class="ml">Formato</div><div class="mv">Palestras · Mentorias</div></div>
+          <div><div class="ml">Próximo</div><div class="mv">Robbin Talks 01</div></div>
+        </div>
+        <div class="tal-unis"><span class="uni">USP</span><span class="uni">ITA</span><span class="uni">FGV</span><span class="uni">FEA-USP</span><span class="uni">Insper</span></div>
+      </div>
+      <div class="tal-right">
+        <div class="tal-photos">
+          <div class="photo big">Robbin Talks · founder no palco</div>
+          <div class="photo">Turma · auditório</div>
+          <div class="photo">Mentoria</div>
+        </div>
+        <div class="tal-cap">
+          <div class="ck">Palestra · FEA-USP · 2026</div>
+          <div class="ct">Junior Analyst: Museum Relic or <em>Weapon of the Future?</em></div>
+          <div class="cs">Founders nas salas de aula. Marca de empregador construída antes do funil tradicional de recrutamento.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · TICKET 5x -->
   <section class="slide light tex" data-chrome="light">
     <div class="kicker"><span class="knum">06</span><span class="ktxt">Reconhecimento · presença</span></div>
     <h2 class="head">Bateu <span class="hi">5x na semana?</span> Ganhou um ticket extra</h2>
