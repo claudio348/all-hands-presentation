@@ -117,6 +117,20 @@ h2.head .hi{color:var(--crimson)}
 .callout small{display:block;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--crimson);font-weight:800;margin-bottom:8px}
 .slide.crimson .callout,.slide.navy .callout{border-color:#fff;background:rgba(255,255,255,.14)}
 .slide.crimson .callout small,.slide.navy .callout small{color:#fff}
+/* SOP · stock options */
+.sop-mark{position:absolute;right:-60px;bottom:-70px;width:440px;opacity:.12;pointer-events:none}
+.sop-mark.small{width:230px;right:-30px;bottom:-30px;opacity:.10}
+.logobadge{height:.86em;width:auto;vertical-align:-.06em;margin-right:.18em;opacity:.95}
+.vwrap{margin-top:22px}
+.vbar{display:flex;height:48px;border-radius:10px;overflow:hidden;border:1px solid var(--rule)}
+.vcliff{flex:0 0 25%;background:linear-gradient(90deg,var(--crimson),var(--pink));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;text-align:center;padding:0 6px}
+.vrest{flex:1;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;opacity:.85;text-align:center;padding:0 6px}
+.vlabels{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;opacity:.55;font-weight:600}
+/* funding breakdown bar */
+.fund{display:flex;height:126px;border-radius:16px;overflow:hidden;border:1px solid var(--rule);margin-top:26px}
+.fund .seg{display:flex;flex-direction:column;justify-content:center;padding:0 24px;color:#fff;position:relative}
+.fund .seg .amt{font-size:32px;font-weight:900;line-height:1;letter-spacing:-.02em}
+.fund .seg .lbl{font-size:13px;font-weight:600;opacity:.92;margin-top:8px;line-height:1.3;max-width:30ch}
 /* knowledge tools grid */
 .tools{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:4px}
 .tool{background:rgba(255,255,255,.05);border:1px solid var(--rule);border-radius:14px;padding:18px 16px;position:relative;overflow:hidden}
@@ -189,9 +203,9 @@ h2.head .hi{color:var(--crimson)}
     <div class="kicker"><span class="knum">·</span><span class="ktxt">Pauta de hoje</span></div>
     <h2 class="head">O que vamos <span class="hi">alinhar</span></h2>
     <div class="agenda">
-      <div class="ag-item"><span class="n">01</span><span class="t">Esclarecer a rodada<small>O que é, quem liderou e o que muda pra gente</small></span></div>
+      <div class="ag-item"><span class="n">01</span><span class="t">Esclarecer a rodada<small>US$ 108M na manchete: o que é equity e o que é FIDC</small></span></div>
       <div class="ag-item"><span class="n">02</span><span class="t">Ticket extra pra quem vem 5x<small>Reconhecer presença e colaboração</small></span></div>
-      <div class="ag-item"><span class="n">03</span><span class="t">SOP — o que é e por que importa<small>Mais exemplos + onde o conhecimento mora</small></span></div>
+      <div class="ag-item"><span class="n">03</span><span class="t">SOP — Stock Options Plan<small>O que é, por que importa e como funciona</small></span></div>
       <div class="ag-item"><span class="n">04</span><span class="t">Valores &amp; cultura<small>O nosso jeito de operar</small></span></div>
       <div class="ag-item"><span class="n">05</span><span class="t">Último tri: foco × realidade<small>O que dissemos × o que aconteceu</small></span></div>
       <div class="ag-item"><span class="n">06</span><span class="t">Foco do próximo tri<small>Pra onde a energia vai agora</small></span></div>
@@ -199,25 +213,58 @@ h2.head .hi{color:var(--crimson)}
     </div>
   </section>
 
-  <!-- 3 · RODADA -->
+  <!-- 3 · RODADA — quebra dos 108M -->
   <section class="slide navy tex" style="--tex:url('assets/texture-blue.jpg')" data-chrome="dark">
     <div class="kicker"><span class="knum">01</span><span class="ktxt">Esclarecer a rodada</span></div>
-    <h2 class="head">Sem rumor: <span class="hi">o que é a rodada</span></h2>
-    <div class="cols two" style="margin-top:30px">
-      <div class="card">
-        <span class="tagn">Seed · fechada</span>
-        <h3>US$ 5MM, liderada pela Atlântico</h3>
-        <p>Rodada Seed concluída em Dez/2024, com a Canary como board observer. Foi o capital que bancou a virada de bandeira e a infraestrutura de hoje.</p>
+    <h2 class="head" style="font-size:46px">US$ 108M na manchete — <span class="hi">o que é o quê</span></h2>
+    <div class="fund">
+      <div class="seg" style="flex:0 0 87%;background:linear-gradient(120deg,#0a55bf,#021a3f)">
+        <div class="amt">US$ 100M</div>
+        <div class="lbl">FIDC · fundo de crédito (~R$ 500M) — funding pra emprestar, <b>não é equity</b></div>
       </div>
-      <div class="card">
-        <span class="tagn">Seed Extension · assinada</span>
-        <h3>Term Sheet com a Caravela Capital (lead)</h3>
-        <p>Extensão de Seed com Term Sheet assinado em Fev/2026. É uma extensão da mesma rodada — não um novo round de série.</p>
+      <div class="seg" style="flex:1;min-width:150px;background:linear-gradient(120deg,#E80B3A,#FF2D6F)">
+        <div class="amt">US$ 8M</div>
+        <div class="lbl">Equity (Seed)</div>
       </div>
     </div>
+    <div class="cols two" style="margin-top:20px">
+      <div class="card"><span class="tagn" style="color:var(--sky)">Equity · Dez/24</span><h3>Seed — US$ 6,5M</h3><p>Liderada pela Atlântico, com Canary. Primeira rodada institucional.</p></div>
+      <div class="card"><span class="tagn" style="color:var(--sky)">Equity · Mar/26</span><h3>Extensão — US$ 1,5M</h3><p>Liderada pela Caravela. Mesma rodada — não uma série nova.</p></div>
+    </div>
     <div class="callout">
-      <small>O ponto pra levar pra casa</small>
-      Não estamos levantando agora. Estamos com caixa e foco em execução — quando formos a mercado de novo, o time fica sabendo primeiro.
+      <small>O ponto pra não distorcer</small>
+      Manchete = US$ 108M. Diluição de verdade = só US$ 8M. O resto é fundo pra colocar crédito na rua — não é sócio novo no cap table.
+    </div>
+  </section>
+
+  <!-- 3b · COMO FUNCIONA O FIDC + ALAVANCAGEM -->
+  <section class="slide dark" data-chrome="dark">
+    <div class="kicker"><span class="knum">01</span><span class="ktxt" style="color:var(--sky)">Esclarecer a rodada · como funciona o FIDC</span></div>
+    <h2 class="head" style="font-size:42px">US$1 de equity vira <span style="color:var(--sky)">muito mais</span> crédito</h2>
+    <div class="cols two" style="margin-top:22px">
+      <div class="card">
+        <span class="tagn" style="color:var(--sky)">O que é</span>
+        <h3>Um fundo fora do balanço</h3>
+        <p>O FIDC compra os direitos creditórios das nossas operações de BNPL (parcelador de PIX e boleto). As CCBs são emitidas via Celcoin e cedidas ao fundo.</p>
+        <ul>
+          <li>Capacidade de até R$ 500M (~US$ 100M)</li>
+          <li>Gestão Augme Capital / XP</li>
+          <li>Financia as compras dos varejistas até o fim de 2027</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tagn" style="color:var(--lime)">A alavancagem</span>
+        <h3>Duas camadas de cota</h3>
+        <ul>
+          <li><b>Cota Sênior</b> — investidores institucionais; risco menor, recebem primeiro</li>
+          <li><b>Cota Subordinada</b> — a Robbin; absorve a primeira perda (first loss)</li>
+        </ul>
+        <p style="margin-top:8px">A subordinada da Robbin “segura” um volume muito maior de capital sênior em cima dela.</p>
+      </div>
+    </div>
+    <div class="northstar" style="margin-top:18px;gap:26px">
+      <div class="big" style="font-size:92px">6,6×</div>
+      <div class="side"><p>de alavancagem: cada R$ 1 de capital subordinado da Robbin destrava ~R$ 6,6 de crédito pra colocar na rua — <b>sem diluir mais equity</b>.</p></div>
     </div>
   </section>
 
@@ -233,58 +280,86 @@ h2.head .hi{color:var(--crimson)}
     <p class="sub" style="margin-top:26px">Não é cobrança de ponto — é um obrigado a quem está construindo isso de perto, todo dia.</p>
   </section>
 
-  <!-- 5 · SOP o que é -->
-  <section class="slide light tex" style="--tex:url('assets/texture-contour.jpg')" data-chrome="light">
-    <div class="kicker"><span class="knum">03</span><span class="ktxt" style="color:var(--orange)">SOP · o que é</span></div>
-    <h2 class="head" style="color:var(--ink)">SOP = <span style="color:var(--orange)">Standard Operating Procedure</span></h2>
-    <p class="lead" style="margin-top:24px;color:var(--mid)">O jeito combinado de fazer uma tarefa que se repete — escrito, claro e acessível, pra que <b>qualquer pessoa do time</b> consiga executar com o mesmo resultado, sem depender de quem fez da primeira vez.</p>
-    <div class="callout" style="border-color:var(--orange);background:rgba(255,152,29,.12);color:var(--ink)">
-      <small style="color:var(--orange)">Em uma frase</small>
-      “Como a gente faz X por aqui” — passo a passo, com dono e ponto de entrada definidos.
+  <!-- 5 · SOP (Stock Options Plan) — o que é -->
+  <section class="slide crimson" data-chrome="dark">
+    <img class="sop-mark" src="assets/logo-white.png" alt="">
+    <div class="kicker"><span class="knum">03</span><span class="ktxt">SOP · o que é</span></div>
+    <h2 class="head">SOP = <span class="hi">Stock Options Plan</span></h2>
+    <p class="lead" style="margin-top:22px;max-width:58ch">O direito de comprar uma fatia da <img class="logobadge" src="assets/logo-white.png" alt="">Robbin no futuro, a um preço travado hoje. Se a empresa vale mais lá na frente, a diferença é <b>sua</b>.</p>
+    <div class="callout">
+      <small>Em uma frase</small>
+      Parte do seu pacote não é salário — é sociedade. Você vira dono de um pedaço do que estamos construindo.
     </div>
   </section>
 
   <!-- 6 · SOP por que importa -->
   <section class="slide dark" data-chrome="dark">
-    <div class="kicker"><span class="knum">03</span><span class="ktxt" style="color:var(--orange)">SOP · por que importa</span></div>
-    <h2 class="head">Por que a gente <span style="color:var(--orange)">se importa</span> com isso</h2>
+    <img class="sop-mark small" src="assets/logo-crimson.png" alt="">
+    <div class="kicker"><span class="knum">03</span><span class="ktxt" style="color:var(--pink)">SOP · por que importa</span></div>
+    <h2 class="head">Por que isso <span style="color:var(--pink)">muda o jogo</span> pra você</h2>
     <div class="cols three" style="margin-top:30px">
-      <div class="card"><h3>🚀 Escala sem caos</h3><p>Crescemos ~9x. O que estava na cabeça de uma pessoa não escala — SOP transforma conhecimento individual em capacidade do time.</p></div>
-      <div class="card"><h3>⚡ Velocidade é o nosso moat</h3><p>Crédito em 18s, implementação em &lt;30 dias. Isso só se sustenta com processo claro e repetível, não com herói.</p></div>
-      <div class="card"><h3>🎯 Qualidade consistente</h3><p>Mesmo padrão toda vez. Menos retrabalho, menos erro, onboarding mais rápido de quem chega.</p></div>
+      <div class="card"><h3>🤝 Alinhamento total</h3><p>Quando a Robbin ganha, você ganha. Mesmo barco, mesma régua — Receita.</p></div>
+      <div class="card"><h3>💎 Criação de patrimônio</h3><p>Num evento de liquidez (venda ou IPO), as opções viram dinheiro de verdade.</p></div>
+      <div class="card"><h3>🧭 Pensar como dono</h3><p>Decisão de longo prazo, ownership real. É a cultura virando bolso.</p></div>
     </div>
-    <div class="callout" style="border-color:var(--orange);background:rgba(255,152,29,.12)">
-      Se uma tarefa importante só roda quando “fulano está”, ela ainda não é um processo — é um risco.
+    <div class="callout" style="border-color:var(--pink);background:rgba(255,45,111,.12)">
+      <small style="color:var(--pink)">Conexão com a rodada</small>
+      A Seed + Extensão definem o valor da Robbin hoje. É esse valor que as suas opções acompanham — e que a gente existe pra multiplicar.
     </div>
   </section>
 
-  <!-- 7 · SOP exemplos -->
+  <!-- 7 · SOP como funciona + exemplo -->
   <section class="slide dark tex" style="--tex:url('assets/texture-contour.jpg')" data-chrome="dark">
-    <div class="kicker"><span class="knum">03</span><span class="ktxt" style="color:var(--orange)">SOP · exemplos vivos na Robbin</span></div>
-    <h2 class="head">A gente já <span style="color:var(--orange)">faz isso</span> — só não chamava assim</h2>
-    <div class="cols two" style="margin-top:26px">
-      <div class="card"><h3>📞 Manual de Atendimento</h3><p>Passo a passo que faz qualquer pessoa do time conseguir atender, do diagnóstico ao fluxo de resolução.</p></div>
-      <div class="card"><h3>🤝 Playbook CredMoura</h3><p>Como ativar e operar um convênio do começo ao fim, replicável pro próximo parceiro.</p></div>
-      <div class="card"><h3>📊 Fechamento mensal (FP&amp;A)</h3><p>Checklist de closing com dono por etapa — fecha igual todo mês, sem depender de memória.</p></div>
-      <div class="card"><h3>🗓️ Ritos: Daily, Show &amp; Tell, All Hands</h3><p>Nossos encontros também são SOP: objetivo claro, quem participa, recorrência definida.</p></div>
+    <div class="kicker"><span class="knum">03</span><span class="ktxt" style="color:var(--pink)">SOP · como funciona</span></div>
+    <h2 class="head" style="font-size:44px">Do <span style="color:var(--pink)">grant</span> ao <span style="color:var(--pink)">upside</span></h2>
+    <div class="cols" style="grid-template-columns:repeat(4,1fr);margin-top:22px">
+      <div class="card"><span class="tagn">1 · Grant</span><h3 style="font-size:16px">Você recebe opções</h3><p>Uma quantidade concedida, definida no seu contrato.</p></div>
+      <div class="card"><span class="tagn">2 · Strike</span><h3 style="font-size:16px">Preço travado hoje</h3><p>O valor que você paga pra exercer — fixado na concessão.</p></div>
+      <div class="card"><span class="tagn">3 · Vesting</span><h3 style="font-size:16px">Conquista no tempo</h3><p>Você ganha as opções aos poucos, ficando na Robbin.</p></div>
+      <div class="card"><span class="tagn">4 · Liquidez</span><h3 style="font-size:16px">Vira dinheiro</h3><p>Em venda ou IPO, a diferença pro strike é sua.</p></div>
+    </div>
+    <div class="vwrap">
+      <div class="vbar">
+        <div class="vcliff">Cliff de 1 ano · 25%</div>
+        <div class="vrest">Restante mês a mês até completar 4 anos</div>
+      </div>
+      <div class="vlabels"><span>Concessão</span><span>Ano 1</span><span>Ano 4 · 100% vested</span></div>
+    </div>
+    <div class="callout" style="border-color:var(--pink);background:rgba(255,45,111,.10)">
+      <small style="color:var(--pink)">Exemplo ilustrativo</small>
+      Strike baixo hoje + Robbin valendo mais no exit = o ganho é seu. <b>Os termos exatos da sua concessão estão no seu contrato</b> — dúvidas, fale com o People.
     </div>
   </section>
 
-  <!-- 8 · GESTÃO DO CONHECIMENTO (uploaded directive) -->
-  <section class="slide dark" data-chrome="dark">
-    <div class="kicker"><span class="knum">03</span><span class="ktxt" style="color:var(--sky)">Diretriz · onde o conhecimento mora</span></div>
-    <h2 class="head" style="font-size:46px">Gestão do Conhecimento</h2>
-    <p class="sub" style="margin-top:12px">Um SOP só vale se a próxima pessoa encontra. Cada coisa tem um lugar — e o ponto de partida pra buscar é sempre o <b>Claude</b>, conectado a tudo.</p>
-    <div class="tools">
-      <div class="tool"><span class="bar" style="background:#0A4FB0"></span><div class="tn" style="color:var(--sky)">Notion</div><div class="tw">O que a empresa sabe</div><div class="th">Processos, decisões estruturais e contexto duradouro.</div></div>
-      <div class="tool"><span class="bar" style="background:#5E6AD2"></span><div class="tn" style="color:#8b94ff">Linear</div><div class="tw">O que a empresa está fazendo</div><div class="th">Issues e projetos — contexto com ciclo de vida definido.</div></div>
-      <div class="tool"><span class="bar" style="background:#1A73E8"></span><div class="tn" style="color:#5aa0ff">Google Docs</div><div class="tw">Rascunhos &amp; comunicação externa</div><div class="th">RFCs em construção. Texto interno é promovido ou arquivado.</div></div>
-      <div class="tool"><span class="bar" style="background:#cfd3da"></span><div class="tn" style="color:#cfd3da">GitHub</div><div class="tw">O que a empresa construiu</div><div class="th">READMEs, ADRs e runbooks versionados junto ao código.</div></div>
+  <!-- 8 · GESTÃO DO CONHECIMENTO — o porquê + ferramentas -->
+  <section class="slide navy tex" style="--tex:url('assets/texture-blue.jpg')" data-chrome="dark">
+    <div class="kicker"><span class="knum">✦</span><span class="ktxt">Diretriz · gestão do conhecimento</span></div>
+    <h2 class="head" style="font-size:46px">Construindo a <span class="hi">verdade da Robbin</span></h2>
+    <div class="callout">
+      <small>Por que isso existe (palavra do CTO)</small>
+      Empoderar o time não-técnico — <b>sem abrir mão de segurança e acuracidade</b>. É assim que a gente organiza as nossas informações.
     </div>
-    <div class="rules">
-      <div class="rrule"><span class="rn">01</span><span class="rt"><b>Notion</b> guarda o que a empresa <b>sabe</b> — decisão estrutural e contexto duradouro.</span></div>
-      <div class="rrule"><span class="rn">02</span><span class="rt"><b>Linear</b> guarda o que a empresa <b>está fazendo</b> — o que vira estrutural, sobe pro Notion.</span></div>
-      <div class="rrule"><span class="rn">03</span><span class="rt"><b>GitHub</b> guarda o que a empresa <b>construiu</b> — docs versionados com o código.</span></div>
+    <p class="sub" style="margin-top:18px;opacity:.85">Cada coisa tem um lugar. Quatro ferramentas, um princípio: uma fonte única de verdade.</p>
+    <div class="tools">
+      <div class="tool"><span class="bar" style="background:#3FAFFF"></span><div class="tn" style="color:var(--sky)">Notion</div><div class="tw">O que a empresa sabe</div><div class="th">Processos, decisões estruturais e contexto duradouro.</div></div>
+      <div class="tool"><span class="bar" style="background:#8b94ff"></span><div class="tn" style="color:#9aa2ff">Linear</div><div class="tw">O que a empresa está fazendo</div><div class="th">Issues e projetos — contexto com ciclo de vida definido.</div></div>
+      <div class="tool"><span class="bar" style="background:#5aa0ff"></span><div class="tn" style="color:#7bb3ff">Google Docs</div><div class="tw">Rascunhos &amp; comunicação externa</div><div class="th">RFCs em construção. Texto interno é promovido ou arquivado.</div></div>
+      <div class="tool"><span class="bar" style="background:#cfd3da"></span><div class="tn" style="color:#e3e6ea">GitHub</div><div class="tw">O que a empresa construiu</div><div class="th">READMEs, ADRs e runbooks versionados junto ao código.</div></div>
+    </div>
+  </section>
+
+  <!-- 8b · GESTÃO DO CONHECIMENTO — as regras + Claude -->
+  <section class="slide dark" data-chrome="dark">
+    <div class="kicker"><span class="knum">✦</span><span class="ktxt" style="color:var(--sky)">Diretriz · as regras</span></div>
+    <h2 class="head">Cada coisa <span style="color:var(--sky)">no seu lugar</span></h2>
+    <div class="rules" style="grid-template-columns:1fr;gap:12px;margin-top:26px">
+      <div class="rrule"><span class="rn">01</span><span class="rt"><b>Notion</b> guarda o que a empresa <b>sabe</b> — decisão estrutural, processo e contexto duradouro.</span></div>
+      <div class="rrule"><span class="rn">02</span><span class="rt"><b>Linear</b> guarda o que a empresa <b>está fazendo</b> — contexto com ciclo de vida. O que vira estrutural, sobe pro Notion.</span></div>
+      <div class="rrule"><span class="rn">03</span><span class="rt"><b>GitHub</b> guarda o que a empresa <b>construiu</b> — READMEs, ADRs e runbooks versionados com o código.</span></div>
+    </div>
+    <div class="callout" style="margin-top:24px">
+      <small>Porta de entrada</small>
+      O ponto de partida pra qualquer busca é o <b>Claude</b>, conectado a todas as ferramentas — acesso seguro e com acuracidade, pra qualquer pessoa do time, técnica ou não.
     </div>
   </section>
 
