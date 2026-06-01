@@ -246,6 +246,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .bar.hl .col{background:var(--ac)}
 .bar.hl .val{color:var(--fg);font-size:19px}
 .bar.hl .lab{color:var(--fg)}
+.chart.compact{height:262px;margin-top:18px}
 .leg{display:flex;gap:26px;margin-top:14px;font-size:13px;font-weight:700;color:var(--ac2)}
 .leg i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px}
 .leg .d1{background:#bdb8ad}.leg .d2{background:#141210}
@@ -473,16 +474,12 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
       <div class="pp"><span>Jun/26</span><b>R$ 1,59</b></div>
       <div class="mult">4,08× · +308%</div>
     </div>
-    <div class="jumps">
-      <div class="jump"><b>R$ 10 mil</b><span>Dez/24</span></div>
-      <span class="ar">→</span>
-      <div class="jump"><b>R$ 41 mil</b><span>Jun/26</span></div>
-      <span class="ar">→</span>
-      <div class="jump"><b>R$ 166 mil</b><span></span></div>
-      <span class="ar">→</span>
-      <div class="jump"><b>R$ 678 mil</b><span></span></div>
-      <span class="ar">→</span>
-      <div class="jump hl"><b>R$ 2,8 mi</b><span></span></div>
+    <div class="chart compact">
+      <div class="bar"><div class="val">R$ 10 mil</div><div class="col" style="height:6px"></div><div class="lab">Dez/24</div></div>
+      <div class="bar"><div class="val">R$ 41 mil</div><div class="col" style="height:6px"></div><div class="lab">Jun/26</div></div>
+      <div class="bar"><div class="val">R$ 166 mil</div><div class="col" style="height:12px"></div><div class="lab">+1 salto</div></div>
+      <div class="bar"><div class="val">R$ 678 mil</div><div class="col" style="height:49px"></div><div class="lab">+2 saltos</div></div>
+      <div class="bar hl"><div class="val">R$ 2,8 mi</div><div class="col" style="height:200px"></div><div class="lab">+3 saltos</div></div>
     </div>
     <p class="sub" style="margin-top:18px">Cada salto repete a valorização dos últimos 18m (×4,08). Ilustrativo, sem prazo. Pra comparar no mesmo período: <b>CDI ≈ +22%</b> · <b>Bovespa ≈ +18%</b>.</p>
   </section>
