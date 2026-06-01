@@ -53,10 +53,11 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .cover,.closing{justify-content:center}
 .cover .logo-big{width:430px;max-width:60%;margin-bottom:40px}
 .cover h1{font-weight:900;font-size:88px;line-height:.96;letter-spacing:-.03em}
-.cover .eyebrow{font-size:14px;letter-spacing:.32em;text-transform:uppercase;font-weight:700;color:#9a9a9a;margin-bottom:18px}
-.cover .meta{margin-top:30px;display:flex;gap:24px;font-size:14px;font-weight:600;color:#cfcfcf;letter-spacing:.03em}
+.cover .eyebrow{font-size:14px;letter-spacing:.32em;text-transform:uppercase;font-weight:800;color:var(--ac2);margin-bottom:16px}
+.cover .meta{margin-top:28px;display:flex;gap:24px;font-size:14px;font-weight:700;color:var(--ac2);letter-spacing:.03em}
 .cover .meta span{display:flex;align-items:center;gap:9px}
-.cover .dot{width:6px;height:6px;border-radius:50%;background:#fff}
+.cover .dot{width:6px;height:6px;border-radius:50%;background:var(--ac)}
+.cover-sub{font-size:23px;font-weight:600;color:var(--ac2);margin-top:16px;max-width:40ch}
 .bird-wm{position:absolute;right:-40px;bottom:-30px;width:360px;opacity:.06;pointer-events:none}
 /* ---- agenda ---- */
 .agenda{display:grid;grid-template-columns:1fr 1fr;gap:8px 44px;margin-top:6px}
@@ -200,14 +201,13 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 <div id="viewport"><div id="stage">
 
   <!-- 1 · COVER -->
-  <section class="slide feature cover active tex" data-chrome="dark">
-    <img class="bird-wm" src="assets/robbin-bird-white.png" alt="">
-    <img class="logo-big" src="assets/robbin-logo-white.png" alt="Robbin">
-    <div class="eyebrow">All Hands · Time Robbin</div>
-    <h1>Onde a gente chegou —<br>e pra onde vamos.</h1>
+  <section class="slide light cover active tex" data-chrome="light">
+    <img class="logo-big" src="assets/robbin-logo.svg" alt="Robbin">
+    <div class="eyebrow">Time Robbin · 2º trimestre 2026</div>
+    <h1>All Hands</h1>
+    <p class="cover-sub">Onde a gente chegou — e pra onde vamos juntos.</p>
     <div class="meta">
       <span><i class="dot"></i> Junho 2026</span>
-      <span><i class="dot"></i> 2º trimestre</span>
       <span><i class="dot"></i> Uso interno</span>
     </div>
   </section>
@@ -551,8 +551,8 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 21 · FECHAMENTO -->
-  <section class="slide feature closing tex" data-chrome="dark">
-    <img class="logo-big" src="assets/robbin-logo-white.png" alt="Robbin" style="width:300px;margin-bottom:34px">
+  <section class="slide light closing tex" data-chrome="light">
+    <img class="logo-big" src="assets/robbin-logo.svg" alt="Robbin" style="width:300px;margin-bottom:34px">
     <div class="accentbar"></div>
     <h2 class="head" style="font-size:64px">All Hands</h2>
   </section>
@@ -560,7 +560,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 </div></div>
 
 <div id="chrome">
-  <div class="brandmark"><img src="assets/robbin-logo-white.png" alt="Robbin"></div>
+  <div class="brandmark"><img src="assets/robbin-logo-w.svg" alt="Robbin"></div>
   <div class="deck-label">All Hands · Jun 26</div>
   <div class="pagenum"><span id="cur">01</span> / <span id="tot">21</span></div>
   <div class="progress" id="bar"></div>
