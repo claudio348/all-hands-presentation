@@ -3,198 +3,162 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>All Hands · Robbin's Angels</title>
+<title>All Hands · Robbin</title>
 <link rel="preconnect" href="https://api.fontshare.com">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#141416; --ink2:#1b1b20; --ink3:#212129;
-  --paper:#F6F3EE; --paper2:#ECE7DF;
-  --crimson:#E80B3A; --pink:#FF2D6F;
-  --navy:#022C60; --blue:#0A4FB0; --sky:#3FAFFF;
-  --purple:#5B2E91; --lime:#9CCF1D; --orange:#FF981D;
-  --white:#FFFFFF; --muted:#9a9aa6; --muted2:#6b6b76; --mid:#3D3535;
-  --rule:rgba(255,255,255,.12);
   --font:'Satoshi','Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --black:#0d0d0d; --pure:#000; --white:#fff; --paper:#F4F2ED;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{
-  font-family:var(--font); background:#0c0c0e; color:var(--white);
-  overflow:hidden; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-}
-/* ---------- Stage / scaling ---------- */
-#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#0c0c0e}
-#stage{position:relative;width:1280px;height:720px;flex:none;transform-origin:center center;box-shadow:0 40px 120px rgba(0,0,0,.6)}
-.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;
-  padding:78px 92px 86px;background:var(--ink);overflow:hidden}
-.slide.active{display:flex;animation:fade .5s ease both}
-@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-/* slide bg variants */
-.slide.dark{background:radial-gradient(120% 90% at 85% 10%,#23232b 0%,#141416 55%,#0e0e11 100%)}
-.slide.light{background:linear-gradient(160% at 0 0,var(--paper) 0%,var(--paper2) 100%);color:var(--ink)}
-.slide.crimson{background:radial-gradient(130% 120% at 80% 0%,#ff174e 0%,#c40a30 45%,#7d0420 100%)}
-.slide.navy{background:radial-gradient(130% 120% at 85% 0%,#0a55bf 0%,#053a86 45%,#021a3f 100%)}
-/* topographic texture overlay */
-.slide.tex::before{content:"";position:absolute;inset:0;background-image:var(--tex);
-  background-size:cover;background-position:center;opacity:.10;mix-blend-mode:screen;pointer-events:none}
-.slide.tex.light::before{mix-blend-mode:multiply;opacity:.07}
-/* ---------- Chrome ---------- */
+body{font-family:var(--font);background:#070707;color:#fff;overflow:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#070707}
+#stage{position:relative;width:1280px;height:720px;flex:none;transform-origin:center center;box-shadow:0 40px 120px rgba(0,0,0,.7)}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:78px 92px 86px;overflow:hidden}
+.slide.active{display:flex;animation:fade .45s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* ---- B&W slide systems: each sets local accent vars ---- */
+.slide.dark{--bg:#0d0d0d;--fg:#fff;--ac:#fff;--ac2:#b6b6b6;--soft:rgba(255,255,255,.06);--line:rgba(255,255,255,.16);
+  background:radial-gradient(120% 90% at 84% 8%,#1c1c1c 0%,#0f0f0f 55%,#080808 100%);color:#fff}
+.slide.light{--bg:#F4F2ED;--fg:#141210;--ac:#141210;--ac2:#5a554f;--soft:rgba(0,0,0,.045);--line:rgba(0,0,0,.13);
+  background:linear-gradient(160deg,#F7F5F1 0%,#E9E5DD 100%);color:#141210}
+.slide.feature{--bg:#000;--fg:#fff;--ac:#fff;--ac2:#cfcfcf;--soft:rgba(255,255,255,.08);--line:rgba(255,255,255,.2);
+  background:#000;color:#fff}
+.slide.tex::before{content:"";position:absolute;inset:0;background:url('assets/contour-bw.jpg') center/cover;
+  filter:grayscale(1) brightness(1.1);opacity:.08;mix-blend-mode:screen;pointer-events:none}
+.slide.light.tex::before{mix-blend-mode:multiply;opacity:.05}
+/* ---- chrome ---- */
 #chrome{position:absolute;inset:0;pointer-events:none;z-index:40}
-.brandmark{position:absolute;top:30px;left:34px;display:flex;align-items:center;gap:11px}
-.brandmark img{width:26px;height:26px;opacity:.92}
-.brandmark span{font-weight:700;font-size:15px;letter-spacing:.02em;opacity:.85}
-.deck-label{position:absolute;top:34px;right:36px;font-size:11.5px;letter-spacing:.22em;
-  text-transform:uppercase;font-weight:600;opacity:.5}
-.pagenum{position:absolute;bottom:28px;right:38px;font-size:12px;letter-spacing:.1em;opacity:.55;font-weight:600}
-.pagenum b{color:var(--crimson)}
-.progress{position:absolute;bottom:0;left:0;height:4px;background:var(--crimson);width:0;
-  transition:width .35s cubic-bezier(.4,0,.2,1);box-shadow:0 0 14px rgba(232,11,58,.6)}
-.slide.light ~ #chrome .brandmark span,.foot-on-light{color:var(--ink)}
-/* keep chrome readable: invert on light slides handled per-active via JS class */
-body.on-light .brandmark span,body.on-light .deck-label,body.on-light .pagenum{color:var(--ink)}
-body.on-light .brandmark img{filter:invert(1)}
-/* ---------- Typography ---------- */
-.kicker{display:flex;align-items:center;gap:14px;margin-bottom:26px;font-weight:700;
-  letter-spacing:.16em;text-transform:uppercase;font-size:13px}
-.kicker .knum{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:26px;
-  padding:0 9px;border-radius:7px;background:var(--crimson);color:#fff;font-size:13px;letter-spacing:.02em}
-.kicker .ktxt{opacity:.7}
-h1.head{font-weight:900;line-height:.98;letter-spacing:-.02em}
-h2.head{font-weight:900;font-size:54px;line-height:1.02;letter-spacing:-.02em;max-width:21ch}
-h2.head .hi{color:var(--crimson)}
-.slide.crimson h2.head .hi,.slide.navy h2.head .hi{color:#fff;text-decoration:underline;text-decoration-thickness:5px;text-underline-offset:8px}
-.sub{margin-top:20px;font-size:20px;line-height:1.5;max-width:60ch;opacity:.82;font-weight:500}
-.lead{font-size:23px;line-height:1.5;max-width:62ch;font-weight:500;opacity:.9}
-.accentbar{width:64px;height:5px;background:var(--crimson);border-radius:3px;margin-bottom:26px}
-/* ---------- Cover ---------- */
-.cover{padding:0}
-.cover .ctext{position:absolute;left:92px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;z-index:3;max-width:760px}
-.cover .angel{position:absolute;right:-20px;bottom:0;height:104%;z-index:1;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 22%);mask-image:linear-gradient(90deg,transparent,#000 22%);opacity:.95}
-.cover h1{font-size:104px}
-.cover .eyebrow{font-size:15px;letter-spacing:.3em;text-transform:uppercase;font-weight:700;color:var(--crimson);margin-bottom:18px}
-.cover .meta{margin-top:30px;display:flex;gap:26px;font-size:15px;font-weight:600;opacity:.8;letter-spacing:.02em}
+.brandmark{position:absolute;top:30px;left:34px;height:24px}
+.brandmark img{height:100%;width:auto;opacity:.92}
+.deck-label{position:absolute;top:32px;right:36px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:#fff;opacity:.45}
+.pagenum{position:absolute;bottom:28px;right:38px;font-size:12px;letter-spacing:.1em;font-weight:700;color:#fff;opacity:.5}
+.progress{position:absolute;bottom:0;left:0;height:3px;background:#fff;width:0;transition:width .35s cubic-bezier(.4,0,.2,1)}
+body.on-light .brandmark img{filter:invert(1)} body.on-light .deck-label,body.on-light .pagenum{color:#141210}
+body.on-light .progress{background:#141210}
+/* ---- typography ---- */
+.kicker{display:flex;align-items:center;gap:13px;margin-bottom:24px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:12.5px;color:var(--fg)}
+.kicker .knum{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:25px;padding:0 9px;border-radius:6px;background:var(--ac);color:var(--bg);font-size:12.5px}
+.kicker .ktxt{color:var(--ac2)}
+h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;max-width:22ch;color:var(--fg)}
+.hi{background:var(--ac);color:var(--bg);padding:0 .14em;border-radius:5px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.sub{margin-top:18px;font-size:19px;line-height:1.5;max-width:62ch;color:var(--fg);opacity:.82;font-weight:500}
+.lead{font-size:23px;line-height:1.5;max-width:60ch;font-weight:500;color:var(--fg);opacity:.92}
+.accentbar{width:60px;height:5px;background:var(--ac);border-radius:3px;margin-bottom:24px}
+/* ---- cover / closing ---- */
+.cover,.closing{justify-content:center}
+.cover .logo-big{width:430px;max-width:60%;margin-bottom:40px}
+.cover h1{font-weight:900;font-size:88px;line-height:.96;letter-spacing:-.03em}
+.cover .eyebrow{font-size:14px;letter-spacing:.32em;text-transform:uppercase;font-weight:700;color:#9a9a9a;margin-bottom:18px}
+.cover .meta{margin-top:30px;display:flex;gap:24px;font-size:14px;font-weight:600;color:#cfcfcf;letter-spacing:.03em}
 .cover .meta span{display:flex;align-items:center;gap:9px}
-.cover .dot{width:7px;height:7px;border-radius:50%;background:var(--crimson)}
-.glow{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none}
-/* ---------- Agenda ---------- */
-.agenda{display:grid;grid-template-columns:1fr 1fr;gap:14px 40px;margin-top:8px}
-.ag-item{display:flex;gap:16px;align-items:flex-start;padding:14px 4px;border-top:1px solid var(--rule)}
-.ag-item .n{font-weight:900;font-size:22px;color:var(--crimson);min-width:34px;font-variant-numeric:tabular-nums}
-.ag-item .t{font-size:19px;font-weight:600;line-height:1.3}
-.ag-item .t small{display:block;font-size:13.5px;font-weight:500;opacity:.55;margin-top:3px}
-/* ---------- Cards / columns ---------- */
-.cols{display:grid;gap:22px;margin-top:6px}
-.cols.two{grid-template-columns:1fr 1fr}
-.cols.three{grid-template-columns:repeat(3,1fr)}
-.card{background:rgba(255,255,255,.05);border:1px solid var(--rule);border-radius:16px;padding:24px 24px}
-.slide.light .card{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.1)}
-.card h3{font-size:18px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:10px}
-.card .tagn{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--crimson)}
-.card p{font-size:15px;line-height:1.5;opacity:.78;font-weight:500}
+.cover .dot{width:6px;height:6px;border-radius:50%;background:#fff}
+.bird-wm{position:absolute;right:-40px;bottom:-30px;width:360px;opacity:.06;pointer-events:none}
+/* ---- agenda ---- */
+.agenda{display:grid;grid-template-columns:1fr 1fr;gap:8px 44px;margin-top:6px}
+.ag-item{display:flex;gap:15px;align-items:flex-start;padding:11px 4px;border-top:1px solid var(--line)}
+.ag-item .n{font-weight:900;font-size:20px;color:var(--ac);min-width:30px;font-variant-numeric:tabular-nums}
+.ag-item .t{font-size:17.5px;font-weight:600;line-height:1.25;color:var(--fg)}
+.ag-item .t small{display:block;font-size:12.5px;font-weight:500;color:var(--ac2);margin-top:2px}
+/* ---- cards / columns ---- */
+.cols{display:grid;gap:20px;margin-top:6px}
+.cols.two{grid-template-columns:1fr 1fr}.cols.three{grid-template-columns:repeat(3,1fr)}.cols.four{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--soft);border:1px solid var(--line);border-radius:15px;padding:22px 22px}
+.card h3{font-size:18px;font-weight:800;margin-bottom:9px;color:var(--fg);display:flex;align-items:center;gap:9px}
+.card h3.sm{font-size:16px}
+.card .tagn{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ac2)}
+.card p{font-size:14.5px;line-height:1.5;color:var(--fg);opacity:.78;font-weight:500}
 .card ul{list-style:none;margin-top:6px}
-.card li{font-size:15.5px;line-height:1.5;padding:6px 0 6px 24px;position:relative;font-weight:500;opacity:.9}
-.card li::before{content:"";position:absolute;left:2px;top:13px;width:8px;height:8px;border-radius:2px;background:var(--crimson);transform:rotate(45deg)}
-/* check / cross lists */
+.card li{font-size:15px;line-height:1.45;padding:5px 0 5px 22px;position:relative;font-weight:500;color:var(--fg);opacity:.9}
+.card li::before{content:"";position:absolute;left:2px;top:12px;width:7px;height:7px;background:var(--ac);transform:rotate(45deg)}
+/* vs lists */
 .vs{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
-.vs .col h3{font-size:15px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:16px;opacity:.6}
-.vs li{list-style:none;font-size:16.5px;line-height:1.45;padding:10px 0 10px 34px;position:relative;font-weight:500;border-bottom:1px solid var(--rule)}
-.vs li .ic{position:absolute;left:0;top:9px;width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900}
-.ic.ok{background:rgba(156,207,29,.18);color:var(--lime)}
-.ic.go{background:rgba(63,175,255,.18);color:var(--sky)}
-.ic.wait{background:rgba(255,152,29,.18);color:var(--orange)}
+.vs .col h3{font-size:14px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:14px;color:var(--ac2)}
+.vs li{list-style:none;font-size:16px;line-height:1.4;padding:9px 0 9px 32px;position:relative;font-weight:500;border-bottom:1px solid var(--line);color:var(--fg)}
+.vs li .ic{position:absolute;left:0;top:8px;width:21px;height:21px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;background:var(--soft);border:1px solid var(--line);color:var(--fg)}
+.ic.ok{background:var(--ac);color:var(--bg);border-color:var(--ac)}
 /* stats */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
-.stat .v{font-size:42px;font-weight:900;letter-spacing:-.02em;line-height:1}
-.stat .l{font-size:13px;opacity:.6;margin-top:8px;font-weight:600;line-height:1.3}
-.stat .v.c{color:var(--crimson)}.stat .v.s{color:var(--sky)}.stat .v.li{color:var(--lime)}.stat .v.o{color:var(--orange)}
-/* quote / callout */
-.callout{margin-top:26px;padding:22px 26px;border-left:5px solid var(--crimson);
-  background:rgba(232,11,58,.10);border-radius:0 14px 14px 0;font-size:21px;line-height:1.45;font-weight:600;max-width:64ch}
-.callout small{display:block;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--crimson);font-weight:800;margin-bottom:8px}
-.slide.crimson .callout,.slide.navy .callout{border-color:#fff;background:rgba(255,255,255,.14)}
-.slide.crimson .callout small,.slide.navy .callout small{color:#fff}
-/* SOP · stock options */
-.sop-mark{position:absolute;right:-60px;bottom:-70px;width:440px;opacity:.12;pointer-events:none}
-.sop-mark.small{width:230px;right:-30px;bottom:-30px;opacity:.10}
-.logobadge{height:.86em;width:auto;vertical-align:-.06em;margin-right:.18em;opacity:.95}
-.vwrap{margin-top:22px}
-.vbar{display:flex;height:48px;border-radius:10px;overflow:hidden;border:1px solid var(--rule)}
-.vcliff{flex:0 0 25%;background:linear-gradient(90deg,var(--crimson),var(--pink));display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;text-align:center;padding:0 6px}
-.vrest{flex:1;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;opacity:.85;text-align:center;padding:0 6px}
-.vlabels{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;opacity:.55;font-weight:600}
-/* funding breakdown bar */
-.fund{display:flex;height:126px;border-radius:16px;overflow:hidden;border:1px solid var(--rule);margin-top:26px}
-.fund .seg{display:flex;flex-direction:column;justify-content:center;padding:0 24px;color:#fff;position:relative}
-.fund .seg .amt{font-size:32px;font-weight:900;line-height:1;letter-spacing:-.02em}
-.fund .seg .lbl{font-size:13px;font-weight:600;opacity:.92;margin-top:8px;line-height:1.3;max-width:30ch}
-/* knowledge tools grid */
-.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:4px}
-.tool{background:rgba(255,255,255,.05);border:1px solid var(--rule);border-radius:14px;padding:18px 16px;position:relative;overflow:hidden}
-.tool .bar{position:absolute;top:0;left:0;right:0;height:4px}
-.tool .tn{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
-.tool .tw{font-size:15.5px;font-weight:700;line-height:1.25;margin-bottom:8px}
-.tool .th{font-size:13px;line-height:1.45;opacity:.66;font-weight:500}
-.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
-.rrule{display:flex;gap:13px;align-items:flex-start;background:rgba(255,255,255,.04);border:1px solid var(--rule);border-radius:12px;padding:15px 16px}
-.rrule .rn{font-weight:900;font-size:15px;color:#fff;background:var(--navy);min-width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none}
-.rrule .rt{font-size:14.5px;font-weight:600;line-height:1.4}
-/* receita composition */
-.recipe{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px}
-.bucket{border:1px solid var(--rule);border-radius:16px;padding:22px 24px;background:rgba(255,255,255,.05)}
-.bucket h3{font-size:21px;font-weight:900;margin-bottom:4px}
-.bucket .cap{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;opacity:.55;margin-bottom:14px}
-.bucket .chips{display:flex;flex-wrap:wrap;gap:9px}
-.chip{font-size:14px;font-weight:600;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.09);border:1px solid var(--rule)}
-.b-partner h3{color:var(--sky)} .b-fin h3{color:var(--lime)}
-.b-partner .chip{border-color:rgba(63,175,255,.4)} .b-fin .chip{border-color:rgba(156,207,29,.4)}
-.eq{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:20px;font-size:22px;font-weight:800;opacity:.9}
-.eq .plus{color:var(--crimson)}
-/* big metric reveal */
-.northstar{display:flex;align-items:center;gap:40px;margin-top:10px}
-.northstar .big{font-size:150px;font-weight:900;letter-spacing:-.04em;line-height:.85;
-  background:linear-gradient(120deg,#fff 30%,#ffd0db 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.northstar .side{max-width:30ch}
-.northstar .side p{font-size:19px;line-height:1.5;font-weight:600;opacity:.95}
-/* closing */
-.closing{align-items:center;justify-content:center;text-align:center}
-.closing h2{font-size:60px;max-width:18ch}
-.closing .angel{position:absolute;right:60px;bottom:0;height:96%;opacity:.9;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 40%);mask-image:linear-gradient(90deg,transparent,#000 40%)}
-/* nav buttons */
-.navbtn{position:fixed;bottom:18px;z-index:60;width:42px;height:42px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.2);background:rgba(20,20,22,.7);color:#fff;cursor:pointer;
-  font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
-.navbtn:hover{background:var(--crimson);border-color:var(--crimson)}
-#prev{left:18px}#next{left:68px}
-.hint{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:60;font-size:11.5px;
-  letter-spacing:.12em;text-transform:uppercase;opacity:.35;font-weight:600}
-@media print{
-  body{overflow:visible}#viewport{position:static;display:block}
-  #stage{transform:none!important;box-shadow:none;width:1280px;height:720px}
-  .slide{display:flex!important;position:relative;page-break-after:always;animation:none}
-  .navbtn,.hint{display:none}
-}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px}
+.stat .v{font-size:40px;font-weight:900;letter-spacing:-.02em;line-height:1;color:var(--fg)}
+.stat .l{font-size:12.5px;color:var(--ac2);margin-top:8px;font-weight:600;line-height:1.3}
+/* callout */
+.callout{margin-top:22px;padding:20px 24px;border-left:5px solid var(--ac);background:var(--soft);border-radius:0 13px 13px 0;font-size:20px;line-height:1.45;font-weight:600;max-width:66ch;color:var(--fg)}
+.callout small{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ac2);font-weight:800;margin-bottom:7px}
+/* tools / rules */
+.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:6px}
+.tool{background:var(--soft);border:1px solid var(--line);border-radius:13px;padding:17px 16px;position:relative;overflow:hidden}
+.tool .bar{position:absolute;top:0;left:0;right:0;height:4px;background:var(--ac);opacity:.85}
+.tool .tn{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px;color:var(--fg)}
+.tool .tw{font-size:15px;font-weight:700;line-height:1.25;margin-bottom:7px;color:var(--fg)}
+.tool .th{font-size:12.5px;line-height:1.4;color:var(--fg);opacity:.66;font-weight:500}
+.rules{display:grid;grid-template-columns:1fr;gap:11px;margin-top:18px}
+.rrule{display:flex;gap:13px;align-items:flex-start;background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:14px 16px}
+.rrule .rn{font-weight:900;font-size:14px;color:var(--bg);background:var(--ac);min-width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex:none}
+.rrule .rt{font-size:14.5px;font-weight:500;line-height:1.4;color:var(--fg)}
+/* funding bar */
+.fund{display:flex;height:120px;border-radius:15px;overflow:hidden;border:1px solid var(--line);margin-top:24px}
+.fund .seg{display:flex;flex-direction:column;justify-content:center;padding:0 24px}
+.fund .seg .amt{font-size:31px;font-weight:900;line-height:1;letter-spacing:-.02em}
+.fund .seg .lbl{font-size:13px;font-weight:600;margin-top:8px;line-height:1.3;max-width:32ch}
+.fund .fidc{flex:0 0 87%;background:repeating-linear-gradient(135deg,#1f1f1f,#1f1f1f 11px,#272727 11px,#272727 22px);color:#fff;border-right:1px solid var(--line)}
+.fund .eq{flex:1;min-width:150px;background:#fff;color:#0d0d0d}
+/* northstar big number */
+.northstar{display:flex;align-items:center;gap:36px;margin-top:8px}
+.northstar .big{font-size:140px;font-weight:900;letter-spacing:-.04em;line-height:.82;color:var(--fg)}
+.northstar .side{max-width:30ch}.northstar .side p{font-size:18px;line-height:1.5;font-weight:600;color:var(--fg);opacity:.92}
+/* runway hero */
+.runway{display:flex;align-items:baseline;gap:18px;margin-top:6px}
+.runway .num{font-size:130px;font-weight:900;letter-spacing:-.04em;line-height:.8;color:var(--fg)}
+.runway .u{font-size:30px;font-weight:800;color:var(--ac2)}
+/* vesting bar */
+.vwrap{margin-top:20px}
+.vbar{display:flex;height:46px;border-radius:9px;overflow:hidden;border:1px solid var(--line)}
+.vcliff{flex:0 0 25%;background:var(--ac);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;text-align:center;padding:0 6px}
+.vrest{flex:1;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;text-align:center;padding:0 6px;color:var(--fg);opacity:.85}
+.vlabels{display:flex;justify-content:space-between;margin-top:7px;font-size:11.5px;color:var(--ac2);font-weight:600}
+/* org chart */
+.org{margin-top:20px}
+.org .tier{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.org .tier.frentes{margin-top:16px}
+.obox{background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:13px 20px;text-align:center;min-width:150px}
+.obox .role{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ac2);font-weight:800}
+.obox .name{font-size:16px;font-weight:800;color:var(--fg);margin-top:3px}
+.obox.fr{padding:11px 16px;min-width:120px}.obox.fr .name{font-size:14px}
+.org .conn{height:18px;width:1px;background:var(--line);margin:6px auto}
+/* trio */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+.tbox{border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--soft);text-align:center}
+.tbox .tk{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--ac2)}
+.tbox .th{font-size:26px;font-weight:900;margin:8px 0 6px;color:var(--fg)}
+.tbox p{font-size:14px;line-height:1.45;color:var(--fg);opacity:.8;font-weight:500}
+.eqrow{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px;font-size:20px;font-weight:800;color:var(--fg)}
+.eqrow .op{opacity:.5}
+/* nav */
+.navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
+.navbtn:hover{background:#fff;color:#000;border-color:#fff}
+#prev{left:18px}#next{left:66px}
+.hint{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:60;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:.3;font-weight:600}
+@media print{body{overflow:visible}#viewport{position:static;display:block}#stage{transform:none!important;box-shadow:none}
+  .slide{display:flex!important;position:relative;page-break-after:always;animation:none}.navbtn,.hint{display:none}}
 </style>
 </head>
 <body>
 <div id="viewport"><div id="stage">
 
   <!-- 1 · COVER -->
-  <section class="slide cover active" data-chrome="dark">
-    <div class="glow" style="width:520px;height:520px;background:#E80B3A;left:-120px;top:-120px"></div>
-    <img class="angel" src="assets/angel-hero.jpg" alt="">
-    <div class="ctext">
-      <div class="eyebrow">All Hands · Robbin's Angels</div>
-      <h1 class="head">Onde a gente<br>chegou —<br>e pra onde<span style="color:var(--crimson)">.</span></h1>
-      <div class="meta">
-        <span><i class="dot"></i> Time Robbin</span>
-        <span><i class="dot"></i> Junho 2026</span>
-        <span><i class="dot"></i> 2Q26</span>
-      </div>
+  <section class="slide feature cover active tex" data-chrome="dark">
+    <img class="bird-wm" src="assets/robbin-bird-white.png" alt="">
+    <img class="logo-big" src="assets/robbin-logo-white.png" alt="Robbin">
+    <div class="eyebrow">All Hands · Time Robbin</div>
+    <h1>Onde a gente chegou —<br>e pra onde vamos.</h1>
+    <div class="meta">
+      <span><i class="dot"></i> Junho 2026</span>
+      <span><i class="dot"></i> 2º trimestre</span>
+      <span><i class="dot"></i> Uso interno</span>
     </div>
   </section>
 
@@ -203,306 +167,278 @@ h2.head .hi{color:var(--crimson)}
     <div class="kicker"><span class="knum">·</span><span class="ktxt">Pauta de hoje</span></div>
     <h2 class="head">O que vamos <span class="hi">alinhar</span></h2>
     <div class="agenda">
-      <div class="ag-item"><span class="n">01</span><span class="t">Esclarecer a rodada<small>US$ 108M na manchete: o que é equity e o que é FIDC</small></span></div>
-      <div class="ag-item"><span class="n">02</span><span class="t">Ticket extra pra quem vem 5x<small>Reconhecer presença e colaboração</small></span></div>
-      <div class="ag-item"><span class="n">03</span><span class="t">SOP — Stock Options Plan<small>O que é, por que importa e como funciona</small></span></div>
-      <div class="ag-item"><span class="n">04</span><span class="t">Valores &amp; cultura<small>O nosso jeito de operar</small></span></div>
-      <div class="ag-item"><span class="n">05</span><span class="t">Último tri: foco × realidade<small>O que dissemos × o que aconteceu</small></span></div>
-      <div class="ag-item"><span class="n">06</span><span class="t">Foco do próximo tri<small>Pra onde a energia vai agora</small></span></div>
-      <div class="ag-item"><span class="n">07</span><span class="t">Nova métrica única: Receita<small>Uma só estrela-guia pro time</small></span></div>
+      <div class="ag-item"><span class="n">01</span><span class="t">Onde a Robbin está hoje<small>Estágio, runway e como lemos crescimento</small></span></div>
+      <div class="ag-item"><span class="n">02</span><span class="t">Esclarecer a rodada<small>US$ 108M: o que é equity e o que é FIDC</small></span></div>
+      <div class="ag-item"><span class="n">03</span><span class="t">O conceito dos 3 clientes<small>A lente pra desenhar qualquer projeto</small></span></div>
+      <div class="ag-item"><span class="n">04</span><span class="t">PIX vs Cartão<small>Notícia velha, recado que não pode faltar</small></span></div>
+      <div class="ag-item"><span class="n">05</span><span class="t">Ticket extra pra quem vem 5x<small>Reconhecer presença e colaboração</small></span></div>
+      <div class="ag-item"><span class="n">06</span><span class="t">SOP — Stock Options Plan<small>O que é, por que importa, como funciona</small></span></div>
+      <div class="ag-item"><span class="n">07</span><span class="t">Gestão do conhecimento &amp; cultura<small>A verdade da Robbin + o nosso jeito</small></span></div>
+      <div class="ag-item"><span class="n">08</span><span class="t">Pessoas<small>Avaliação, organograma e vagas</small></span></div>
+      <div class="ag-item"><span class="n">09</span><span class="t">Foco: último × próximo tri<small>O que entregamos e pra onde vamos</small></span></div>
+      <div class="ag-item"><span class="n">10</span><span class="t">A métrica do time: Receita<small>TPV + Receita + Pulverização</small></span></div>
     </div>
   </section>
 
-  <!-- 3 · RODADA — quebra dos 108M -->
-  <section class="slide navy tex" style="--tex:url('assets/texture-blue.jpg')" data-chrome="dark">
-    <div class="kicker"><span class="knum">01</span><span class="ktxt">Esclarecer a rodada</span></div>
+  <!-- 3 · ONDE ESTAMOS HOJE -->
+  <section class="slide dark tex" data-chrome="dark">
+    <div class="kicker"><span class="knum">01</span><span class="ktxt">Onde a Robbin está hoje</span></div>
+    <h2 class="head" style="font-size:44px">Sólidos, com <span class="hi">tempo</span> pra construir</h2>
+    <div class="runway">
+      <div class="num">60</div><div class="u">meses de runway&nbsp;·&nbsp;~5 anos</div>
+    </div>
+    <p class="sub" style="margin-top:14px">Rodada esclarecida, caixa saudável: dá pra executar com calma e foco, sem corrida atrás de capital.</p>
+    <div class="stats" style="margin-top:22px">
+      <div class="stat"><div class="v">8</div><div class="l">marcas Fortune 500 live</div></div>
+      <div class="stat"><div class="v">~4.000</div><div class="l">varejistas na rede</div></div>
+      <div class="stat"><div class="v">US$ 3,07M</div><div class="l">ARR (1Q26) · ~9× vs 4Q24</div></div>
+      <div class="stat"><div class="v">100%</div><div class="l">trilho PIX próprio</div></div>
+    </div>
+    <div class="callout"><small>O que muda na cabeça</small>Não queremos TPV pelo TPV, como no passado. Queremos <b>TPV + Receita + Pulverização</b> — crescer com qualidade, não só com volume.</div>
+  </section>
+
+  <!-- 4 · ESCLARECER A RODADA -->
+  <section class="slide dark" data-chrome="dark">
+    <div class="kicker"><span class="knum">02</span><span class="ktxt">Esclarecer a rodada</span></div>
     <h2 class="head" style="font-size:46px">US$ 108M na manchete — <span class="hi">o que é o quê</span></h2>
     <div class="fund">
-      <div class="seg" style="flex:0 0 87%;background:linear-gradient(120deg,#0a55bf,#021a3f)">
-        <div class="amt">US$ 100M</div>
-        <div class="lbl">FIDC · fundo de crédito (~R$ 500M) — funding pra emprestar, <b>não é equity</b></div>
-      </div>
-      <div class="seg" style="flex:1;min-width:150px;background:linear-gradient(120deg,#E80B3A,#FF2D6F)">
-        <div class="amt">US$ 8M</div>
-        <div class="lbl">Equity (Seed)</div>
-      </div>
+      <div class="seg fidc"><div class="amt">US$ 100M</div><div class="lbl">FIDC · fundo de crédito (~R$ 500M) — funding pra emprestar, <b>não é equity</b></div></div>
+      <div class="seg eq"><div class="amt">US$ 8M</div><div class="lbl">Equity (Seed)</div></div>
     </div>
+    <div class="cols two" style="margin-top:18px">
+      <div class="card"><span class="tagn">Equity · Dez/24</span><h3 class="sm">Seed — US$ 6,5M</h3><p>Liderada pela Atlântico, com Canary. Primeira rodada institucional.</p></div>
+      <div class="card"><span class="tagn">Equity · Mar/26</span><h3 class="sm">Extensão — US$ 1,5M</h3><p>Liderada pela Caravela. Mesma rodada — não uma série nova.</p></div>
+    </div>
+    <div class="callout"><small>O ponto pra não distorcer</small>Manchete = US$ 108M. Diluição de verdade = só US$ 8M. O resto é fundo pra colocar crédito na rua — não é sócio novo no cap table.</div>
+  </section>
+
+  <!-- 5 · FIDC + ALAVANCAGEM -->
+  <section class="slide dark" data-chrome="dark">
+    <div class="kicker"><span class="knum">02</span><span class="ktxt">Como funciona o FIDC</span></div>
+    <h2 class="head" style="font-size:42px">US$ 1 de equity vira <span class="hi">muito mais</span> crédito</h2>
     <div class="cols two" style="margin-top:20px">
-      <div class="card"><span class="tagn" style="color:var(--sky)">Equity · Dez/24</span><h3>Seed — US$ 6,5M</h3><p>Liderada pela Atlântico, com Canary. Primeira rodada institucional.</p></div>
-      <div class="card"><span class="tagn" style="color:var(--sky)">Equity · Mar/26</span><h3>Extensão — US$ 1,5M</h3><p>Liderada pela Caravela. Mesma rodada — não uma série nova.</p></div>
+      <div class="card"><span class="tagn">O que é</span><h3 class="sm">Um fundo fora do balanço</h3><p>Compra os direitos creditórios das nossas operações de BNPL (parcelador de PIX e boleto). CCBs emitidas via Celcoin e cedidas ao fundo.</p>
+        <ul><li>Capacidade de até R$ 500M (~US$ 100M)</li><li>Gestão Augme Capital / XP</li><li>Financia as compras dos varejistas até o fim de 2027</li></ul></div>
+      <div class="card"><span class="tagn">A alavancagem</span><h3 class="sm">Duas camadas de cota</h3>
+        <ul><li><b>Cota Sênior</b> — investidores institucionais; risco menor, recebem primeiro</li><li><b>Cota Subordinada</b> — a Robbin; absorve a primeira perda (first loss)</li></ul>
+        <p style="margin-top:8px">A subordinada da Robbin “segura” um volume muito maior de capital sênior em cima.</p></div>
     </div>
-    <div class="callout">
-      <small>O ponto pra não distorcer</small>
-      Manchete = US$ 108M. Diluição de verdade = só US$ 8M. O resto é fundo pra colocar crédito na rua — não é sócio novo no cap table.
-    </div>
+    <div class="northstar" style="margin-top:16px;gap:24px"><div class="big" style="font-size:86px">6,6×</div>
+      <div class="side"><p>de alavancagem: cada R$ 1 de capital subordinado destrava ~R$ 6,6 de crédito pra colocar na rua — <b>sem diluir mais equity</b>.</p></div></div>
   </section>
 
-  <!-- 3b · COMO FUNCIONA O FIDC + ALAVANCAGEM -->
+  <!-- 6 · CONCEITO DOS 3 CLIENTES -->
+  <section class="slide light" data-chrome="light">
+    <div class="kicker"><span class="knum">03</span><span class="ktxt">O conceito dos 3 clientes</span></div>
+    <h2 class="head">A gente serve <span class="hi">três</span> ao mesmo tempo</h2>
+    <div class="cols three" style="margin-top:24px">
+      <div class="card"><span class="tagn">Cliente 1</span><h3>🏭 Indústria âncora</h3><p>A marca/fornecedor. Quer vender mais pro canal e receber à vista, sem risco de crédito no balanço.</p></div>
+      <div class="card"><span class="tagn">Cliente 2</span><h3>🏪 Varejista PME</h3><p>O revendedor. Quer prazo e crédito pra comprar estoque que gera caixa, de forma simples.</p></div>
+      <div class="card"><span class="tagn">Cliente 3</span><h3>🏦 Funding / FIDC</h3><p>Bancos e investidores do fundo. Querem um ativo de crédito de qualidade, bem originado.</p></div>
+    </div>
+    <div class="callout"><small>Por que todo mundo precisa dessa visão</small>Ao desenhar qualquer projeto ou necessidade, pergunte: <b>o que isso resolve para cada um dos três?</b> Se um lado quebra, a rede inteira para.</div>
+  </section>
+
+  <!-- 7 · PIX vs CARTÃO -->
   <section class="slide dark" data-chrome="dark">
-    <div class="kicker"><span class="knum">01</span><span class="ktxt" style="color:var(--sky)">Esclarecer a rodada · como funciona o FIDC</span></div>
-    <h2 class="head" style="font-size:42px">US$1 de equity vira <span style="color:var(--sky)">muito mais</span> crédito</h2>
-    <div class="cols two" style="margin-top:22px">
-      <div class="card">
-        <span class="tagn" style="color:var(--sky)">O que é</span>
-        <h3>Um fundo fora do balanço</h3>
-        <p>O FIDC compra os direitos creditórios das nossas operações de BNPL (parcelador de PIX e boleto). As CCBs são emitidas via Celcoin e cedidas ao fundo.</p>
-        <ul>
-          <li>Capacidade de até R$ 500M (~US$ 100M)</li>
-          <li>Gestão Augme Capital / XP</li>
-          <li>Financia as compras dos varejistas até o fim de 2027</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="tagn" style="color:var(--lime)">A alavancagem</span>
-        <h3>Duas camadas de cota</h3>
-        <ul>
-          <li><b>Cota Sênior</b> — investidores institucionais; risco menor, recebem primeiro</li>
-          <li><b>Cota Subordinada</b> — a Robbin; absorve a primeira perda (first loss)</li>
-        </ul>
-        <p style="margin-top:8px">A subordinada da Robbin “segura” um volume muito maior de capital sênior em cima dela.</p>
-      </div>
+    <div class="kicker"><span class="knum">04</span><span class="ktxt">PIX vs Cartão · recado que não pode faltar</span></div>
+    <h2 class="head">O cartão foi o começo. <span class="hi">O PIX é o caminho.</span></h2>
+    <div class="vs" style="margin-top:22px">
+      <div class="col"><h3>Cartão — ponto de partida</h3>
+        <ul><li><span class="ic">×</span>Economics ficou inviável (regulação, bandeira, adquirente)</li><li><span class="ic">×</span>Securitização complexa, custo transacional alto</li><li><span class="ic">×</span>Não atendia bem os pagamentos B2B fora do arranjo</li></ul></div>
+      <div class="col"><h3>PIX — presente e futuro</h3>
+        <ul><li><span class="ic ok">✓</span>Settlement real-time pra indústria, sem MDR</li><li><span class="ic ok">✓</span>ROI anualizado superior · yield em all-time high</li><li><span class="ic ok">✓</span>First-mover: lançamos 5 meses antes da regra do BC</li></ul></div>
     </div>
-    <div class="northstar" style="margin-top:18px;gap:26px">
-      <div class="big" style="font-size:92px">6,6×</div>
-      <div class="side"><p>de alavancagem: cada R$ 1 de capital subordinado da Robbin destrava ~R$ 6,6 de crédito pra colocar na rua — <b>sem diluir mais equity</b>.</p></div>
-    </div>
+    <div class="callout"><small>O recado</small>Notícia velha, mas vale repetir: migramos 100% pro trilho PIX próprio — <b>65% do mix já em março</b>. O cartão foi ponto de partida, não destino.</div>
   </section>
 
-  <!-- 4 · TICKET 5x -->
-  <section class="slide dark tex" style="--tex:url('assets/texture-contour.jpg')" data-chrome="dark">
-    <div class="kicker"><span class="knum">02</span><span class="ktxt">Reconhecimento · presença</span></div>
-    <h2 class="head">Bateu <span class="hi">5x na semana?</span><br>Ganhou um ticket extra</h2>
-    <div class="cols three" style="margin-top:30px">
-      <div class="card"><span class="tagn">O que é</span><h3>Um ticket adicional</h3><p>Quem vem ao escritório os 5 dias da semana recebe um crédito extra no benefício na semana seguinte.</p></div>
-      <div class="card"><span class="tagn">Por que</span><h3>Estamos construindo uma rede</h3><p>Proximidade acelera decisão, troca e cultura. Estar junto é o nosso multiplicador — e a gente reconhece quem aparece.</p></div>
-      <div class="card"><span class="tagn">Como funciona</span><h3>Automático, sem burocracia</h3><p>Marcou presença os 5 dias → o ticket cai. Sem formulário, sem pedir. <span style="opacity:.6">(valor e regra final no #avisos)</span></p></div>
+  <!-- 8 · TICKET 5x -->
+  <section class="slide light tex" data-chrome="light">
+    <div class="kicker"><span class="knum">05</span><span class="ktxt">Reconhecimento · presença</span></div>
+    <h2 class="head">Bateu <span class="hi">5x na semana?</span> Ganhou um ticket extra</h2>
+    <div class="cols three" style="margin-top:26px">
+      <div class="card"><span class="tagn">O que é</span><h3 class="sm">Um ticket adicional</h3><p>Quem vem ao escritório os 5 dias da semana recebe um crédito extra no benefício na semana seguinte.</p></div>
+      <div class="card"><span class="tagn">Por que</span><h3 class="sm">Estamos construindo uma rede</h3><p>Proximidade acelera decisão, troca e cultura. Estar junto é o nosso multiplicador.</p></div>
+      <div class="card"><span class="tagn">Como funciona</span><h3 class="sm">Automático, sem burocracia</h3><p>Marcou os 5 dias → o ticket cai. <span style="opacity:.6">(valor e regra final no #avisos)</span></p></div>
     </div>
-    <p class="sub" style="margin-top:26px">Não é cobrança de ponto — é um obrigado a quem está construindo isso de perto, todo dia.</p>
+    <p class="sub" style="margin-top:24px">Não é cobrança de ponto — é um obrigado a quem está construindo isso de perto, todo dia.</p>
   </section>
 
-  <!-- 5 · SOP (Stock Options Plan) — o que é -->
-  <section class="slide crimson" data-chrome="dark">
-    <img class="sop-mark" src="assets/logo-white.png" alt="">
-    <div class="kicker"><span class="knum">03</span><span class="ktxt">SOP · o que é</span></div>
+  <!-- 9 · SOP o que é -->
+  <section class="slide feature tex" data-chrome="dark">
+    <img class="bird-wm" src="assets/robbin-bird-white.png" alt="" style="width:300px;opacity:.07">
+    <div class="kicker"><span class="knum">06</span><span class="ktxt">SOP · o que é</span></div>
     <h2 class="head">SOP = <span class="hi">Stock Options Plan</span></h2>
-    <p class="lead" style="margin-top:22px;max-width:58ch">O direito de comprar uma fatia da <img class="logobadge" src="assets/logo-white.png" alt="">Robbin no futuro, a um preço travado hoje. Se a empresa vale mais lá na frente, a diferença é <b>sua</b>.</p>
-    <div class="callout">
-      <small>Em uma frase</small>
-      Parte do seu pacote não é salário — é sociedade. Você vira dono de um pedaço do que estamos construindo.
-    </div>
+    <p class="lead" style="margin-top:20px;max-width:56ch">O direito de comprar uma fatia da Robbin no futuro, a um preço travado hoje. Se a empresa vale mais lá na frente, a diferença é <b>sua</b>.</p>
+    <div class="callout"><small>Em uma frase</small>Parte do seu pacote não é salário — é sociedade. Você vira dono de um pedaço do que estamos construindo.</div>
   </section>
 
-  <!-- 6 · SOP por que importa -->
+  <!-- 10 · SOP por que importa -->
   <section class="slide dark" data-chrome="dark">
-    <img class="sop-mark small" src="assets/logo-crimson.png" alt="">
-    <div class="kicker"><span class="knum">03</span><span class="ktxt" style="color:var(--pink)">SOP · por que importa</span></div>
-    <h2 class="head">Por que isso <span style="color:var(--pink)">muda o jogo</span> pra você</h2>
-    <div class="cols three" style="margin-top:30px">
+    <div class="kicker"><span class="knum">06</span><span class="ktxt">SOP · por que importa</span></div>
+    <h2 class="head">Por que isso <span class="hi">muda o jogo</span> pra você</h2>
+    <div class="cols three" style="margin-top:28px">
       <div class="card"><h3>🤝 Alinhamento total</h3><p>Quando a Robbin ganha, você ganha. Mesmo barco, mesma régua — Receita.</p></div>
       <div class="card"><h3>💎 Criação de patrimônio</h3><p>Num evento de liquidez (venda ou IPO), as opções viram dinheiro de verdade.</p></div>
       <div class="card"><h3>🧭 Pensar como dono</h3><p>Decisão de longo prazo, ownership real. É a cultura virando bolso.</p></div>
     </div>
-    <div class="callout" style="border-color:var(--pink);background:rgba(255,45,111,.12)">
-      <small style="color:var(--pink)">Conexão com a rodada</small>
-      A Seed + Extensão definem o valor da Robbin hoje. É esse valor que as suas opções acompanham — e que a gente existe pra multiplicar.
+    <div class="callout"><small>Conexão com a rodada</small>A Seed + Extensão definem o valor da Robbin hoje. É esse valor que as suas opções acompanham — e que a gente existe pra multiplicar.</div>
+  </section>
+
+  <!-- 11 · SOP como funciona -->
+  <section class="slide dark tex" data-chrome="dark">
+    <div class="kicker"><span class="knum">06</span><span class="ktxt">SOP · como funciona</span></div>
+    <h2 class="head" style="font-size:44px">Do <span class="hi">grant</span> ao upside</h2>
+    <div class="cols four" style="margin-top:22px">
+      <div class="card"><span class="tagn">1 · Grant</span><h3 class="sm">Você recebe opções</h3><p>Uma quantidade concedida, no seu contrato.</p></div>
+      <div class="card"><span class="tagn">2 · Strike</span><h3 class="sm">Preço travado hoje</h3><p>O valor que você paga pra exercer.</p></div>
+      <div class="card"><span class="tagn">3 · Vesting</span><h3 class="sm">Conquista no tempo</h3><p>Você ganha as opções aos poucos.</p></div>
+      <div class="card"><span class="tagn">4 · Liquidez</span><h3 class="sm">Vira dinheiro</h3><p>Em venda ou IPO, a diferença é sua.</p></div>
+    </div>
+    <div class="vwrap"><div class="vbar"><div class="vcliff">Cliff de 1 ano · 25%</div><div class="vrest">Restante mês a mês até completar 4 anos</div></div>
+      <div class="vlabels"><span>Concessão</span><span>Ano 1</span><span>Ano 4 · 100% vested</span></div></div>
+    <div class="callout"><small>Exemplo ilustrativo</small>Strike baixo hoje + Robbin valendo mais no exit = o ganho é seu. <b>Os termos exatos da sua concessão estão no seu contrato</b> — dúvidas, fale com o People.</div>
+  </section>
+
+  <!-- 12 · GESTÃO DO CONHECIMENTO -->
+  <section class="slide dark tex" data-chrome="dark">
+    <div class="kicker"><span class="knum">07</span><span class="ktxt">Gestão do conhecimento</span></div>
+    <h2 class="head" style="font-size:44px">Construindo a <span class="hi">verdade da Robbin</span></h2>
+    <div class="callout"><small>Por que isso existe (palavra do CTO)</small>Empoderar o time não-técnico — <b>sem abrir mão de segurança e acuracidade</b>. É assim que a gente organiza as nossas informações.</div>
+    <div class="tools" style="margin-top:20px">
+      <div class="tool"><span class="bar"></span><div class="tn">Notion</div><div class="tw">O que a empresa sabe</div><div class="th">Processos, decisões estruturais e contexto duradouro.</div></div>
+      <div class="tool"><span class="bar"></span><div class="tn">Linear</div><div class="tw">O que está fazendo</div><div class="th">Issues e projetos — contexto com ciclo de vida.</div></div>
+      <div class="tool"><span class="bar"></span><div class="tn">Google Docs</div><div class="tw">Rascunhos &amp; externo</div><div class="th">RFCs em construção. Texto interno é promovido ou arquivado.</div></div>
+      <div class="tool"><span class="bar"></span><div class="tn">GitHub</div><div class="tw">O que construiu</div><div class="th">READMEs, ADRs e runbooks versionados com o código.</div></div>
     </div>
   </section>
 
-  <!-- 7 · SOP como funciona + exemplo -->
-  <section class="slide dark tex" style="--tex:url('assets/texture-contour.jpg')" data-chrome="dark">
-    <div class="kicker"><span class="knum">03</span><span class="ktxt" style="color:var(--pink)">SOP · como funciona</span></div>
-    <h2 class="head" style="font-size:44px">Do <span style="color:var(--pink)">grant</span> ao <span style="color:var(--pink)">upside</span></h2>
-    <div class="cols" style="grid-template-columns:repeat(4,1fr);margin-top:22px">
-      <div class="card"><span class="tagn">1 · Grant</span><h3 style="font-size:16px">Você recebe opções</h3><p>Uma quantidade concedida, definida no seu contrato.</p></div>
-      <div class="card"><span class="tagn">2 · Strike</span><h3 style="font-size:16px">Preço travado hoje</h3><p>O valor que você paga pra exercer — fixado na concessão.</p></div>
-      <div class="card"><span class="tagn">3 · Vesting</span><h3 style="font-size:16px">Conquista no tempo</h3><p>Você ganha as opções aos poucos, ficando na Robbin.</p></div>
-      <div class="card"><span class="tagn">4 · Liquidez</span><h3 style="font-size:16px">Vira dinheiro</h3><p>Em venda ou IPO, a diferença pro strike é sua.</p></div>
-    </div>
-    <div class="vwrap">
-      <div class="vbar">
-        <div class="vcliff">Cliff de 1 ano · 25%</div>
-        <div class="vrest">Restante mês a mês até completar 4 anos</div>
-      </div>
-      <div class="vlabels"><span>Concessão</span><span>Ano 1</span><span>Ano 4 · 100% vested</span></div>
-    </div>
-    <div class="callout" style="border-color:var(--pink);background:rgba(255,45,111,.10)">
-      <small style="color:var(--pink)">Exemplo ilustrativo</small>
-      Strike baixo hoje + Robbin valendo mais no exit = o ganho é seu. <b>Os termos exatos da sua concessão estão no seu contrato</b> — dúvidas, fale com o People.
-    </div>
-  </section>
-
-  <!-- 8 · GESTÃO DO CONHECIMENTO — o porquê + ferramentas -->
-  <section class="slide navy tex" style="--tex:url('assets/texture-blue.jpg')" data-chrome="dark">
-    <div class="kicker"><span class="knum">✦</span><span class="ktxt">Diretriz · gestão do conhecimento</span></div>
-    <h2 class="head" style="font-size:46px">Construindo a <span class="hi">verdade da Robbin</span></h2>
-    <div class="callout">
-      <small>Por que isso existe (palavra do CTO)</small>
-      Empoderar o time não-técnico — <b>sem abrir mão de segurança e acuracidade</b>. É assim que a gente organiza as nossas informações.
-    </div>
-    <p class="sub" style="margin-top:18px;opacity:.85">Cada coisa tem um lugar. Quatro ferramentas, um princípio: uma fonte única de verdade.</p>
-    <div class="tools">
-      <div class="tool"><span class="bar" style="background:#3FAFFF"></span><div class="tn" style="color:var(--sky)">Notion</div><div class="tw">O que a empresa sabe</div><div class="th">Processos, decisões estruturais e contexto duradouro.</div></div>
-      <div class="tool"><span class="bar" style="background:#8b94ff"></span><div class="tn" style="color:#9aa2ff">Linear</div><div class="tw">O que a empresa está fazendo</div><div class="th">Issues e projetos — contexto com ciclo de vida definido.</div></div>
-      <div class="tool"><span class="bar" style="background:#5aa0ff"></span><div class="tn" style="color:#7bb3ff">Google Docs</div><div class="tw">Rascunhos &amp; comunicação externa</div><div class="th">RFCs em construção. Texto interno é promovido ou arquivado.</div></div>
-      <div class="tool"><span class="bar" style="background:#cfd3da"></span><div class="tn" style="color:#e3e6ea">GitHub</div><div class="tw">O que a empresa construiu</div><div class="th">READMEs, ADRs e runbooks versionados junto ao código.</div></div>
-    </div>
-  </section>
-
-  <!-- 8b · GESTÃO DO CONHECIMENTO — as regras + Claude -->
+  <!-- 13 · CONHECIMENTO regras + Claude -->
   <section class="slide dark" data-chrome="dark">
-    <div class="kicker"><span class="knum">✦</span><span class="ktxt" style="color:var(--sky)">Diretriz · as regras</span></div>
-    <h2 class="head">Cada coisa <span style="color:var(--sky)">no seu lugar</span></h2>
-    <div class="rules" style="grid-template-columns:1fr;gap:12px;margin-top:26px">
+    <div class="kicker"><span class="knum">07</span><span class="ktxt">Gestão do conhecimento · as regras</span></div>
+    <h2 class="head">Cada coisa <span class="hi">no seu lugar</span></h2>
+    <div class="rules" style="margin-top:24px">
       <div class="rrule"><span class="rn">01</span><span class="rt"><b>Notion</b> guarda o que a empresa <b>sabe</b> — decisão estrutural, processo e contexto duradouro.</span></div>
       <div class="rrule"><span class="rn">02</span><span class="rt"><b>Linear</b> guarda o que a empresa <b>está fazendo</b> — contexto com ciclo de vida. O que vira estrutural, sobe pro Notion.</span></div>
       <div class="rrule"><span class="rn">03</span><span class="rt"><b>GitHub</b> guarda o que a empresa <b>construiu</b> — READMEs, ADRs e runbooks versionados com o código.</span></div>
     </div>
-    <div class="callout" style="margin-top:24px">
-      <small>Porta de entrada</small>
-      O ponto de partida pra qualquer busca é o <b>Claude</b>, conectado a todas as ferramentas — acesso seguro e com acuracidade, pra qualquer pessoa do time, técnica ou não.
-    </div>
+    <div class="callout" style="margin-top:22px"><small>Porta de entrada</small>O ponto de partida pra qualquer busca é o <b>Claude</b>, conectado a todas as ferramentas — acesso seguro e com acuracidade, pra qualquer pessoa do time, técnica ou não.</div>
   </section>
 
-  <!-- 9 · VALORES / CULTURA -->
-  <section class="slide crimson tex" style="--tex:url('assets/texture-pink.jpg')" data-chrome="dark">
-    <div class="kicker"><span class="knum">04</span><span class="ktxt">Valores &amp; cultura</span></div>
+  <!-- 14 · VALORES / CULTURA -->
+  <section class="slide light" data-chrome="light">
+    <div class="kicker"><span class="knum">07</span><span class="ktxt">Cultura · o nosso jeito</span></div>
     <h2 class="head">O nosso <span class="hi">jeito</span> de operar</h2>
-    <div class="cols three" style="margin-top:28px">
-      <div class="card" style="background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.18)"><h3>Clareza &gt; floreio</h3><p>Sigla a gente explica ou tira. Comunicação direta, sem enfeite.</p></div>
-      <div class="card" style="background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.18)"><h3>Sem drama</h3><p>Desafio é desafio. Encara, nomeia, resolve — sem novela.</p></div>
-      <div class="card" style="background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.18)"><h3>Dono de ponta a ponta</h3><p>Business entrega produto funcional sem esperar fila. Ownership de verdade.</p></div>
-      <div class="card" style="background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.18)"><h3>Velocidade vira moat</h3><p>18s pra decidir crédito, &lt;30 dias pra subir parceiro. Rápido é estratégia.</p></div>
-      <div class="card" style="background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.18)"><h3>Cumpre o combinado</h3><p>O que se promete, se entrega — e dentro do prazo. Confiança é construída assim.</p></div>
-      <div class="card" style="background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.18)"><h3>PME no centro</h3><p>NPS 79, retenção 88%. O cliente é a razão, não a consequência.</p></div>
+    <div class="cols three" style="margin-top:26px">
+      <div class="card"><h3 class="sm">Clareza &gt; floreio</h3><p>Sigla a gente explica ou tira. Comunicação direta, sem enfeite.</p></div>
+      <div class="card"><h3 class="sm">Sem drama</h3><p>Desafio é desafio. Encara, nomeia, resolve — sem novela.</p></div>
+      <div class="card"><h3 class="sm">Dono de ponta a ponta</h3><p>Business entrega produto funcional sem esperar fila. Ownership de verdade.</p></div>
+      <div class="card"><h3 class="sm">Velocidade vira moat</h3><p>18s pra decidir crédito, &lt;30 dias pra subir parceiro. Rápido é estratégia.</p></div>
+      <div class="card"><h3 class="sm">Cumpre o combinado</h3><p>O que se promete, se entrega — e no prazo. Confiança se constrói assim.</p></div>
+      <div class="card"><h3 class="sm">PME no centro</h3><p>NPS 79, retenção 88%. O cliente é a razão, não a consequência.</p></div>
     </div>
   </section>
 
-  <!-- 10 · ÚLTIMO TRI: foco x realidade -->
+  <!-- 15 · PESSOAS -->
   <section class="slide dark" data-chrome="dark">
-    <div class="kicker"><span class="knum">05</span><span class="ktxt" style="color:var(--sky)">Último tri · foco × o que aconteceu</span></div>
-    <h2 class="head">O que dissemos × <span style="color:var(--sky)">o que entregamos</span></h2>
-    <div class="vs" style="margin-top:24px">
-      <div class="col">
-        <h3>O foco que demos</h3>
-        <ul>
-          <li><span class="ic go">→</span>Concluir a virada de bandeira pro PIX</li>
-          <li><span class="ic go">→</span>Colocar o FIDC de pé (funding próprio)</li>
-          <li><span class="ic go">→</span>Migrar os âncoras sem perder ninguém</li>
-        </ul>
-      </div>
-      <div class="col">
-        <h3>O que aconteceu de fato</h3>
-        <ul>
-          <li><span class="ic ok">✓</span>Stack 100% em trilho PIX próprio (Mar/26)</li>
-          <li><span class="ic ok">✓</span>FIDC <b>LIVE</b> — capacidade de até R$ 500MM</li>
-          <li><span class="ic ok">✓</span>Cantu e Moura migraram inteiras — nenhuma saiu</li>
-          <li><span class="ic wait">~</span>Contração intencional da carteira: trade-off consciente, não tropeço</li>
-        </ul>
-      </div>
+    <div class="kicker"><span class="knum">08</span><span class="ktxt">Pessoas</span></div>
+    <h2 class="head" style="font-size:44px">Time: <span class="hi">clareza</span> e próximos passos</h2>
+    <div class="cols three" style="margin-top:22px">
+      <div class="card"><span class="tagn">Avaliação</span><h3 class="sm">Retomada da avaliação formal</h3><p>Volta o ciclo estruturado de performance: feedback claro, calibração e plano de evolução pra cada um.</p></div>
+      <div class="card"><span class="tagn">Estrutura</span><h3 class="sm">Organograma atualizado</h3><p>Quem lidera cada frente e como nos organizamos — abaixo, e a versão viva no Notion.</p></div>
+      <div class="card"><span class="tagn">Crescimento</span><h3 class="sm">Vagas abertas</h3><p>Estamos contratando para frentes-chave. Indicação de talento conta — traga gente boa.</p></div>
     </div>
-    <div class="stats" style="margin-top:24px">
-      <div class="stat"><div class="v s">US$ 3,07M</div><div class="l">ARR em 1Q26</div></div>
-      <div class="stat"><div class="v li">~9×</div><div class="l">crescimento desde 4Q24</div></div>
-      <div class="stat"><div class="v o">65%</div><div class="l">mix em PIX Rails (mar)</div></div>
-      <div class="stat"><div class="v c">NPS 79</div><div class="l">retenção 88% em 6m</div></div>
+    <div class="org">
+      <div class="tier"><div class="obox"><div class="role">CEO</div><div class="name">Leonardo Moura</div></div>
+        <div class="obox"><div class="role">CTO</div><div class="name">Tomás Corrêa</div></div>
+        <div class="obox"><div class="role">Co-fundador · Capital Markets</div><div class="name">Henrique Meyer</div></div></div>
+      <div class="conn"></div>
+      <div class="tier frentes">
+        <div class="obox fr"><div class="name">Produto &amp; Eng</div></div>
+        <div class="obox fr"><div class="name">Operações</div></div>
+        <div class="obox fr"><div class="name">Comercial &amp; Growth</div></div>
+        <div class="obox fr"><div class="name">Finance &amp; Treasury</div></div>
+        <div class="obox fr"><div class="name">People</div></div>
+      </div>
     </div>
   </section>
 
-  <!-- 11 · PRÓXIMO TRI -->
-  <section class="slide dark tex" style="--tex:url('assets/texture-blue.jpg')" data-chrome="dark">
-    <div class="kicker"><span class="knum">06</span><span class="ktxt" style="color:var(--orange)">Próximo tri · foco</span></div>
-    <h2 class="head">Pra onde a <span style="color:var(--orange)">energia</span> vai agora</h2>
-    <div class="cols three" style="margin-top:28px">
-      <div class="card"><span class="tagn">Crescer de novo</span><h3>Voltar a originar com o FIDC live</h3><p>Originação PIX saindo de base 100 (jan) rumo a 675 (mai). Acelerar com funding próprio.</p></div>
-      <div class="card"><span class="tagn">Embedded</span><h3>ERP da indústria — Cantu INC Pay</h3><p>Limite do revendedor dentro do fluxo de pedido do âncora. Primeiro de novos parceiros.</p></div>
-      <div class="card"><span class="tagn">Novos âncoras</span><h3>Intelbras live + pipeline</h3><p>Mais marcas Fortune 500 na rede e produto de prateleira com o Itaú BBA.</p></div>
-    </div>
-    <div class="callout" style="border-color:var(--orange);background:rgba(255,152,29,.12)">
-      <small style="color:var(--orange)">E acima de tudo</small>
-      Tudo isso medido por uma régua só — a que vem no próximo bloco.
-    </div>
-  </section>
-
-  <!-- 12 · NOVA MÉTRICA: RECEITA (reveal) -->
-  <section class="slide crimson" data-chrome="dark">
-    <div class="glow" style="width:480px;height:480px;background:#fff;right:-120px;bottom:-160px;opacity:.18"></div>
-    <div class="kicker"><span class="knum">07</span><span class="ktxt">Nova métrica única do time</span></div>
-    <div class="northstar">
-      <div class="big">Receita</div>
-      <div class="side">
-        <p>Uma só estrela-guia. A partir de agora, quando o time pergunta “estamos indo bem?”, a resposta tem um único nome: <b>Receita</b>.</p>
-      </div>
-    </div>
-    <div class="callout">
-      <small>Por que declarar isso em voz alta</small>
-      Se a gente não der uma métrica, o time escolhe uma sozinho — e hoje muita gente ainda acha que é TPV. Vamos controlar a narrativa.
-    </div>
-  </section>
-
-  <!-- 13 · RECEITA composição -->
+  <!-- 16 · ÚLTIMO TRI -->
   <section class="slide dark" data-chrome="dark">
-    <div class="kicker"><span class="knum">07</span><span class="ktxt" style="color:var(--lime)">Receita · como se compõe</span></div>
-    <h2 class="head" style="font-size:44px">Desde o 1Q26, Receita = <span style="color:var(--lime)">duas linhas</span></h2>
-    <div class="recipe">
-      <div class="bucket b-partner">
-        <div class="cap">Linha 1</div>
-        <h3>Partner Fees</h3>
-        <div class="chips"><span class="chip">Interchange</span><span class="chip">PIX Rails</span><span class="chip">Setup Fees</span><span class="chip">Partner Pay (Cantu INC Pay)</span></div>
-      </div>
-      <div class="bucket b-fin">
-        <div class="cap">Linha 2</div>
-        <h3>Financial Income</h3>
-        <div class="chips"><span class="chip">Collateral Float</span><span class="chip">Early Payments</span><span class="chip">Refinancings</span><span class="chip">Late Fees</span></div>
-      </div>
+    <div class="kicker"><span class="knum">09</span><span class="ktxt">Último tri · foco × o que aconteceu</span></div>
+    <h2 class="head">O que dissemos × <span class="hi">o que entregamos</span></h2>
+    <div class="vs" style="margin-top:22px">
+      <div class="col"><h3>O foco que demos</h3>
+        <ul><li><span class="ic">→</span>Concluir a virada de bandeira pro PIX</li><li><span class="ic">→</span>Colocar o FIDC de pé (funding próprio)</li><li><span class="ic">→</span>Migrar os âncoras sem perder ninguém</li></ul></div>
+      <div class="col"><h3>O que aconteceu de fato</h3>
+        <ul><li><span class="ic ok">✓</span>Stack 100% em trilho PIX próprio (Mar/26)</li><li><span class="ic ok">✓</span>FIDC <b>LIVE</b> — capacidade de até R$ 500M</li><li><span class="ic ok">✓</span>Cantu e Moura migraram inteiras — nenhuma saiu</li><li><span class="ic">~</span>Contração intencional da carteira: trade-off, não tropeço</li></ul></div>
     </div>
-    <div class="eq"><span>Partner Fees</span><span class="plus">+</span><span>Financial Income</span><span class="plus">=</span><span style="color:var(--crimson)">Receita</span></div>
-    <p class="sub" style="text-align:center;margin:16px auto 0">Quebras por linha são visão gerencial. Pra fora (investidores) e pro time: estas duas linhas.</p>
-  </section>
-
-  <!-- 14 · POR QUE NÃO TPV -->
-  <section class="slide dark tex" style="--tex:url('assets/texture-contour.jpg')" data-chrome="dark">
-    <div class="kicker"><span class="knum">07</span><span class="ktxt" style="color:var(--crimson)">Controlar a narrativa</span></div>
-    <h2 class="head">Por que <span class="hi">não</span> é TPV</h2>
-    <div class="vs" style="margin-top:24px">
-      <div class="col">
-        <h3 style="color:var(--muted)">TPV — volume</h3>
-        <ul>
-          <li><span class="ic wait">!</span>Mede quanto passou, não quanto a gente ganhou</li>
-          <li><span class="ic wait">!</span>Dá pra crescer TPV <b>perdendo</b> dinheiro</li>
-          <li><span class="ic wait">!</span>Ignora yield, pricing e qualidade de crédito</li>
-        </ul>
-      </div>
-      <div class="col">
-        <h3 style="color:var(--crimson)">Receita — valor</h3>
-        <ul>
-          <li><span class="ic ok">✓</span>Captura yield, pricing e mix de produto</li>
-          <li><span class="ic ok">✓</span>Premia decisão boa, não só volume</li>
-          <li><span class="ic ok">✓</span>Mesma régua do board e dos investidores</li>
-        </ul>
-      </div>
-    </div>
-    <div class="callout">
-      A virada pro PIX foi exatamente isso: trocar volume caro por receita saudável. A métrica precisa contar a mesma história.
+    <div class="stats" style="margin-top:20px">
+      <div class="stat"><div class="v">US$ 3,07M</div><div class="l">ARR em 1Q26</div></div>
+      <div class="stat"><div class="v">~9×</div><div class="l">crescimento desde 4Q24</div></div>
+      <div class="stat"><div class="v">65%</div><div class="l">mix em PIX Rails (mar)</div></div>
+      <div class="stat"><div class="v">NPS 79</div><div class="l">retenção 88% em 6m</div></div>
     </div>
   </section>
 
-  <!-- 15 · FECHAMENTO -->
-  <section class="slide crimson closing" data-chrome="dark">
-    <img class="angel" src="assets/angel-hero.jpg" alt="">
-    <div style="position:relative;z-index:2;max-width:760px;margin-right:auto">
-      <div class="accentbar" style="background:#fff"></div>
-      <h2 class="head" style="font-size:58px">Uma régua, um time,<br>uma narrativa: <span style="text-decoration:underline;text-decoration-thickness:6px;text-underline-offset:10px">Receita.</span></h2>
-      <p class="sub" style="opacity:.95;margin-top:22px">Obrigado por construir isso de perto. Bora pro próximo tri. 🍻</p>
+  <!-- 17 · PRÓXIMO TRI -->
+  <section class="slide dark tex" data-chrome="dark">
+    <div class="kicker"><span class="knum">09</span><span class="ktxt">Próximo tri · foco</span></div>
+    <h2 class="head">Pra onde a <span class="hi">energia</span> vai agora</h2>
+    <div class="cols three" style="margin-top:26px">
+      <div class="card"><span class="tagn">Crescer de novo</span><h3 class="sm">Originar com o FIDC live</h3><p>Originação PIX saindo de base 100 (jan) rumo a 675 (mai). Acelerar com funding próprio.</p></div>
+      <div class="card"><span class="tagn">Embedded</span><h3 class="sm">ERP da indústria — Cantu INC Pay</h3><p>Limite do revendedor dentro do fluxo de pedido do âncora. Primeiro de novos parceiros.</p></div>
+      <div class="card"><span class="tagn">Novos âncoras</span><h3 class="sm">Intelbras live + pipeline</h3><p>Mais marcas na rede e produto de prateleira com o Itaú BBA.</p></div>
     </div>
+    <div class="callout"><small>E acima de tudo</small>Tudo isso medido por uma régua só — a que vem agora.</div>
+  </section>
+
+  <!-- 18 · MÉTRICA: RECEITA (reveal) -->
+  <section class="slide feature" data-chrome="dark">
+    <div class="kicker"><span class="knum">10</span><span class="ktxt">A métrica do time</span></div>
+    <div class="northstar"><div class="big">Receita</div>
+      <div class="side"><p>Uma régua principal. Quando o time pergunta “estamos indo bem?”, a resposta tem nome: <b>Receita</b>.</p></div></div>
+    <div class="callout"><small>Por que dizer isso em voz alta</small>Se a gente não der uma métrica, o time escolhe uma sozinho — e hoje muita gente ainda acha que é TPV. Vamos controlar a narrativa.</div>
+  </section>
+
+  <!-- 19 · RECEITA composição -->
+  <section class="slide dark" data-chrome="dark">
+    <div class="kicker"><span class="knum">10</span><span class="ktxt">Receita · como se compõe</span></div>
+    <h2 class="head" style="font-size:42px">Desde o 1Q26, Receita = <span class="hi">duas linhas</span></h2>
+    <div class="cols two" style="margin-top:22px">
+      <div class="card"><span class="tagn">Linha 1</span><h3>Partner Fees</h3><p>Interchange · PIX Rails · Setup Fees · Partner Pay (Cantu INC Pay)</p></div>
+      <div class="card"><span class="tagn">Linha 2</span><h3>Financial Income</h3><p>Collateral Float · Early Payments · Refinancings · Late Fees</p></div>
+    </div>
+    <div class="eqrow"><span>Partner Fees</span><span class="op">+</span><span>Financial Income</span><span class="op">=</span><span class="hi">Receita</span></div>
+    <p class="sub" style="text-align:center;margin:14px auto 0">Quebras por linha são visão gerencial. Pra fora e pro time: estas duas linhas.</p>
+  </section>
+
+  <!-- 20 · CRESCIMENTO SAUDÁVEL -->
+  <section class="slide light" data-chrome="light">
+    <div class="kicker"><span class="knum">10</span><span class="ktxt">Crescimento saudável</span></div>
+    <h2 class="head">TPV pelo TPV, <span class="hi">não.</span></h2>
+    <div class="trio">
+      <div class="tbox"><div class="tk">Volume</div><div class="th">TPV</div><p>Quanto passa na rede. Importa — mas sozinho não diz se ganhamos dinheiro.</p></div>
+      <div class="tbox"><div class="tk">Valor</div><div class="th">Receita</div><p>O que de fato fica. Captura yield, pricing e qualidade de crédito.</p></div>
+      <div class="tbox"><div class="tk">Risco</div><div class="th">Pulverização</div><p>Espalhado em muitos clientes. Menos concentração, rede mais resiliente.</p></div>
+    </div>
+    <div class="callout"><small>A leitura certa</small>No passado foi TPV por TPV. Agora crescimento saudável é <b>TPV + Receita + Pulverização</b> — os três juntos, com a Receita como régua principal.</div>
+  </section>
+
+  <!-- 21 · FECHAMENTO -->
+  <section class="slide feature closing tex" data-chrome="dark">
+    <img class="logo-big" src="assets/robbin-logo-white.png" alt="Robbin" style="width:300px;margin-bottom:34px">
+    <div class="accentbar"></div>
+    <h2 class="head" style="font-size:52px">Uma régua, um time,<br>uma narrativa.</h2>
+    <p class="sub" style="margin-top:18px;opacity:.9">Obrigado por construir isso de perto. Bora pro próximo tri. 🍻</p>
   </section>
 
 </div></div>
 
-<!-- Chrome overlay -->
 <div id="chrome">
-  <div class="brandmark"><img src="assets/logo-white.png" alt="Robbin"><span>robbin</span></div>
+  <div class="brandmark"><img src="assets/robbin-logo-white.png" alt="Robbin"></div>
   <div class="deck-label">All Hands · Jun 26</div>
-  <div class="pagenum"><b id="cur">01</b> / <span id="tot">15</span></div>
+  <div class="pagenum"><span id="cur">01</span> / <span id="tot">21</span></div>
   <div class="progress" id="bar"></div>
 </div>
 
@@ -512,46 +448,32 @@ h2.head .hi{color:var(--crimson)}
 
 <script>
 const slides=[...document.querySelectorAll('.slide')];
-const stage=document.getElementById('stage');
-const bar=document.getElementById('bar');
-const cur=document.getElementById('cur');
+const stage=document.getElementById('stage'),bar=document.getElementById('bar'),cur=document.getElementById('cur');
 document.getElementById('tot').textContent=String(slides.length).padStart(2,'0');
 let i=0;
-function pad(n){return String(n+1).padStart(2,'0')}
+const pad=n=>String(n+1).padStart(2,'0');
 function show(n){
   i=Math.max(0,Math.min(slides.length-1,n));
   slides.forEach((s,k)=>s.classList.toggle('active',k===i));
-  bar.style.width=((i)/(slides.length-1)*100)+'%';
+  bar.style.width=(i/(slides.length-1)*100)+'%';
   cur.textContent=pad(i);
   document.body.classList.toggle('on-light',slides[i].dataset.chrome==='light');
   location.hash=i+1;
 }
-function next(){show(i+1)} function prev(){show(i-1)}
+const next=()=>show(i+1),prev=()=>show(i-1);
 document.addEventListener('keydown',e=>{
-  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next()}
-  else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev()}
-  else if(e.key==='Home'){show(0)} else if(e.key==='End'){show(slides.length-1)}
-  else if(e.key==='f'||e.key==='F'){toggleFs()}
+  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next();}
+  else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev();}
+  else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+  else if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}
 });
-document.getElementById('next').onclick=next;
-document.getElementById('prev').onclick=prev;
-stage.addEventListener('click',e=>{
-  if(e.target.closest('a')||e.target.closest('button'))return;
-  const r=stage.getBoundingClientRect();
-  (e.clientX-r.left> r.width*0.5)?next():prev();
-});
-function toggleFs(){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen()}
-function fit(){
-  const pad=0;const s=Math.min((innerWidth-pad)/1280,(innerHeight-pad)/720);
-  stage.style.transform='scale('+s+')';
-}
+next_btn=document.getElementById('next');next_btn.onclick=next;document.getElementById('prev').onclick=prev;
+stage.addEventListener('click',e=>{if(e.target.closest('a,button'))return;const r=stage.getBoundingClientRect();(e.clientX-r.left>r.width*0.5)?next():prev();});
+function fit(){const s=Math.min(innerWidth/1280,innerHeight/720);stage.style.transform='scale('+s+')';}
 addEventListener('resize',fit);
-// touch
-let tx=0;
-addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
-addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)d<0?next():prev()},{passive:true});
-const h=parseInt(location.hash.replace('#',''));
-fit();show(h&&h>=1&&h<=slides.length?h-1:0);
+let tx=0;addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)d<0?next():prev();},{passive:true});
+const h=parseInt(location.hash.replace('#',''));fit();show(h>=1&&h<=slides.length?h-1:0);
 </script>
 </body>
 </html>

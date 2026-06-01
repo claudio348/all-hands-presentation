@@ -1,6 +1,6 @@
-# All Hands · Robbin's Angels
+# All Hands · Robbin
 
-Deck do All Hands no formato **Robbin's Angels** — apresentação HTML autocontida, com a identidade visual da Robbin (mark, paleta, texturas topográficas e o "anjo" clássico de fones).
+Deck do All Hands da Robbin — apresentação HTML autocontida, em **preto e branco**, com o logo correto da Robbin (pássaro + wordmark) e tipografia Satoshi.
 
 ## Como apresentar
 Abra `index.html` no navegador e aperte **F** pra tela cheia.
@@ -10,20 +10,23 @@ Abra `index.html` no navegador e aperte **F** pra tela cheia.
 - `F` — tela cheia · `Home`/`End` — primeiro/último slide
 - swipe no mobile · imprimir → PDF (1 slide por página)
 
-## Pauta (17 slides)
+## Pauta (21 slides)
 1. Capa · 2. Pauta
-3–4. **01** Esclarecer a rodada — quebra dos US$ 108M (US$ 100M FIDC + US$ 8M equity: Seed 6,5M Dez/24 + Extensão 1,5M Mar/26) e como funciona o FIDC + alavancagem 6,6×
-5. **02** Ticket extra pra quem vem 5x
-6–8. **03** SOP = **Stock Options Plan** — o que é · por que importa · como funciona (vesting)
-9–10. ✦ Gestão do Conhecimento — a verdade da Robbin (Notion · Linear · Google Docs · GitHub) + as regras e o Claude como porta de entrada segura
-11. **04** Valores & cultura — o nosso jeito
-12. **05** Último tri: foco × o que aconteceu
-13. **06** Foco do próximo tri
-14–16. **07** Nova métrica única: **Receita** (composição + por que não TPV)
-17. Fechamento
+3. **Onde a Robbin está hoje** — runway, estágio e "não TPV pelo TPV: TPV + Receita + Pulverização"
+4–5. **Rodada** — quebra dos US$ 108M (US$ 100M FIDC + US$ 8M equity: Seed 6,5M Dez/24 + Extensão 1,5M Mar/26) e como funciona o FIDC + alavancagem 6,6×
+6. **Conceito dos 3 clientes** — indústria âncora · varejista PME · funding/FIDC
+7. **PIX vs Cartão** — o recado de sempre
+8. **Ticket extra pra quem vem 5x**
+9–11. **SOP = Stock Options Plan** — o que é · por que importa · como funciona (vesting)
+12–13. **Gestão do conhecimento** — a verdade da Robbin (Notion · Linear · Google Docs · GitHub) + regras e Claude como porta de entrada
+14. **Valores & cultura**
+15. **Pessoas** — avaliação formal, organograma, vagas
+16–17. **Foco** — último tri (foco × realidade) e próximo tri
+18–20. **Métrica: Receita** — reveal, composição (Partner Fees + Financial Income) e crescimento saudável (TPV + Receita + Pulverização)
+21. Fechamento
 
-## Conteúdo
-Números e definições vêm dos docs internos no Notion (Evolução dos Produtos / Patamar da Companhia, Financial Concepts, Robbin's Angels Event, ritos da Robbin). Itens com valor a confirmar estão sinalizados no próprio slide.
+## Notas
+Runway calculado e exibido sem expor caixa nem cash burn. Termos de vesting e valor do ticket 5x estão marcados como "no contrato / #avisos". Organograma em nível de fundadores + frentes (versão viva no Notion). Números vêm dos docs internos no Notion e da cobertura de imprensa da rodada.
 
 ## Assets
-`assets/` contém o mark da Robbin (branco/crimson), o anjo clássico e as texturas, extraídos do *Asset Set | Comunicação Robbin* (`.fig`).
+`assets/` — logo da Robbin em preto e branco (lockup + pássaro) e textura de contorno dessaturada, extraídos do *Asset Set | Comunicação Robbin* (`.fig`).
