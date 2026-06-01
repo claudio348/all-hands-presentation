@@ -151,7 +151,8 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .press-grid{display:grid;grid-template-columns:1.32fr 1fr 1fr;grid-template-rows:1fr 1fr;grid-auto-flow:column;gap:12px;height:298px;margin-top:18px}
 .pcard{background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--ac);border-radius:12px;padding:15px 17px;display:flex;flex-direction:column;overflow:hidden}
 .pcard.big{grid-row:1/3;grid-column:1}
-.pcard .pub{font-size:13.5px;font-weight:900;letter-spacing:.01em;margin-bottom:7px;color:var(--fg)}
+.pcard .pub{font-size:13.5px;font-weight:900;letter-spacing:.01em;margin-bottom:7px;color:var(--fg);min-height:24px}
+.pcard .publogo{height:23px;width:auto;max-width:170px;object-fit:contain;display:block}
 .pcard .pub b{font-weight:500;opacity:.72}
 .pcard .ptitle{font-size:14px;font-weight:700;line-height:1.28;color:var(--fg)}
 .pcard.big .ptitle{font-size:19px;line-height:1.2}
@@ -344,12 +345,12 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
         <div class="pmeta">21 Mai 2026 · Pedro Arbex · Negócios</div>
       </div>
       <div class="pcard">
-        <div class="pub">Bloomberg Línea</div>
+        <div class="pub"><img class="publogo" src="assets/logos/bloomberg.png" alt="Bloomberg Línea"></div>
         <div class="ptitle">Robbin capta US$ 108MM e lidera aportes em IA</div>
         <div class="pmeta">23 Mai 2026 · Marcos Bonfim</div>
       </div>
       <div class="pcard">
-        <div class="pub">Canary</div>
+        <div class="pub"><img class="publogo" src="assets/logos/canary.png" alt="Canary"></div>
         <div class="ptitle">Robbin has raised US$ 8M Seed + US$ 100M FIDC to power B2B credit in Brazil</div>
         <div class="psocial"><span>♥ 2,4K</span><span>↻ 612</span><span>↗ 184</span></div>
       </div>
@@ -359,7 +360,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
         <div class="pmeta">Mai 2026 · Rodadas</div>
       </div>
       <div class="pcard">
-        <div class="pub">in · LinkedIn</div>
+        <div class="pub"><img class="publogo" src="assets/logos/linkedin.png" alt="LinkedIn"></div>
         <div class="ptitle">Posts dos founders sobre tese B2B alcançam +30.000 impressões</div>
         <div class="pmeta">Mai 2026 · Buzz orgânico</div>
       </div>
