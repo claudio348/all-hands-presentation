@@ -210,6 +210,12 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .member{text-align:center;width:150px}
 .member img{width:140px;height:140px;object-fit:cover;border-radius:50%;border:1px solid var(--line);display:block;margin:0 auto}
 .member figcaption{margin-top:14px;font-size:17px;font-weight:800;color:var(--fg)}
+.logorow{margin-top:16px}
+.logorow .ihead{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ac2);font-weight:800;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.logorow .ihead::before{content:"";width:22px;height:2px;background:var(--ac)}
+.logostrip{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:10px}
+.logostrip .cell{background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:11px;height:62px;display:flex;align-items:center;justify-content:center;padding:10px 12px}
+.logostrip .cell img{max-height:30px;max-width:90%;width:auto;object-fit:contain;display:block}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -265,7 +271,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
       <div class="stat"><div class="v">US$ 3,07M</div><div class="l">ARR (1Q26) · ~9× vs 4Q24</div></div>
       <div class="stat"><div class="v">100%</div><div class="l">trilho PIX próprio</div></div>
     </div>
-    <div class="invband" style="margin-top:16px"><div class="ihead">Marcas parceiras</div><div class="invrow"><img src="assets/logos/cantu.png" alt="Cantu"><img src="assets/logos/brinox.png" alt="Brinox"><img src="assets/logos/chilli.png" alt="Chilli Beans"><img src="assets/logos/malwee.png" alt="Malwee"><img src="assets/logos/moura.png" alt="Moura"><img src="assets/logos/tigre.png" alt="Tigre"><img src="assets/logos/gerdau.png" alt="Gerdau"><img src="assets/logos/votorantim.png" alt="Votorantim"></div></div>
+        <div class="logorow"><div class="ihead">Marcas parceiras</div><div class="logostrip"><div class="cell"><img src="assets/logos/cantu.png" alt="Cantu"></div><div class="cell"><img src="assets/logos/brinox.png" alt="Brinox"></div><div class="cell"><img src="assets/logos/chilli.png" alt="Chilli Beans"></div><div class="cell"><img src="assets/logos/malwee.png" alt="Malwee"></div><div class="cell"><img src="assets/logos/moura.png" alt="Moura"></div><div class="cell"><img src="assets/logos/tigre.png" alt="Tigre"></div><div class="cell"><img src="assets/logos/gerdau.png" alt="Gerdau"></div><div class="cell"><img src="assets/logos/votorantim.png" alt="Votorantim"></div></div></div>
     <div class="callout"><small>O que muda na cabeça</small>Não queremos TPV pelo TPV, como no passado. Queremos <b>TPV + Receita + Pulverização</b> — crescer com qualidade, não só com volume.</div>
   </section>
 
@@ -357,12 +363,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
         <div class="pmeta">Mai 2026 · Buzz orgânico</div>
       </div>
     </div>
-    <div class="invband">
-      <div class="ihead">Investors · Seed Round + FIDC</div>
-      <div class="invrow">
-        <img src="assets/logos/atlantico.png" alt="Atlântico"><img src="assets/logos/canary.png" alt="Canary"><img src="assets/logos/caravela.png" alt="Caravela"><img src="assets/logos/abseed.webp" alt="ABSeed"><img src="assets/logos/clocktower.webp" alt="Clocktower"><img src="assets/logos/tomorrow.svg" alt="Tomorrow Capital"><img src="assets/logos/xp.png" alt="XP Inc.">
-      </div>
-    </div>
+    <div class="logorow"><div class="ihead">Investidores · Seed + FIDC</div><div class="logostrip"><div class="cell"><img src="assets/logos/atlantico.png" alt="Atlântico"></div><div class="cell"><img src="assets/logos/canary.png" alt="Canary"></div><div class="cell"><img src="assets/logos/caravela.png" alt="Caravela"></div><div class="cell"><img src="assets/logos/abseed.webp" alt="ABSeed"></div><div class="cell"><img src="assets/logos/clocktower.webp" alt="Clocktower"></div><div class="cell"><img src="assets/logos/tomorrow.svg" alt="Tomorrow Capital"></div><div class="cell"><img src="assets/logos/xp.png" alt="XP Inc."></div></div></div>
   </section>
 
   <!-- 9 · CAÇANDO TALENTO -->
