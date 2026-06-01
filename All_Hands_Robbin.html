@@ -266,6 +266,13 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .cmprow .ct{height:30px;border-radius:6px;background:#cfcabf;min-width:6px}
 .cmprow.hl .ct{background:var(--ac)}
 .cmprow .cv{font-size:18px;font-weight:900;color:var(--fg);text-align:right}
+.jumps{display:flex;align-items:stretch;gap:8px;margin-top:24px}
+.jumps .ar{display:flex;align-items:center;font-size:18px;font-weight:900;color:var(--ac2)}
+.jump{flex:1;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:18px 8px;text-align:center}
+.jump b{display:block;font-size:23px;font-weight:900;color:var(--fg);line-height:1}
+.jump span{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ac2);margin-top:7px;min-height:13px}
+.jump.hl{background:var(--ac);border-color:var(--ac)}
+.jump.hl b{color:var(--bg)}.jump.hl span{color:rgba(255,255,255,.65)}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -459,19 +466,25 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   <!-- 10 · SOP por que importa -->
   <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">07</span><span class="ktxt">SOP · por que importa</span></div>
-    <h2 class="head">A ação <span class="hi">multiplicou ~4×</span> em 18 meses</h2>
+    <h2 class="head" style="font-size:40px">A ação <span class="hi">multiplicou ~4×</span> em 18 meses</h2>
     <div class="price-row">
       <div class="pp"><span>Dez/24</span><b>R$ 0,39</b></div>
       <div class="arrow">→</div>
       <div class="pp"><span>Jun/26</span><b>R$ 1,59</b></div>
       <div class="mult">4,08× · +308%</div>
     </div>
-    <div class="cmp">
-      <div class="cmprow hl"><span class="cl">Robbin</span><div class="ct" style="width:100%"></div><span class="cv">+308%</span></div>
-      <div class="cmprow"><span class="cl">CDI</span><div class="ct" style="width:7%"></div><span class="cv">≈ +22%</span></div>
-      <div class="cmprow"><span class="cl">Bovespa</span><div class="ct" style="width:6%"></div><span class="cv">≈ +18%</span></div>
+    <div class="jumps">
+      <div class="jump"><b>R$ 10 mil</b><span>Dez/24</span></div>
+      <span class="ar">→</span>
+      <div class="jump"><b>R$ 41 mil</b><span>Jun/26</span></div>
+      <span class="ar">→</span>
+      <div class="jump"><b>R$ 166 mil</b><span></span></div>
+      <span class="ar">→</span>
+      <div class="jump"><b>R$ 678 mil</b><span></span></div>
+      <span class="ar">→</span>
+      <div class="jump hl"><b>R$ 2,8 mi</b><span></span></div>
     </div>
-    <p class="sub" style="margin-top:18px">É essa valorização que a sua opção acompanha — muito acima da renda fixa (CDI) e da bolsa. <span style="opacity:.55">CDI/Bovespa: estimativas no período.</span></p>
+    <p class="sub" style="margin-top:18px">Cada salto repete a valorização dos últimos 18m (×4,08). Ilustrativo, sem prazo. Pra comparar no mesmo período: <b>CDI ≈ +22%</b> · <b>Bovespa ≈ +18%</b>.</p>
   </section>
 
   <!-- 11 · SOP como funciona -->
