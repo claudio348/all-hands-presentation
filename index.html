@@ -93,8 +93,9 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .tools{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:6px}
 .tool{background:var(--soft);border:1px solid var(--line);border-radius:13px;padding:17px 16px;position:relative;overflow:hidden}
 .tool .bar{position:absolute;top:0;left:0;right:0;height:4px;background:var(--ac);opacity:.85}
-.toollogo{height:30px;margin:4px 0 12px;display:flex;align-items:center}
-.toollogo img{height:100%;max-width:130px;width:auto;object-fit:contain;display:block}
+.toolhead{display:flex;align-items:center;gap:10px;margin:4px 0 12px}
+.toolicon{height:30px;width:30px;object-fit:contain;display:block}
+.toolname{font-size:17px;font-weight:800;color:var(--fg)}
 .tool .tn{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px;color:var(--fg)}
 .tool .tw{font-size:15px;font-weight:700;line-height:1.25;margin-bottom:7px;color:var(--fg)}
 .tool .th{font-size:12.5px;line-height:1.4;color:var(--fg);opacity:.66;font-weight:500}
@@ -249,6 +250,10 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .leg i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px}
 .leg .d1{background:#bdb8ad}.leg .d2{background:#141210}
 .tbd{margin-top:34px;border:2px dashed var(--line);border-radius:16px;padding:48px;text-align:center;font-size:22px;font-weight:800;letter-spacing:.04em;color:var(--ac2)}
+.slide.pauta{justify-content:flex-start;padding-top:62px}
+.slide.pauta .head{font-size:40px;margin-bottom:4px}
+.slide.pauta .agenda{gap:4px 44px;margin-top:10px}
+.slide.pauta .ag-item{padding:8px 4px}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -273,7 +278,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 2 · PAUTA -->
-  <section class="slide light" data-chrome="light">
+  <section class="slide light pauta" data-chrome="light">
     <div class="kicker"><span class="knum">·</span><span class="ktxt">Pauta de hoje</span></div>
     <h2 class="head">O que vamos <span class="hi">alinhar</span></h2>
     <div class="agenda">
@@ -432,7 +437,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
       <div class="card"><span class="tagn">Por que</span><h3 class="sm">Estamos construindo uma rede</h3><p>Proximidade acelera decisão, troca e cultura. Estar junto é o nosso multiplicador.</p></div>
       <div class="card"><span class="tagn">Como funciona</span><h3 class="sm">Automático, sem burocracia</h3><p>Marcou os 5 dias → o ticket cai. <span style="opacity:.6">(valor e regra final no #avisos)</span></p></div>
     </div>
-    <p class="sub" style="margin-top:24px">Não é cobrança de ponto — é um obrigado a quem está construindo isso de perto, todo dia.</p>
+    <div class="callout"><small>O fio da meada</small>A gente reconhece quem constrói de perto: no <b>curto prazo</b>, o ticket por estar presente; no <b>longo prazo</b>, equity — você é dono de um pedaço da Robbin (é o nosso SOP, no próximo slide).</div>
   </section>
 
   <!-- 9 · SOP o que é -->
@@ -488,10 +493,10 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     <div class="kicker"><span class="knum">08</span><span class="ktxt">Como a Robbin opera · conhecimento</span></div>
     <h2 class="head" style="font-size:42px">A <span class="hi">verdade da Robbin</span>, organizada</h2>
     <div class="tools" style="margin-top:22px">
-      <div class="tool"><span class="bar"></span><div class="toollogo"><img src="assets/logos/tool-notion.png" alt="Notion"></div><div class="tw">O que a empresa sabe</div></div>
-      <div class="tool"><span class="bar"></span><div class="toollogo"><img src="assets/logos/tool-linear.png" alt="Linear"></div><div class="tw">O que está fazendo</div></div>
-      <div class="tool"><span class="bar"></span><div class="toollogo"><img src="assets/logos/tool-gdocs.webp" alt="Google Docs"></div><div class="tw">Rascunhos &amp; externo</div></div>
-      <div class="tool"><span class="bar"></span><div class="toollogo"><img src="assets/logos/tool-github.png" alt="GitHub"></div><div class="tw">O que construiu</div></div>
+      <div class="tool"><span class="bar"></span><div class="toolhead"><img class="toolicon" src="assets/logos/ic-notion.png" alt=""><span class="toolname">Notion</span></div><div class="tw">O que a empresa sabe</div></div>
+      <div class="tool"><span class="bar"></span><div class="toolhead"><img class="toolicon" src="assets/logos/ic-linear.png" alt=""><span class="toolname">Linear</span></div><div class="tw">O que está fazendo</div></div>
+      <div class="tool"><span class="bar"></span><div class="toolhead"><img class="toolicon" src="assets/logos/ic-gdocs.png" alt=""><span class="toolname">Google Docs</span></div><div class="tw">Rascunhos &amp; externo</div></div>
+      <div class="tool"><span class="bar"></span><div class="toolhead"><img class="toolicon" src="assets/logos/ic-github.png" alt=""><span class="toolname">GitHub</span></div><div class="tw">O que construiu</div></div>
     </div>
     <div class="callout" style="margin-top:24px"><small>Palavra do CTO</small>Empoderar o time não-técnico, <b>sem abrir mão de segurança e acuracidade</b>. Pra buscar qualquer coisa, o ponto de partida é o <b>Claude</b> — conectado a tudo.</div>
   </section>
