@@ -228,6 +228,13 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .op .opn{font-size:11px;font-weight:800;letter-spacing:.18em;color:var(--ac2);margin-bottom:9px}
 .op h3{font-size:22px;font-weight:800;color:var(--fg);margin-bottom:7px}
 .op p{font-size:15px;line-height:1.5;color:var(--fg);opacity:.72;font-weight:500;max-width:42ch}
+.vagas{display:grid;grid-template-columns:1.6fr 1fr;gap:34px;margin-top:30px}
+.vgroup .vh{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--ac2);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.vgroup .vh::before{content:"";width:22px;height:2px;background:var(--ac)}
+.vlist{display:flex;flex-wrap:wrap;gap:12px}
+.vtag{background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:13px 22px;font-size:16.5px;font-weight:700;color:var(--fg)}
+.qa{align-items:center;text-align:center;justify-content:center}
+.qa .qahead{font-size:140px;max-width:none;letter-spacing:-.04em}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -521,6 +528,23 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     <p class="sub" style="text-align:center;margin-top:34px">Boas-vindas ao time! 👋</p>
   </section>
 
+  <!-- 15c · VAGAS ABERTAS -->
+  <section class="slide light" data-chrome="light">
+    <div class="kicker"><span class="knum">09</span><span class="ktxt">Pessoas · vagas abertas</span></div>
+    <h2 class="head">Tem vaga aberta — <span class="hi">indica!</span></h2>
+    <div class="vagas">
+      <div class="vgroup">
+        <div class="vh">Estágio</div>
+        <div class="vlist"><span class="vtag">Finance</span><span class="vtag">Sales</span><span class="vtag">Software Engineering</span><span class="vtag">Data &amp; Analytics</span></div>
+      </div>
+      <div class="vgroup">
+        <div class="vh">Summer</div>
+        <div class="vlist"><span class="vtag">Data &amp; Analytics</span><span class="vtag">Software Engineering</span></div>
+      </div>
+    </div>
+    <div class="callout"><small>Como ajudar</small>Conhece gente boa pra alguma dessas? <b>Indica</b> — indicação do time é o nosso melhor canal.</div>
+  </section>
+
   <!-- 16 · ÚLTIMO TRI -->
   <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">10</span><span class="ktxt">Último tri · foco × o que aconteceu</span></div>
@@ -581,6 +605,13 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
       <div class="tbox"><div class="tk">Risco</div><div class="th">Pulverização</div><p>Espalhado em muitos clientes. Menos concentração, rede mais resiliente.</p></div>
     </div>
     <div class="callout"><small>A leitura certa</small>No passado foi TPV por TPV. Agora crescimento saudável é <b>TPV + Receita + Pulverização</b> — os três juntos, com a Receita como régua principal.</div>
+  </section>
+
+  <!-- 20b · Q&A -->
+  <section class="slide light qa" data-chrome="light">
+    <img class="logo-big" src="assets/robbin-black.svg" alt="Robbin" style="width:230px;margin-bottom:28px">
+    <h2 class="head qahead">Q&amp;A</h2>
+    <p class="sub" style="text-align:center;font-size:22px;opacity:.85">O microfone é de vocês. Manda ver. 🙌</p>
   </section>
 
   <!-- 21 · FECHAMENTO -->
