@@ -218,6 +218,16 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .logostrip{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:10px}
 .logostrip .cell{background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:11px;height:62px;display:flex;align-items:center;justify-content:center;padding:10px 12px}
 .logostrip .cell img{max-height:30px;max-width:90%;width:auto;object-fit:contain;display:block}
+.tal-body2{display:grid;grid-template-columns:.82fr 1.18fr;gap:32px;margin-top:20px;align-items:start}
+.tal-mosaic{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:8px;height:418px}
+.tal-mosaic img{width:100%;height:100%;object-fit:cover;border-radius:12px;display:block}
+.tal-mosaic img.m1{grid-row:1 / 3}
+.tal-next{margin-top:20px;font-size:15px;font-weight:600;color:var(--ac2);letter-spacing:.02em}
+.opgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px 48px;margin-top:30px}
+.op{border-top:1px solid var(--line);padding-top:15px}
+.op .opn{font-size:11px;font-weight:800;letter-spacing:.18em;color:var(--ac2);margin-bottom:9px}
+.op h3{font-size:22px;font-weight:800;color:var(--fg);margin-bottom:7px}
+.op p{font-size:15px;line-height:1.5;color:var(--fg);opacity:.72;font-weight:500;max-width:42ch}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -253,7 +263,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
       <div class="ag-item"><span class="n">05</span><span class="t">Hora de ir pra rua<small>PR e visibilidade — contar a nossa história</small></span></div>
       <div class="ag-item"><span class="n">06</span><span class="t">Ticket extra pra quem vem 5x<small>Reconhecer presença e colaboração</small></span></div>
       <div class="ag-item"><span class="n">07</span><span class="t">SOP — Stock Options Plan<small>O que é, por que importa, como funciona</small></span></div>
-      <div class="ag-item"><span class="n">08</span><span class="t">Gestão do conhecimento &amp; cultura<small>A verdade da Robbin + o nosso jeito</small></span></div>
+      <div class="ag-item"><span class="n">08</span><span class="t">Como a Robbin opera<small>IA em produção, a verdade da Robbin e o nosso jeito</small></span></div>
       <div class="ag-item"><span class="n">09</span><span class="t">Pessoas<small>Avaliação, organograma e vagas</small></span></div>
       <div class="ag-item"><span class="n">10</span><span class="t">Foco: último × próximo tri<small>O que entregamos e pra onde vamos</small></span></div>
       <div class="ag-item"><span class="n">11</span><span class="t">A métrica do time: Receita<small>TPV + Receita + Pulverização</small></span></div>
@@ -371,17 +381,21 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 
   <!-- 9 · CAÇANDO TALENTO -->
   <section class="slide light talent" data-chrome="light">
-    <div class="tal-eyebrow">Talento</div>
+    <div class="tal-eyebrow">Talento · brand building</div>
     <h2 class="tal-h">Caçando os melhores <span class="mk">do mercado.</span></h2>
-    <div class="tal-body">
+    <div class="tal-body2">
       <div class="tal-left">
-        <div class="tal-sub">Vamos onde estão os <em>melhores</em> — antes de eles saberem que precisam da gente.</div>
-        <p class="tal-p">Founders nas salas de aula, eventos e podcasts. Marca de empregador antes do funil tradicional.</p>
+        <div class="tal-sub">A gente vai <em>aonde o talento está</em> — salas de aula, palcos, eventos — e cria marca de empregador antes do funil.</div>
+        <p class="tal-p">Robbin Talks nas melhores escolas do país. Os melhores a gente quer trazer pra construir a Robbin junto.</p>
         <div class="tal-unis"><span class="uni"><img src="assets/logos/usp.png" alt="USP"></span><span class="uni"><img src="assets/logos/ita.png" alt="ITA"></span><span class="uni"><img src="assets/logos/fgv.png" alt="FGV"></span><span class="uni"><img src="assets/logos/feausp.jpg" alt="FEA-USP"></span></div>
         <div class="tal-next">Próximo &nbsp;·&nbsp; <b>Robbin Talks 01</b></div>
       </div>
-      <div class="tal-right">
-        <img class="tal-photo" src="assets/photos/talk-stage.jpg" alt="">
+      <div class="tal-mosaic">
+        <img class="m1" src="assets/photos/talk-stage.jpg" alt="">
+        <img src="assets/photos/ev1.jpg" alt="">
+        <img src="assets/photos/ev3.jpg" alt="">
+        <img src="assets/photos/ev2.jpg" alt="">
+        <img src="assets/photos/ev4.jpg" alt="">
       </div>
     </div>
   </section>
@@ -434,9 +448,21 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     <p class="sub" style="margin-top:18px;font-size:15px">Termos exatos da sua concessão no contrato · dúvidas com o People.</p>
   </section>
 
+  <!-- 11b · COMO A ROBBIN OPERA (IA) -->
+  <section class="slide light" data-chrome="light">
+    <div class="kicker"><span class="knum">08</span><span class="ktxt">Como a Robbin opera</span></div>
+    <h2 class="head">A Robbin redesenhou <span class="hi">como a empresa opera.</span></h2>
+    <div class="opgrid">
+      <div class="op"><div class="opn">— 01</div><h3>18 agentes em produção</h3><p>Operação rodando em IA, do crédito ao comercial. Não é piloto.</p></div>
+      <div class="op"><div class="opn">— 02</div><h3>Robbinson</h3><p>Agente de relacionamento com cliente em produção. Onboarding, dúvidas e cobrança.</p></div>
+      <div class="op"><div class="opn">— 03</div><h3>Vibe coding</h3><p>Business team entrega produto funcional sem time de engenharia.</p></div>
+      <div class="op"><div class="opn">— 04</div><h3>Platform mode</h3><p>Plataforma transacional governada. Velocidade no front, segurança no core.</p></div>
+    </div>
+  </section>
+
   <!-- 12 · GESTÃO DO CONHECIMENTO -->
   <section class="slide light" data-chrome="light">
-    <div class="kicker"><span class="knum">08</span><span class="ktxt">Gestão do conhecimento</span></div>
+    <div class="kicker"><span class="knum">08</span><span class="ktxt">Como a Robbin opera · conhecimento</span></div>
     <h2 class="head" style="font-size:42px">A <span class="hi">verdade da Robbin</span>, organizada</h2>
     <div class="tools" style="margin-top:22px">
       <div class="tool"><span class="bar"></span><div class="tn">Notion</div><div class="tw">O que a empresa sabe</div></div>
