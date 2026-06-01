@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Hands · Robbin's Angels</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#141416; --ink2:#1b1b20; --ink3:#212129;
+  --paper:#F6F3EE; --paper2:#ECE7DF;
+  --crimson:#E80B3A; --pink:#FF2D6F;
+  --navy:#022C60; --blue:#0A4FB0; --sky:#3FAFFF;
+  --purple:#5B2E91; --lime:#9CCF1D; --orange:#FF981D;
+  --white:#FFFFFF; --muted:#9a9aa6; --muted2:#6b6b76; --mid:#3D3535;
+  --rule:rgba(255,255,255,.12);
+  --font:'Satoshi','Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:var(--font); background:#0c0c0e; color:var(--white);
+  overflow:hidden; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+/* ---------- Stage / scaling ---------- */
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#0c0c0e}
+#stage{position:relative;width:1280px;height:720px;flex:none;transform-origin:center center;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;
+  padding:78px 92px 86px;background:var(--ink);overflow:hidden}
+.slide.active{display:flex;animation:fade .5s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* slide bg variants */
+.slide.dark{background:radial-gradient(120% 90% at 85% 10%,#23232b 0%,#141416 55%,#0e0e11 100%)}
+.slide.light{background:linear-gradient(160% at 0 0,var(--paper) 0%,var(--paper2) 100%);color:var(--ink)}
+.slide.crimson{background:radial-gradient(130% 120% at 80% 0%,#ff174e 0%,#c40a30 45%,#7d0420 100%)}
+.slide.navy{background:radial-gradient(130% 120% at 85% 0%,#0a55bf 0%,#053a86 45%,#021a3f 100%)}
+/* topographic texture overlay */
+.slide.tex::before{content:"";position:absolute;inset:0;background-image:var(--tex);
+  background-size:cover;background-position:center;opacity:.10;mix-blend-mode:screen;pointer-events:none}
+.slide.tex.light::before{mix-blend-mode:multiply;opacity:.07}
+/* ---------- Chrome ---------- */
+#chrome{position:absolute;inset:0;pointer-events:none;z-index:40}
+.brandmark{position:absolute;top:30px;left:34px;display:flex;align-items:center;gap:11px}
+.brandmark img{width:26px;height:26px;opacity:.92}
+.brandmark span{font-weight:700;font-size:15px;letter-spacing:.02em;opacity:.85}
+.deck-label{position:absolute;top:34px;right:36px;font-size:11.5px;letter-spacing:.22em;
+  text-transform:uppercase;font-weight:600;opacity:.5}
+.pagenum{position:absolute;bottom:28px;right:38px;font-size:12px;letter-spacing:.1em;opacity:.55;font-weight:600}
+.pagenum b{color:var(--crimson)}
+.progress{position:absolute;bottom:0;left:0;height:4px;background:var(--crimson);width:0;
+  transition:width .35s cubic-bezier(.4,0,.2,1);box-shadow:0 0 14px rgba(232,11,58,.6)}
+.slide.light ~ #chrome .brandmark span,.foot-on-light{color:var(--ink)}
+/* keep chrome readable: invert on light slides handled per-active via JS class */
+body.on-light .brandmark span,body.on-light .deck-label,body.on-light .pagenum{color:var(--ink)}
+body.on-light .brandmark img{filter:invert(1)}
+/* ---------- Typography ---------- */
+.kicker{display:flex;align-items:center;gap:14px;margin-bottom:26px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;font-size:13px}
+.kicker .knum{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:26px;
+  padding:0 9px;border-radius:7px;background:var(--crimson);color:#fff;font-size:13px;letter-spacing:.02em}
+.kicker .ktxt{opacity:.7}
+h1.head{font-weight:900;line-height:.98;letter-spacing:-.02em}
+h2.head{font-weight:900;font-size:54px;line-height:1.02;letter-spacing:-.02em;max-width:21ch}
+h2.head .hi{color:var(--crimson)}
+.slide.crimson h2.head .hi,.slide.navy h2.head .hi{color:#fff;text-decoration:underline;text-decoration-thickness:5px;text-underline-offset:8px}
+.sub{margin-top:20px;font-size:20px;line-height:1.5;max-width:60ch;opacity:.82;font-weight:500}
+.lead{font-size:23px;line-height:1.5;max-width:62ch;font-weight:500;opacity:.9}
+.accentbar{width:64px;height:5px;background:var(--crimson);border-radius:3px;margin-bottom:26px}
+/* ---------- Cover ---------- */
+.cover{padding:0}
+.cover .ctext{position:absolute;left:92px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;z-index:3;max-width:760px}
+.cover .angel{position:absolute;right:-20px;bottom:0;height:104%;z-index:1;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 22%);mask-image:linear-gradient(90deg,transparent,#000 22%);opacity:.95}
+.cover h1{font-size:104px}
+.cover .eyebrow{font-size:15px;letter-spacing:.3em;text-transform:uppercase;font-weight:700;color:var(--crimson);margin-bottom:18px}
+.cover .meta{margin-top:30px;display:flex;gap:26px;font-size:15px;font-weight:600;opacity:.8;letter-spacing:.02em}
+.cover .meta span{display:flex;align-items:center;gap:9px}
+.cover .dot{width:7px;height:7px;border-radius:50%;background:var(--crimson)}
+.glow{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none}
+/* ---------- Agenda ---------- */
+.agenda{display:grid;grid-template-columns:1fr 1fr;gap:14px 40px;margin-top:8px}
+.ag-item{display:flex;gap:16px;align-items:flex-start;padding:14px 4px;border-top:1px solid var(--rule)}
+.ag-item .n{font-weight:900;font-size:22px;color:var(--crimson);min-width:34px;font-variant-numeric:tabular-nums}
+.ag-item .t{font-size:19px;font-weight:600;line-height:1.3}
+.ag-item .t small{display:block;font-size:13.5px;font-weight:500;opacity:.55;margin-top:3px}
+/* ---------- Cards / columns ---------- */
+.cols{display:grid;gap:22px;margin-top:6px}
+.cols.two{grid-template-columns:1fr 1fr}
+.cols.three{grid-template-columns:repeat(3,1fr)}
+.card{background:rgba(255,255,255,.05);border:1px solid var(--rule);border-radius:16px;padding:24px 24px}
+.slide.light .card{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.1)}
+.card h3{font-size:18px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.card .tagn{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--crimson)}
+.card p{font-size:15px;line-height:1.5;opacity:.78;font-weight:500}
+.card ul{list-style:none;margin-top:6px}
+.card li{font-size:15.5px;line-height:1.5;padding:6px 0 6px 24px;position:relative;font-weight:500;opacity:.9}
+.card li::before{content:"";position:absolute;left:2px;top:13px;width:8px;height:8px;border-radius:2px;background:var(--crimson);transform:rotate(45deg)}
+/* check / cross lists */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+.vs .col h3{font-size:15px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:16px;opacity:.6}
+.vs li{list-style:none;font-size:16.5px;line-height:1.45;padding:10px 0 10px 34px;position:relative;font-weight:500;border-bottom:1px solid var(--rule)}
+.vs li .ic{position:absolute;left:0;top:9px;width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900}
+.ic.ok{background:rgba(156,207,29,.18);color:var(--lime)}
+.ic.go{background:rgba(63,175,255,.18);color:var(--sky)}
+.ic.wait{background:rgba(255,152,29,.18);color:var(--orange)}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
+.stat .v{font-size:42px;font-weight:900;letter-spacing:-.02em;line-height:1}
+.stat .l{font-size:13px;opacity:.6;margin-top:8px;font-weight:600;line-height:1.3}
+.stat .v.c{color:var(--crimson)}.stat .v.s{color:var(--sky)}.stat .v.li{color:var(--lime)}.stat .v.o{color:var(--orange)}
+/* quote / callout */
+.callout{margin-top:26px;padding:22px 26px;border-left:5px solid var(--crimson);
+  background:rgba(232,11,58,.10);border-radius:0 14px 14px 0;font-size:21px;line-height:1.45;font-weight:600;max-width:64ch}
+.callout small{display:block;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--crimson);font-weight:800;margin-bottom:8px}
+.slide.crimson .callout,.slide.navy .callout{border-color:#fff;background:rgba(255,255,255,.14)}
+.slide.crimson .callout small,.slide.navy .callout small{color:#fff}
+/* knowledge tools grid */
+.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:4px}
+.tool{background:rgba(255,255,255,.05);border:1px solid var(--rule);border-radius:14px;padding:18px 16px;position:relative;overflow:hidden}
+.tool .bar{position:absolute;top:0;left:0;right:0;height:4px}
+.tool .tn{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.tool .tw{font-size:15.5px;font-weight:700;line-height:1.25;margin-bottom:8px}
+.tool .th{font-size:13px;line-height:1.45;opacity:.66;font-weight:500}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.rrule{display:flex;gap:13px;align-items:flex-start;background:rgba(255,255,255,.04);border:1px solid var(--rule);border-radius:12px;padding:15px 16px}
+.rrule .rn{font-weight:900;font-size:15px;color:#fff;background:var(--navy);min-width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none}
+.rrule .rt{font-size:14.5px;font-weight:600;line-height:1.4}
+/* receita composition */
+.recipe{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px}
+.bucket{border:1px solid var(--rule);border-radius:16px;padding:22px 24px;background:rgba(255,255,255,.05)}
+.bucket h3{font-size:21px;font-weight:900;margin-bottom:4px}
+.bucket .cap{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;opacity:.55;margin-bottom:14px}
+.bucket .chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{font-size:14px;font-weight:600;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.09);border:1px solid var(--rule)}
+.b-partner h3{color:var(--sky)} .b-fin h3{color:var(--lime)}
+.b-partner .chip{border-color:rgba(63,175,255,.4)} .b-fin .chip{border-color:rgba(156,207,29,.4)}
+.eq{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:20px;font-size:22px;font-weight:800;opacity:.9}
+.eq .plus{color:var(--crimson)}
+/* big metric reveal */
+.northstar{display:flex;align-items:center;gap:40px;margin-top:10px}
+.northstar .big{font-size:150px;font-weight:900;letter-spacing:-.04em;line-height:.85;
+  background:linear-gradient(120deg,#fff 30%,#ffd0db 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.northstar .side{max-width:30ch}
+.northstar .side p{font-size:19px;line-height:1.5;font-weight:600;opacity:.95}
+/* closing */
+.closing{align-items:center;justify-content:center;text-align:center}
+.closing h2{font-size:60px;max-width:18ch}
+.closing .angel{position:absolute;right:60px;bottom:0;height:96%;opacity:.9;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 40%);mask-image:linear-gradient(90deg,transparent,#000 40%)}
+/* nav buttons */
+.navbtn{position:fixed;bottom:18px;z-index:60;width:42px;height:42px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.2);background:rgba(20,20,22,.7);color:#fff;cursor:pointer;
+  font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
+.navbtn:hover{background:var(--crimson);border-color:var(--crimson)}
+#prev{left:18px}#next{left:68px}
+.hint{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:60;font-size:11.5px;
+  letter-spacing:.12em;text-transform:uppercase;opacity:.35;font-weight:600}
+@media print{
+  body{overflow:visible}#viewport{position:static;display:block}
+  #stage{transform:none!important;box-shadow:none;width:1280px;height:720px}
+  .slide{display:flex!important;position:relative;page-break-after:always;animation:none}
+  .navbtn,.hint{display:none}
+}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+
+  <!-- 1 · COVER -->
+  <section class="slide cover active" data-chrome="dark">
+    <div class="glow" style="width:520px;height:520px;background:#E80B3A;left:-120px;top:-120px"></div>
+    <img class="angel" src="assets/angel-hero.jpg" alt="">
+    <div class="ctext">
+      <div class="eyebrow">All Hands · Robbin's Angels</div>
+      <h1 class="head">Onde a gente<br>chegou —<br>e pra onde<span style="color:var(--crimson)">.</span></h1>
+      <div class="meta">
+        <span><i class="dot"></i> Time Robbin</span>
+        <span><i class="dot"></i> Junho 2026</span>
+        <span><i class="dot"></i> 2Q26</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · PAUTA -->
+  <section class="slide dark" data-chrome="dark">
+    <div class="kicker"><span class="knum">·</span><span class="ktxt">Pauta de hoje</span></div>
+    <h2 class="head">O que vamos <span class="hi">alinhar</span></h2>
+    <div class="agenda">
+      <div class="ag-item"><span class="n">01</span><span class="t">Esclarecer a rodada<small>O que é, quem liderou e o que muda pra gente</small></span></div>
+      <div class="ag-item"><span class="n">02</span><span class="t">Ticket extra pra quem vem 5x<small>Reconhecer presença e colaboração</small></span></div>
+      <div class="ag-item"><span class="n">03</span><span class="t">SOP — o que é e por que importa<small>Mais exemplos + onde o conhecimento mora</small></span></div>
+      <div class="ag-item"><span class="n">04</span><span class="t">Valores &amp; cultura<small>O nosso jeito de operar</small></span></div>
+      <div class="ag-item"><span class="n">05</span><span class="t">Último tri: foco × realidade<small>O que dissemos × o que aconteceu</small></span></div>
+      <div class="ag-item"><span class="n">06</span><span class="t">Foco do próximo tri<small>Pra onde a energia vai agora</small></span></div>
+      <div class="ag-item"><span class="n">07</span><span class="t">Nova métrica única: Receita<small>Uma só estrela-guia pro time</small></span></div>
+    </div>
+  </section>
+
+  <!-- 3 · RODADA -->
+  <section class="slide navy tex" style="--tex:url('assets/texture-blue.jpg')" data-chrome="dark">
+    <div class="kicker"><span class="knum">01</span><span class="ktxt">Esclarecer a rodada</span></div>
+    <h2 class="head">Sem rumor: <span class="hi">o que é a rodada</span></h2>
+    <div class="cols two" style="margin-top:30px">
+      <div class="card">
+        <span class="tagn">Seed · fechada</span>
+        <h3>US$ 5MM, liderada pela Atlântico</h3>
+        <p>Rodada Seed concluída em Dez/2024, com a Canary como board observer. Foi o capital que bancou a virada de bandeira e a infraestrutura de hoje.</p>
+      </div>
+      <div class="card">
+        <span class="tagn">Seed Extension · assinada</span>
+        <h3>Term Sheet com a Caravela Capital (lead)</h3>
+        <p>Extensão de Seed com Term Sheet assinado em Fev/2026. É uma extensão da mesma rodada — não um novo round de série.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <small>O ponto pra levar pra casa</small>
+      Não estamos levantando agora. Estamos com caixa e foco em execução — quando formos a mercado de novo, o time fica sabendo primeiro.
+    </div>
+  </section>
+
+  <!-- 4 · TICKET 5x -->
+  <section class="slide dark tex" style="--tex:url('assets/texture-contour.jpg')" data-chrome="dark">
+    <div class="kicker"><span class="knum">02</span><span class="ktxt">Reconhecimento · presença</span></div>
+    <h2 class="head">Bateu <span class="hi">5x na semana?</span><br>Ganhou um ticket extra</h2>
+    <div class="cols three" style="margin-top:30px">
+      <div class="card"><span class="tagn">O que é</span><h3>Um ticket adicional</h3><p>Quem vem ao escritório os 5 dias da semana recebe um crédito extra no benefício na semana seguinte.</p></div>
+      <div class="card"><span class="tagn">Por que</span><h3>Estamos construindo uma rede</h3><p>Proximidade acelera decisão, troca e cultura. Estar junto é o nosso multiplicador — e a gente reconhece quem aparece.</p></div>
+      <div class="card"><span class="tagn">Como funciona</span><h3>Automático, sem burocracia</h3><p>Marcou presença os 5 dias → o ticket cai. Sem formulário, sem pedir. <span style="opacity:.6">(valor e regra final no #avisos)</span></p></div>
+    </div>
+    <p class="sub" style="margin-top:26px">Não é cobrança de ponto — é um obrigado a quem está construindo isso de perto, todo dia.</p>
+  </section>
+
+  <!-- 5 · SOP o que é -->
+  <section class="slide light tex" style="--tex:url('assets/texture-contour.jpg')" data-chrome="light">
+    <div class="kicker"><span class="knum">03</span><span class="ktxt" style="color:var(--orange)">SOP · o que é</span></div>
+    <h2 class="head" style="color:var(--ink)">SOP = <span style="color:var(--orange)">Standard Operating Procedure</span></h2>
+    <p class="lead" style="margin-top:24px;color:var(--mid)">O jeito combinado de fazer uma tarefa que se repete — escrito, claro e acessível, pra que <b>qualquer pessoa do time</b> consiga executar com o mesmo resultado, sem depender de quem fez da primeira vez.</p>
+    <div class="callout" style="border-color:var(--orange);background:rgba(255,152,29,.12);color:var(--ink)">
+      <small style="color:var(--orange)">Em uma frase</small>
+      “Como a gente faz X por aqui” — passo a passo, com dono e ponto de entrada definidos.
+    </div>
+  </section>
+
+  <!-- 6 · SOP por que importa -->
+  <section class="slide dark" data-chrome="dark">
+    <div class="kicker"><span class="knum">03</span><span class="ktxt" style="color:var(--orange)">SOP · por que importa</span></div>
+    <h2 class="head">Por que a gente <span style="color:var(--orange)">se importa</span> com isso</h2>
+    <div class="cols three" style="margin-top:30px">
+      <div class="card"><h3>🚀 Escala sem caos</h3><p>Crescemos ~9x. O que estava na cabeça de uma pessoa não escala — SOP transforma conhecimento individual em capacidade do time.</p></div>
+      <div class="card"><h3>⚡ Velocidade é o nosso moat</h3><p>Crédito em 18s, implementação em &lt;30 dias. Isso só se sustenta com processo claro e repetível, não com herói.</p></div>
+      <div class="card"><h3>🎯 Qualidade consistente</h3><p>Mesmo padrão toda vez. Menos retrabalho, menos erro, onboarding mais rápido de quem chega.</p></div>
+    </div>
+    <div class="callout" style="border-color:var(--orange);background:rgba(255,152,29,.12)">
+      Se uma tarefa importante só roda quando “fulano está”, ela ainda não é um processo — é um risco.
+    </div>
+  </section>
+
+  <!-- 7 · SOP exemplos -->
+  <section class="slide dark tex" style="--tex:url('assets/texture-contour.jpg')" data-chrome="dark">
+    <div class="kicker"><span class="knum">03</span><span class="ktxt" style="color:var(--orange)">SOP · exemplos vivos na Robbin</span></div>
+    <h2 class="head">A gente já <span style="color:var(--orange)">faz isso</span> — só não chamava assim</h2>
+    <div class="cols two" style="margin-top:26px">
+      <div class="card"><h3>📞 Manual de Atendimento</h3><p>Passo a passo que faz qualquer pessoa do time conseguir atender, do diagnóstico ao fluxo de resolução.</p></div>
+      <div class="card"><h3>🤝 Playbook CredMoura</h3><p>Como ativar e operar um convênio do começo ao fim, replicável pro próximo parceiro.</p></div>
+      <div class="card"><h3>📊 Fechamento mensal (FP&amp;A)</h3><p>Checklist de closing com dono por etapa — fecha igual todo mês, sem depender de memória.</p></div>
+      <div class="card"><h3>🗓️ Ritos: Daily, Show &amp; Tell, All Hands</h3><p>Nossos encontros também são SOP: objetivo claro, quem participa, recorrência definida.</p></div>
+    </div>
+  </section>
+
+  <!-- 8 · GESTÃO DO CONHECIMENTO (uploaded directive) -->
+  <section class="slide dark" data-chrome="dark">
+    <div class="kicker"><span class="knum">03</span><span class="ktxt" style="color:var(--sky)">Diretriz · onde o conhecimento mora</span></div>
+    <h2 class="head" style="font-size:46px">Gestão do Conhecimento</h2>
+    <p class="sub" style="margin-top:12px">Um SOP só vale se a próxima pessoa encontra. Cada coisa tem um lugar — e o ponto de partida pra buscar é sempre o <b>Claude</b>, conectado a tudo.</p>
+    <div class="tools">
+      <div class="tool"><span class="bar" style="background:#0A4FB0"></span><div class="tn" style="color:var(--sky)">Notion</div><div class="tw">O que a empresa sabe</div><div class="th">Processos, decisões estruturais e contexto duradouro.</div></div>
+      <div class="tool"><span class="bar" style="background:#5E6AD2"></span><div class="tn" style="color:#8b94ff">Linear</div><div class="tw">O que a empresa está fazendo</div><div class="th">Issues e projetos — contexto com ciclo de vida definido.</div></div>
+      <div class="tool"><span class="bar" style="background:#1A73E8"></span><div class="tn" style="color:#5aa0ff">Google Docs</div><div class="tw">Rascunhos &amp; comunicação externa</div><div class="th">RFCs em construção. Texto interno é promovido ou arquivado.</div></div>
+      <div class="tool"><span class="bar" style="background:#cfd3da"></span><div class="tn" style="color:#cfd3da">GitHub</div><div class="tw">O que a empresa construiu</div><div class="th">READMEs, ADRs e runbooks versionados junto ao código.</div></div>
+    </div>
+    <div class="rules">
+      <div class="rrule"><span class="rn">01</span><span class="rt"><b>Notion</b> guarda o que a empresa <b>sabe</b> — decisão estrutural e contexto duradouro.</span></div>
+      <div class="rrule"><span class="rn">02</span><span class="rt"><b>Linear</b> guarda o que a empresa <b>está fazendo</b> — o que vira estrutural, sobe pro Notion.</span></div>
+      <div class="rrule"><span class="rn">03</span><span class="rt"><b>GitHub</b> guarda o que a empresa <b>construiu</b> — docs versionados com o código.</span></div>
+    </div>
+  </section>
+
+  <!-- 9 · VALORES / CULTURA -->
+  <section class="slide crimson tex" style="--tex:url('assets/texture-pink.jpg')" data-chrome="dark">
+    <div class="kicker"><span class="knum">04</span><span class="ktxt">Valores &amp; cultura</span></div>
+    <h2 class="head">O nosso <span class="hi">jeito</span> de operar</h2>
+    <div class="cols three" style="margin-top:28px">
+      <div class="card" style="background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.18)"><h3>Clareza &gt; floreio</h3><p>Sigla a gente explica ou tira. Comunicação direta, sem enfeite.</p></div>
+      <div class="card" style="background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.18)"><h3>Sem drama</h3><p>Desafio é desafio. Encara, nomeia, resolve — sem novela.</p></div>
+      <div class="card" style="background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.18)"><h3>Dono de ponta a ponta</h3><p>Business entrega produto funcional sem esperar fila. Ownership de verdade.</p></div>
+      <div class="card" style="background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.18)"><h3>Velocidade vira moat</h3><p>18s pra decidir crédito, &lt;30 dias pra subir parceiro. Rápido é estratégia.</p></div>
+      <div class="card" style="background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.18)"><h3>Cumpre o combinado</h3><p>O que se promete, se entrega — e dentro do prazo. Confiança é construída assim.</p></div>
+      <div class="card" style="background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.18)"><h3>PME no centro</h3><p>NPS 79, retenção 88%. O cliente é a razão, não a consequência.</p></div>
+    </div>
+  </section>
+
+  <!-- 10 · ÚLTIMO TRI: foco x realidade -->
+  <section class="slide dark" data-chrome="dark">
+    <div class="kicker"><span class="knum">05</span><span class="ktxt" style="color:var(--sky)">Último tri · foco × o que aconteceu</span></div>
+    <h2 class="head">O que dissemos × <span style="color:var(--sky)">o que entregamos</span></h2>
+    <div class="vs" style="margin-top:24px">
+      <div class="col">
+        <h3>O foco que demos</h3>
+        <ul>
+          <li><span class="ic go">→</span>Concluir a virada de bandeira pro PIX</li>
+          <li><span class="ic go">→</span>Colocar o FIDC de pé (funding próprio)</li>
+          <li><span class="ic go">→</span>Migrar os âncoras sem perder ninguém</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>O que aconteceu de fato</h3>
+        <ul>
+          <li><span class="ic ok">✓</span>Stack 100% em trilho PIX próprio (Mar/26)</li>
+          <li><span class="ic ok">✓</span>FIDC <b>LIVE</b> — capacidade de até R$ 500MM</li>
+          <li><span class="ic ok">✓</span>Cantu e Moura migraram inteiras — nenhuma saiu</li>
+          <li><span class="ic wait">~</span>Contração intencional da carteira: trade-off consciente, não tropeço</li>
+        </ul>
+      </div>
+    </div>
+    <div class="stats" style="margin-top:24px">
+      <div class="stat"><div class="v s">US$ 3,07M</div><div class="l">ARR em 1Q26</div></div>
+      <div class="stat"><div class="v li">~9×</div><div class="l">crescimento desde 4Q24</div></div>
+      <div class="stat"><div class="v o">65%</div><div class="l">mix em PIX Rails (mar)</div></div>
+      <div class="stat"><div class="v c">NPS 79</div><div class="l">retenção 88% em 6m</div></div>
+    </div>
+  </section>
+
+  <!-- 11 · PRÓXIMO TRI -->
+  <section class="slide dark tex" style="--tex:url('assets/texture-blue.jpg')" data-chrome="dark">
+    <div class="kicker"><span class="knum">06</span><span class="ktxt" style="color:var(--orange)">Próximo tri · foco</span></div>
+    <h2 class="head">Pra onde a <span style="color:var(--orange)">energia</span> vai agora</h2>
+    <div class="cols three" style="margin-top:28px">
+      <div class="card"><span class="tagn">Crescer de novo</span><h3>Voltar a originar com o FIDC live</h3><p>Originação PIX saindo de base 100 (jan) rumo a 675 (mai). Acelerar com funding próprio.</p></div>
+      <div class="card"><span class="tagn">Embedded</span><h3>ERP da indústria — Cantu INC Pay</h3><p>Limite do revendedor dentro do fluxo de pedido do âncora. Primeiro de novos parceiros.</p></div>
+      <div class="card"><span class="tagn">Novos âncoras</span><h3>Intelbras live + pipeline</h3><p>Mais marcas Fortune 500 na rede e produto de prateleira com o Itaú BBA.</p></div>
+    </div>
+    <div class="callout" style="border-color:var(--orange);background:rgba(255,152,29,.12)">
+      <small style="color:var(--orange)">E acima de tudo</small>
+      Tudo isso medido por uma régua só — a que vem no próximo bloco.
+    </div>
+  </section>
+
+  <!-- 12 · NOVA MÉTRICA: RECEITA (reveal) -->
+  <section class="slide crimson" data-chrome="dark">
+    <div class="glow" style="width:480px;height:480px;background:#fff;right:-120px;bottom:-160px;opacity:.18"></div>
+    <div class="kicker"><span class="knum">07</span><span class="ktxt">Nova métrica única do time</span></div>
+    <div class="northstar">
+      <div class="big">Receita</div>
+      <div class="side">
+        <p>Uma só estrela-guia. A partir de agora, quando o time pergunta “estamos indo bem?”, a resposta tem um único nome: <b>Receita</b>.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <small>Por que declarar isso em voz alta</small>
+      Se a gente não der uma métrica, o time escolhe uma sozinho — e hoje muita gente ainda acha que é TPV. Vamos controlar a narrativa.
+    </div>
+  </section>
+
+  <!-- 13 · RECEITA composição -->
+  <section class="slide dark" data-chrome="dark">
+    <div class="kicker"><span class="knum">07</span><span class="ktxt" style="color:var(--lime)">Receita · como se compõe</span></div>
+    <h2 class="head" style="font-size:44px">Desde o 1Q26, Receita = <span style="color:var(--lime)">duas linhas</span></h2>
+    <div class="recipe">
+      <div class="bucket b-partner">
+        <div class="cap">Linha 1</div>
+        <h3>Partner Fees</h3>
+        <div class="chips"><span class="chip">Interchange</span><span class="chip">PIX Rails</span><span class="chip">Setup Fees</span><span class="chip">Partner Pay (Cantu INC Pay)</span></div>
+      </div>
+      <div class="bucket b-fin">
+        <div class="cap">Linha 2</div>
+        <h3>Financial Income</h3>
+        <div class="chips"><span class="chip">Collateral Float</span><span class="chip">Early Payments</span><span class="chip">Refinancings</span><span class="chip">Late Fees</span></div>
+      </div>
+    </div>
+    <div class="eq"><span>Partner Fees</span><span class="plus">+</span><span>Financial Income</span><span class="plus">=</span><span style="color:var(--crimson)">Receita</span></div>
+    <p class="sub" style="text-align:center;margin:16px auto 0">Quebras por linha são visão gerencial. Pra fora (investidores) e pro time: estas duas linhas.</p>
+  </section>
+
+  <!-- 14 · POR QUE NÃO TPV -->
+  <section class="slide dark tex" style="--tex:url('assets/texture-contour.jpg')" data-chrome="dark">
+    <div class="kicker"><span class="knum">07</span><span class="ktxt" style="color:var(--crimson)">Controlar a narrativa</span></div>
+    <h2 class="head">Por que <span class="hi">não</span> é TPV</h2>
+    <div class="vs" style="margin-top:24px">
+      <div class="col">
+        <h3 style="color:var(--muted)">TPV — volume</h3>
+        <ul>
+          <li><span class="ic wait">!</span>Mede quanto passou, não quanto a gente ganhou</li>
+          <li><span class="ic wait">!</span>Dá pra crescer TPV <b>perdendo</b> dinheiro</li>
+          <li><span class="ic wait">!</span>Ignora yield, pricing e qualidade de crédito</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3 style="color:var(--crimson)">Receita — valor</h3>
+        <ul>
+          <li><span class="ic ok">✓</span>Captura yield, pricing e mix de produto</li>
+          <li><span class="ic ok">✓</span>Premia decisão boa, não só volume</li>
+          <li><span class="ic ok">✓</span>Mesma régua do board e dos investidores</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout">
+      A virada pro PIX foi exatamente isso: trocar volume caro por receita saudável. A métrica precisa contar a mesma história.
+    </div>
+  </section>
+
+  <!-- 15 · FECHAMENTO -->
+  <section class="slide crimson closing" data-chrome="dark">
+    <img class="angel" src="assets/angel-hero.jpg" alt="">
+    <div style="position:relative;z-index:2;max-width:760px;margin-right:auto">
+      <div class="accentbar" style="background:#fff"></div>
+      <h2 class="head" style="font-size:58px">Uma régua, um time,<br>uma narrativa: <span style="text-decoration:underline;text-decoration-thickness:6px;text-underline-offset:10px">Receita.</span></h2>
+      <p class="sub" style="opacity:.95;margin-top:22px">Obrigado por construir isso de perto. Bora pro próximo tri. 🍻</p>
+    </div>
+  </section>
+
+</div></div>
+
+<!-- Chrome overlay -->
+<div id="chrome">
+  <div class="brandmark"><img src="assets/logo-white.png" alt="Robbin"><span>robbin</span></div>
+  <div class="deck-label">All Hands · Jun 26</div>
+  <div class="pagenum"><b id="cur">01</b> / <span id="tot">15</span></div>
+  <div class="progress" id="bar"></div>
+</div>
+
+<button class="navbtn" id="prev" aria-label="Anterior">‹</button>
+<button class="navbtn" id="next" aria-label="Próximo">›</button>
+<div class="hint">← → para navegar · F tela cheia</div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const stage=document.getElementById('stage');
+const bar=document.getElementById('bar');
+const cur=document.getElementById('cur');
+document.getElementById('tot').textContent=String(slides.length).padStart(2,'0');
+let i=0;
+function pad(n){return String(n+1).padStart(2,'0')}
+function show(n){
+  i=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+  bar.style.width=((i)/(slides.length-1)*100)+'%';
+  cur.textContent=pad(i);
+  document.body.classList.toggle('on-light',slides[i].dataset.chrome==='light');
+  location.hash=i+1;
+}
+function next(){show(i+1)} function prev(){show(i-1)}
+document.addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next()}
+  else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev()}
+  else if(e.key==='Home'){show(0)} else if(e.key==='End'){show(slides.length-1)}
+  else if(e.key==='f'||e.key==='F'){toggleFs()}
+});
+document.getElementById('next').onclick=next;
+document.getElementById('prev').onclick=prev;
+stage.addEventListener('click',e=>{
+  if(e.target.closest('a')||e.target.closest('button'))return;
+  const r=stage.getBoundingClientRect();
+  (e.clientX-r.left> r.width*0.5)?next():prev();
+});
+function toggleFs(){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen()}
+function fit(){
+  const pad=0;const s=Math.min((innerWidth-pad)/1280,(innerHeight-pad)/720);
+  stage.style.transform='scale('+s+')';
+}
+addEventListener('resize',fit);
+// touch
+let tx=0;
+addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)d<0?next():prev()},{passive:true});
+const h=parseInt(location.hash.replace('#',''));
+fit();show(h&&h>=1&&h<=slides.length?h-1:0);
+</script>
+</body>
+</html>
