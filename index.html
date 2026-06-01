@@ -58,7 +58,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .cover .meta span{display:flex;align-items:center;gap:9px}
 .cover .dot{width:6px;height:6px;border-radius:50%;background:var(--ac)}
 .cover-sub{font-size:23px;font-weight:600;color:var(--ac2);margin-top:16px;max-width:40ch}
-.bird-wm{position:absolute;right:-40px;bottom:-30px;width:360px;opacity:.06;pointer-events:none}
+.bird-wm{display:none}
 /* ---- agenda ---- */
 .agenda{display:grid;grid-template-columns:1fr 1fr;gap:8px 44px;margin-top:6px}
 .ag-item{display:flex;gap:15px;align-items:flex-start;padding:11px 4px;border-top:1px solid var(--line)}
@@ -106,7 +106,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .fund .seg .amt{font-size:31px;font-weight:900;line-height:1;letter-spacing:-.02em}
 .fund .seg .lbl{font-size:13px;font-weight:600;margin-top:8px;line-height:1.3;max-width:32ch}
 .fund .fidc{flex:0 0 87%;background:repeating-linear-gradient(135deg,#1f1f1f,#1f1f1f 11px,#272727 11px,#272727 22px);color:#fff;border-right:1px solid var(--line)}
-.fund .eq{flex:1;min-width:150px;background:#fff;color:#0d0d0d}
+.fund .eq{flex:1;min-width:150px;background:#141210;color:#fff}
 /* northstar big number */
 .northstar{display:flex;align-items:center;gap:36px;margin-top:8px}
 .northstar .big{font-size:140px;font-weight:900;letter-spacing:-.04em;line-height:.82;color:var(--fg)}
@@ -158,13 +158,14 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .pcard .pquote{font-size:12.5px;font-style:italic;opacity:.72;border-left:2px solid var(--line);padding-left:10px;margin-top:11px;line-height:1.4;color:var(--fg)}
 .pcard .pmeta{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ac2);font-weight:700;margin-top:auto;padding-top:10px}
 .pcard .psocial{display:flex;gap:15px;font-size:11.5px;color:var(--ac2);font-weight:700;margin-top:auto;padding-top:10px}
-.invband{background:var(--paper);border-radius:13px;margin-top:13px;padding:12px 22px}
+.invband{background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:13px;margin-top:13px;padding:14px 22px}
 .invband .ihead{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#8a8378;font-weight:800;margin-bottom:9px;display:flex;align-items:center;gap:10px}
 .invband .ihead::before{content:"";width:22px;height:2px;background:#141210}
 .invrow{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .invrow span{font-size:14px;font-weight:900;color:#141210;letter-spacing:.01em;white-space:nowrap}
 .invrow span small{font-weight:500;opacity:.6}
-.invrow img{height:30px;width:auto;max-width:150px;object-fit:contain;display:block}
+.invrow{gap:20px}
+.invrow img{height:28px;width:auto;max-width:140px;object-fit:contain;display:block;flex:0 1 auto}
 .uni{display:flex;align-items:center;justify-content:center}
 .uni img{height:30px;width:auto;max-width:100%;object-fit:contain;display:block}
 .photo{overflow:hidden;padding:0}
@@ -194,6 +195,17 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .tal-cap .ct{font-size:16.5px;font-weight:800;margin-top:5px;line-height:1.2}
 .tal-cap .ct em{font-style:italic;opacity:.85}
 .tal-cap .cs{font-size:12px;opacity:.72;margin-top:6px;line-height:1.4}
+.lev{display:flex;height:96px;border-radius:14px;overflow:hidden;border:1px solid var(--line);margin-top:28px}
+.lev .seg{display:flex;flex-direction:column;justify-content:center;padding:0 26px}
+.lev .seg .amt{font-size:27px;font-weight:900;line-height:1;letter-spacing:-.02em}
+.lev .seg .lbl{font-size:13px;font-weight:600;margin-top:7px;opacity:.92}
+.lev .sub{flex:0 0 17%;min-width:130px;background:#141210;color:#fff}
+.lev .sen{flex:1;background:repeating-linear-gradient(135deg,#E7E2D9,#E7E2D9 11px,#F4F1EB 11px,#F4F1EB 22px);color:#141210}
+.lev-eq{margin-top:18px;font-size:21px;font-weight:600;color:var(--fg)}
+.chips3{display:flex;gap:13px;margin-top:26px}
+.chip3{flex:1;text-align:center;padding:18px 14px;border:1px solid var(--line);border-radius:13px;background:var(--soft);font-size:15.5px;font-weight:700;color:var(--fg)}
+.tal-next{margin-top:20px;font-size:15px;font-weight:600;color:var(--ac2);letter-spacing:.02em}
+.tal-photo{width:100%;height:430px;object-fit:cover;border-radius:16px;display:block}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -218,7 +230,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 2 · PAUTA -->
-  <section class="slide dark" data-chrome="dark">
+  <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">·</span><span class="ktxt">Pauta de hoje</span></div>
     <h2 class="head">O que vamos <span class="hi">alinhar</span></h2>
     <div class="agenda">
@@ -237,7 +249,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 3 · ONDE ESTAMOS HOJE -->
-  <section class="slide dark tex" data-chrome="dark">
+  <section class="slide light tex" data-chrome="light">
     <div class="kicker"><span class="knum">01</span><span class="ktxt">Onde a Robbin está hoje</span></div>
     <h2 class="head" style="font-size:44px">Sólidos, com <span class="hi">tempo</span> pra construir</h2>
     <div class="runway">
@@ -254,7 +266,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 4 · ESCLARECER A RODADA -->
-  <section class="slide dark" data-chrome="dark">
+  <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">02</span><span class="ktxt">Esclarecer a rodada</span></div>
     <h2 class="head" style="font-size:46px">US$ 108M na manchete — <span class="hi">o que é o quê</span></h2>
     <div class="fund">
@@ -269,18 +281,19 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 5 · FIDC + ALAVANCAGEM -->
-  <section class="slide dark" data-chrome="dark">
+  <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">02</span><span class="ktxt">Como funciona o FIDC</span></div>
-    <h2 class="head" style="font-size:42px">US$ 1 de equity vira <span class="hi">muito mais</span> crédito</h2>
-    <div class="cols two" style="margin-top:20px">
-      <div class="card"><span class="tagn">O que é</span><h3 class="sm">Um fundo fora do balanço</h3><p>Compra os direitos creditórios das nossas operações de BNPL (parcelador de PIX e boleto). CCBs emitidas via Celcoin e cedidas ao fundo.</p>
-        <ul><li>Capacidade de até R$ 500M — de crédito, <b>não de caixa</b></li><li>Gestão Augme Capital / XP</li><li>Financia as compras dos varejistas até o fim de 2027</li></ul></div>
-      <div class="card"><span class="tagn">A alavancagem</span><h3 class="sm">Duas camadas de cota</h3>
-        <ul><li><b>Cota Sênior</b> — investidores institucionais; risco menor, recebem primeiro</li><li><b>Cota Subordinada</b> — a Robbin; absorve a primeira perda (first loss)</li></ul>
-        <p style="margin-top:8px">A subordinada da Robbin “segura” um volume muito maior de capital sênior em cima.</p></div>
+    <h2 class="head">Cada R$ 1 nosso vira <span class="hi">R$ 6,6</span> na rua</h2>
+    <div class="lev">
+      <div class="seg sub"><div class="amt">R$ 1</div><div class="lbl">Robbin · first loss</div></div>
+      <div class="seg sen"><div class="amt">+ R$ 5,6</div><div class="lbl">Investidores · cota sênior</div></div>
     </div>
-    <div class="northstar" style="margin-top:16px;gap:24px"><div class="big" style="font-size:86px">6,6×</div>
-      <div class="side"><p>de alavancagem: cada R$ 1 de capital subordinado destrava ~R$ 6,6 de crédito pra colocar na rua — <b>sem precisar levantar mais equity</b>.</p></div></div>
+    <div class="lev-eq">= <b>R$ 6,6 de crédito na rua</b> &nbsp;·&nbsp; 6,6× de alavancagem, sem levantar mais equity</div>
+    <div class="chips3">
+      <div class="chip3">Fundo fora do balanço</div>
+      <div class="chip3">Até R$ 500M — crédito, não caixa</div>
+      <div class="chip3">Gestão Augme · XP</div>
+    </div>
   </section>
 
   <!-- 6 · CONCEITO DOS 3 CLIENTES -->
@@ -296,7 +309,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 7 · PIX vs CARTÃO -->
-  <section class="slide dark" data-chrome="dark">
+  <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">04</span><span class="ktxt">PIX vs Cartão · recado que não pode faltar</span></div>
     <h2 class="head">O cartão foi o começo. <span class="hi">O PIX é o caminho.</span></h2>
     <div class="vs" style="margin-top:22px">
@@ -309,7 +322,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 8 · HORA DE IR PRA RUA · PRESS COVERAGE -->
-  <section class="slide feature press" data-chrome="dark">
+  <section class="slide light press" data-chrome="light">
     <div class="press-head">
       <span class="press-kick">Press coverage · Maio 2026</span>
       <span class="press-tag">05 · Hora de ir pra rua</span>
@@ -357,27 +370,13 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     <h2 class="tal-h">Caçando os melhores <span class="mk">do mercado.</span></h2>
     <div class="tal-body">
       <div class="tal-left">
-        <div class="tal-kick">Brand building · Recruiting</div>
         <div class="tal-sub">Vamos onde estão os <em>melhores</em> — antes de eles saberem que precisam da gente.</div>
-        <p class="tal-p">Os founders estão nas salas de aula, nos eventos, nos podcasts. Construindo marca de empregador e abrindo conversas com talento sênior antes do funil tradicional.</p>
-        <div class="tal-meta">
-          <div><div class="ml">Onde</div><div class="mv">USP · ITA · Insper</div></div>
-          <div><div class="ml">Formato</div><div class="mv">Palestras · Mentorias</div></div>
-          <div><div class="ml">Próximo</div><div class="mv">Robbin Talks 01</div></div>
-        </div>
+        <p class="tal-p">Founders nas salas de aula, eventos e podcasts. Marca de empregador antes do funil tradicional.</p>
         <div class="tal-unis"><span class="uni"><img src="assets/logos/usp.png" alt="USP"></span><span class="uni"><img src="assets/logos/ita.png" alt="ITA"></span><span class="uni"><img src="assets/logos/fgv.png" alt="FGV"></span><span class="uni"><img src="assets/logos/feausp.jpg" alt="FEA-USP"></span></div>
+        <div class="tal-next">Próximo &nbsp;·&nbsp; <b>Robbin Talks 01</b></div>
       </div>
       <div class="tal-right">
-        <div class="tal-photos">
-          <div class="photo big"><img src="assets/photos/talk-stage.jpg" alt=""></div>
-          <div class="photo"><img src="assets/photos/talk-aud.jpg" alt=""></div>
-          <div class="photo"><img src="assets/photos/talk-group.jpg" alt=""></div>
-        </div>
-        <div class="tal-cap">
-          <div class="ck">Palestra · FEA-USP · 2026</div>
-          <div class="ct">Junior Analyst: Museum Relic or <em>Weapon of the Future?</em></div>
-          <div class="cs">Founders nas salas de aula. Marca de empregador construída antes do funil tradicional de recrutamento.</div>
-        </div>
+        <img class="tal-photo" src="assets/photos/talk-stage.jpg" alt="">
       </div>
     </div>
   </section>
@@ -395,7 +394,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 9 · SOP o que é -->
-  <section class="slide feature tex" data-chrome="dark">
+  <section class="slide light tex" data-chrome="light">
     <img class="bird-wm" src="assets/robbin-bird-white.png" alt="" style="width:300px;opacity:.07">
     <div class="kicker"><span class="knum">07</span><span class="ktxt">SOP · o que é</span></div>
     <h2 class="head">SOP = <span class="hi">Stock Options Plan</span></h2>
@@ -404,7 +403,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 10 · SOP por que importa -->
-  <section class="slide dark" data-chrome="dark">
+  <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">07</span><span class="ktxt">SOP · por que importa</span></div>
     <h2 class="head">Por que isso <span class="hi">muda o jogo</span> pra você</h2>
     <div class="cols three" style="margin-top:28px">
@@ -416,7 +415,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 11 · SOP como funciona -->
-  <section class="slide dark tex" data-chrome="dark">
+  <section class="slide light tex" data-chrome="light">
     <div class="kicker"><span class="knum">07</span><span class="ktxt">SOP · como funciona</span></div>
     <h2 class="head" style="font-size:44px">Do <span class="hi">grant</span> ao upside</h2>
     <div class="cols four" style="margin-top:22px">
@@ -431,7 +430,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 12 · GESTÃO DO CONHECIMENTO -->
-  <section class="slide dark tex" data-chrome="dark">
+  <section class="slide light tex" data-chrome="light">
     <div class="kicker"><span class="knum">08</span><span class="ktxt">Gestão do conhecimento</span></div>
     <h2 class="head" style="font-size:44px">Construindo a <span class="hi">verdade da Robbin</span></h2>
     <div class="callout"><small>Por que isso existe (palavra do CTO)</small>Empoderar o time não-técnico — <b>sem abrir mão de segurança e acuracidade</b>. É assim que a gente organiza as nossas informações.</div>
@@ -444,7 +443,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 13 · CONHECIMENTO regras + Claude -->
-  <section class="slide dark" data-chrome="dark">
+  <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">08</span><span class="ktxt">Gestão do conhecimento · as regras</span></div>
     <h2 class="head">Cada coisa <span class="hi">no seu lugar</span></h2>
     <div class="rules" style="margin-top:24px">
@@ -470,7 +469,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 15 · PESSOAS -->
-  <section class="slide dark" data-chrome="dark">
+  <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">09</span><span class="ktxt">Pessoas</span></div>
     <h2 class="head" style="font-size:44px">Time: <span class="hi">clareza</span> e próximos passos</h2>
     <div class="cols three" style="margin-top:22px">
@@ -494,7 +493,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 16 · ÚLTIMO TRI -->
-  <section class="slide dark" data-chrome="dark">
+  <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">10</span><span class="ktxt">Último tri · foco × o que aconteceu</span></div>
     <h2 class="head">O que dissemos × <span class="hi">o que entregamos</span></h2>
     <div class="vs" style="margin-top:22px">
@@ -512,7 +511,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 17 · PRÓXIMO TRI -->
-  <section class="slide dark tex" data-chrome="dark">
+  <section class="slide light tex" data-chrome="light">
     <div class="kicker"><span class="knum">10</span><span class="ktxt">Próximo tri · foco</span></div>
     <h2 class="head">Pra onde a <span class="hi">energia</span> vai agora</h2>
     <div class="cols three" style="margin-top:26px">
@@ -524,7 +523,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 18 · MÉTRICA: RECEITA (reveal) -->
-  <section class="slide feature" data-chrome="dark">
+  <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">11</span><span class="ktxt">A métrica do time</span></div>
     <div class="northstar"><div class="big">Receita</div>
       <div class="side"><p>Uma régua principal. Quando o time pergunta “estamos indo bem?”, a resposta tem nome: <b>Receita</b>.</p></div></div>
@@ -532,7 +531,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 19 · RECEITA composição -->
-  <section class="slide dark" data-chrome="dark">
+  <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">11</span><span class="ktxt">Receita · como se compõe</span></div>
     <h2 class="head" style="font-size:42px">Desde o 1Q26, Receita = <span class="hi">duas linhas</span></h2>
     <div class="cols two" style="margin-top:22px">
