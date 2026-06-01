@@ -206,6 +206,10 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .chip3{flex:1;text-align:center;padding:18px 14px;border:1px solid var(--line);border-radius:13px;background:var(--soft);font-size:15.5px;font-weight:700;color:var(--fg)}
 .tal-next{margin-top:20px;font-size:15px;font-weight:600;color:var(--ac2);letter-spacing:.02em}
 .tal-photo{width:100%;height:430px;object-fit:cover;border-radius:16px;display:block}
+.team{display:flex;justify-content:center;gap:30px;margin-top:38px}
+.member{text-align:center;width:150px}
+.member img{width:140px;height:140px;object-fit:cover;border-radius:50%;border:1px solid var(--line);display:block;margin:0 auto}
+.member figcaption{margin-top:14px;font-size:17px;font-weight:800;color:var(--fg)}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -270,14 +274,11 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     <div class="kicker"><span class="knum">02</span><span class="ktxt">Esclarecer a rodada</span></div>
     <h2 class="head" style="font-size:46px">US$ 108M na manchete — <span class="hi">o que é o quê</span></h2>
     <div class="fund">
-      <div class="seg fidc"><div class="amt">US$ 100M</div><div class="lbl">FIDC · fundo pra emprestar aos varejistas (~R$ 500M) — <b>não é caixa da Robbin</b></div></div>
+      <div class="seg fidc"><div class="amt">US$ 100M</div><div class="lbl">FIDC · fundo pra emprestar aos varejistas — <b>não é caixa</b></div></div>
       <div class="seg eq"><div class="amt">US$ 8M</div><div class="lbl">Equity (Seed)</div></div>
     </div>
-    <div class="cols two" style="margin-top:18px">
-      <div class="card"><span class="tagn">Equity · Dez/24</span><h3 class="sm">Seed — US$ 6,5M</h3><p>Liderada pela Atlântico, com Canary. Primeira rodada institucional.</p></div>
-      <div class="card"><span class="tagn">Equity · Mar/26</span><h3 class="sm">Extensão — US$ 1,5M</h3><p>Liderada pela Caravela. Mesma rodada — não uma série nova.</p></div>
-    </div>
-    <div class="callout"><small>Pra não confundir</small>Da manchete de US$ 108M, só US$ 8M entrou como capital na Robbin. Os US$ 100M são o FIDC — e ter R$ 500M de FIDC <b>não significa R$ 500M no caixa</b>: é capacidade pra financiar os varejistas, não dinheiro no nosso banco.</div>
+    <p class="sub" style="margin-top:20px"><b>US$ 6,5M</b> Seed (Atlântico · Dez/24) &nbsp;+&nbsp; <b>US$ 1,5M</b> extensão (Caravela · Mar/26).</p>
+    <div class="callout"><small>Pra não confundir</small>Só <b>US$ 8M</b> é equity. Os US$ 100M são fundo pra emprestar — ter R$ 500M de FIDC <b>não é</b> R$ 500M no caixa.</div>
   </section>
 
   <!-- 5 · FIDC + ALAVANCAGEM -->
@@ -419,40 +420,30 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     <div class="kicker"><span class="knum">07</span><span class="ktxt">SOP · como funciona</span></div>
     <h2 class="head" style="font-size:44px">Do <span class="hi">grant</span> ao upside</h2>
     <div class="cols four" style="margin-top:22px">
-      <div class="card"><span class="tagn">1 · Grant</span><h3 class="sm">Você recebe opções</h3><p>Uma quantidade concedida, no seu contrato.</p></div>
-      <div class="card"><span class="tagn">2 · Strike</span><h3 class="sm">Preço travado hoje</h3><p>O valor que você paga pra exercer.</p></div>
-      <div class="card"><span class="tagn">3 · Vesting</span><h3 class="sm">Conquista no tempo</h3><p>Você ganha as opções aos poucos.</p></div>
-      <div class="card"><span class="tagn">4 · Liquidez</span><h3 class="sm">Vira dinheiro</h3><p>Em venda ou IPO, a diferença é sua.</p></div>
+      <div class="card"><span class="tagn">1 · Grant</span><h3 class="sm">Você recebe opções</h3></div>
+      <div class="card"><span class="tagn">2 · Strike</span><h3 class="sm">Preço travado hoje</h3></div>
+      <div class="card"><span class="tagn">3 · Vesting</span><h3 class="sm">Conquista no tempo</h3></div>
+      <div class="card"><span class="tagn">4 · Liquidez</span><h3 class="sm">Vira dinheiro</h3></div>
     </div>
     <div class="vwrap"><div class="vbar"><div class="vcliff">Cliff de 1 ano · 25%</div><div class="vrest">Restante mês a mês até completar 4 anos</div></div>
       <div class="vlabels"><span>Concessão</span><span>Ano 1</span><span>Ano 4 · 100% vested</span></div></div>
-    <div class="callout"><small>Exemplo ilustrativo</small>Strike baixo hoje + Robbin valendo mais no exit = o ganho é seu. <b>Os termos exatos da sua concessão estão no seu contrato</b> — dúvidas, fale com o People.</div>
+    <p class="sub" style="margin-top:18px;font-size:15px">Termos exatos da sua concessão no contrato · dúvidas com o People.</p>
   </section>
 
   <!-- 12 · GESTÃO DO CONHECIMENTO -->
-  <section class="slide light tex" data-chrome="light">
+  <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">08</span><span class="ktxt">Gestão do conhecimento</span></div>
-    <h2 class="head" style="font-size:44px">Construindo a <span class="hi">verdade da Robbin</span></h2>
-    <div class="callout"><small>Por que isso existe (palavra do CTO)</small>Empoderar o time não-técnico — <b>sem abrir mão de segurança e acuracidade</b>. É assim que a gente organiza as nossas informações.</div>
-    <div class="tools" style="margin-top:20px">
-      <div class="tool"><span class="bar"></span><div class="tn">Notion</div><div class="tw">O que a empresa sabe</div><div class="th">Processos, decisões estruturais e contexto duradouro.</div></div>
-      <div class="tool"><span class="bar"></span><div class="tn">Linear</div><div class="tw">O que está fazendo</div><div class="th">Issues e projetos — contexto com ciclo de vida.</div></div>
-      <div class="tool"><span class="bar"></span><div class="tn">Google Docs</div><div class="tw">Rascunhos &amp; externo</div><div class="th">RFCs em construção. Texto interno é promovido ou arquivado.</div></div>
-      <div class="tool"><span class="bar"></span><div class="tn">GitHub</div><div class="tw">O que construiu</div><div class="th">READMEs, ADRs e runbooks versionados com o código.</div></div>
+    <h2 class="head" style="font-size:42px">A <span class="hi">verdade da Robbin</span>, organizada</h2>
+    <div class="tools" style="margin-top:22px">
+      <div class="tool"><span class="bar"></span><div class="tn">Notion</div><div class="tw">O que a empresa sabe</div></div>
+      <div class="tool"><span class="bar"></span><div class="tn">Linear</div><div class="tw">O que está fazendo</div></div>
+      <div class="tool"><span class="bar"></span><div class="tn">Google Docs</div><div class="tw">Rascunhos &amp; externo</div></div>
+      <div class="tool"><span class="bar"></span><div class="tn">GitHub</div><div class="tw">O que construiu</div></div>
     </div>
+    <div class="callout" style="margin-top:24px"><small>Palavra do CTO</small>Empoderar o time não-técnico, <b>sem abrir mão de segurança e acuracidade</b>. Pra buscar qualquer coisa, o ponto de partida é o <b>Claude</b> — conectado a tudo.</div>
   </section>
 
-  <!-- 13 · CONHECIMENTO regras + Claude -->
-  <section class="slide light" data-chrome="light">
-    <div class="kicker"><span class="knum">08</span><span class="ktxt">Gestão do conhecimento · as regras</span></div>
-    <h2 class="head">Cada coisa <span class="hi">no seu lugar</span></h2>
-    <div class="rules" style="margin-top:24px">
-      <div class="rrule"><span class="rn">01</span><span class="rt"><b>Notion</b> guarda o que a empresa <b>sabe</b> — decisão estrutural, processo e contexto duradouro.</span></div>
-      <div class="rrule"><span class="rn">02</span><span class="rt"><b>Linear</b> guarda o que a empresa <b>está fazendo</b> — contexto com ciclo de vida. O que vira estrutural, sobe pro Notion.</span></div>
-      <div class="rrule"><span class="rn">03</span><span class="rt"><b>GitHub</b> guarda o que a empresa <b>construiu</b> — READMEs, ADRs e runbooks versionados com o código.</span></div>
-    </div>
-    <div class="callout" style="margin-top:22px"><small>Porta de entrada</small>O ponto de partida pra qualquer busca é o <b>Claude</b>, conectado a todas as ferramentas — acesso seguro e com acuracidade, pra qualquer pessoa do time, técnica ou não.</div>
-  </section>
+
 
   <!-- 14 · VALORES / CULTURA -->
   <section class="slide light" data-chrome="light">
@@ -492,21 +483,29 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     </div>
   </section>
 
+  <!-- 15b · NOVOS INTEGRANTES -->
+  <section class="slide light" data-chrome="light">
+    <div class="kicker"><span class="knum">09</span><span class="ktxt">Pessoas · boas-vindas</span></div>
+    <h2 class="head">Quem chegou <span class="hi">pra somar</span></h2>
+    <div class="team"><figure class="member"><img src="assets/photos/m-marina.jpg" alt="Marina"><figcaption>Marina</figcaption></figure><figure class="member"><img src="assets/photos/m-naiara.jpg" alt="Naiara"><figcaption>Naiara</figcaption></figure><figure class="member"><img src="assets/photos/m-shay.jpg" alt="Shay"><figcaption>Shay</figcaption></figure><figure class="member"><img src="assets/photos/m-marcio.jpg" alt="Marcio"><figcaption>Marcio</figcaption></figure><figure class="member"><img src="assets/photos/m-danton.jpg" alt="Danton"><figcaption>Danton</figcaption></figure><figure class="member"><img src="assets/photos/m-eric.jpg" alt="Eric"><figcaption>Eric</figcaption></figure></div>
+    <p class="sub" style="text-align:center;margin-top:34px">Boas-vindas ao time! 👋</p>
+  </section>
+
   <!-- 16 · ÚLTIMO TRI -->
   <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">10</span><span class="ktxt">Último tri · foco × o que aconteceu</span></div>
-    <h2 class="head">O que dissemos × <span class="hi">o que entregamos</span></h2>
+    <h2 class="head">Prometemos × <span class="hi">entregamos</span></h2>
     <div class="vs" style="margin-top:22px">
-      <div class="col"><h3>O foco que demos</h3>
-        <ul><li><span class="ic">→</span>Concluir a virada de bandeira pro PIX</li><li><span class="ic">→</span>Colocar o FIDC de pé (funding próprio)</li><li><span class="ic">→</span>Migrar os âncoras sem perder ninguém</li></ul></div>
-      <div class="col"><h3>O que aconteceu de fato</h3>
-        <ul><li><span class="ic ok">✓</span>Stack 100% em trilho PIX próprio (Mar/26)</li><li><span class="ic ok">✓</span>FIDC <b>LIVE</b> — capacidade de até R$ 500M</li><li><span class="ic ok">✓</span>Cantu e Moura migraram inteiras — nenhuma saiu</li><li><span class="ic">~</span>Contração intencional da carteira: trade-off, não tropeço</li></ul></div>
+      <div class="col"><h3>Prometemos</h3>
+        <ul><li><span class="ic">→</span>Virar a bandeira pro PIX</li><li><span class="ic">→</span>Colocar o FIDC de pé</li><li><span class="ic">→</span>Migrar âncoras sem perder ninguém</li></ul></div>
+      <div class="col"><h3>Entregamos</h3>
+        <ul><li><span class="ic ok">✓</span>100% no trilho PIX próprio</li><li><span class="ic ok">✓</span>FIDC <b>live</b> — até R$ 500M</li><li><span class="ic ok">✓</span>Cantu e Moura inteiras, ninguém saiu</li></ul></div>
     </div>
-    <div class="stats" style="margin-top:20px">
+    <div class="stats" style="margin-top:24px">
       <div class="stat"><div class="v">US$ 3,07M</div><div class="l">ARR em 1Q26</div></div>
-      <div class="stat"><div class="v">~9×</div><div class="l">crescimento desde 4Q24</div></div>
-      <div class="stat"><div class="v">65%</div><div class="l">mix em PIX Rails (mar)</div></div>
-      <div class="stat"><div class="v">NPS 79</div><div class="l">retenção 88% em 6m</div></div>
+      <div class="stat"><div class="v">~9×</div><div class="l">desde 4Q24</div></div>
+      <div class="stat"><div class="v">65%</div><div class="l">mix PIX (mar)</div></div>
+      <div class="stat"><div class="v">NPS 79</div><div class="l">retenção 88%</div></div>
     </div>
   </section>
 
