@@ -93,6 +93,8 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .tools{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:6px}
 .tool{background:var(--soft);border:1px solid var(--line);border-radius:13px;padding:17px 16px;position:relative;overflow:hidden}
 .tool .bar{position:absolute;top:0;left:0;right:0;height:4px;background:var(--ac);opacity:.85}
+.toollogo{height:30px;margin:4px 0 12px;display:flex;align-items:center}
+.toollogo img{height:100%;max-width:130px;width:auto;object-fit:contain;display:block}
 .tool .tn{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px;color:var(--fg)}
 .tool .tw{font-size:15px;font-weight:700;line-height:1.25;margin-bottom:7px;color:var(--fg)}
 .tool .th{font-size:12.5px;line-height:1.4;color:var(--fg);opacity:.66;font-weight:500}
@@ -485,10 +487,10 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     <div class="kicker"><span class="knum">08</span><span class="ktxt">Como a Robbin opera · conhecimento</span></div>
     <h2 class="head" style="font-size:42px">A <span class="hi">verdade da Robbin</span>, organizada</h2>
     <div class="tools" style="margin-top:22px">
-      <div class="tool"><span class="bar"></span><div class="tn">Notion</div><div class="tw">O que a empresa sabe</div></div>
-      <div class="tool"><span class="bar"></span><div class="tn">Linear</div><div class="tw">O que está fazendo</div></div>
-      <div class="tool"><span class="bar"></span><div class="tn">Google Docs</div><div class="tw">Rascunhos &amp; externo</div></div>
-      <div class="tool"><span class="bar"></span><div class="tn">GitHub</div><div class="tw">O que construiu</div></div>
+      <div class="tool"><span class="bar"></span><div class="toollogo"><img src="assets/logos/tool-notion.png" alt="Notion"></div><div class="tw">O que a empresa sabe</div></div>
+      <div class="tool"><span class="bar"></span><div class="toollogo"><img src="assets/logos/tool-linear.png" alt="Linear"></div><div class="tw">O que está fazendo</div></div>
+      <div class="tool"><span class="bar"></span><div class="toollogo"><img src="assets/logos/tool-gdocs.webp" alt="Google Docs"></div><div class="tw">Rascunhos &amp; externo</div></div>
+      <div class="tool"><span class="bar"></span><div class="toollogo"><img src="assets/logos/tool-github.png" alt="GitHub"></div><div class="tw">O que construiu</div></div>
     </div>
     <div class="callout" style="margin-top:24px"><small>Palavra do CTO</small>Empoderar o time não-técnico, <b>sem abrir mão de segurança e acuracidade</b>. Pra buscar qualquer coisa, o ponto de partida é o <b>Claude</b> — conectado a tudo.</div>
   </section>
