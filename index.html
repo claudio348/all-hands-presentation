@@ -164,6 +164,11 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .invrow{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .invrow span{font-size:14px;font-weight:900;color:#141210;letter-spacing:.01em;white-space:nowrap}
 .invrow span small{font-weight:500;opacity:.6}
+.invrow img{height:30px;width:auto;max-width:150px;object-fit:contain;display:block}
+.uni{display:flex;align-items:center;justify-content:center}
+.uni img{height:30px;width:auto;max-width:100%;object-fit:contain;display:block}
+.photo{overflow:hidden;padding:0}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
 /* talent / recruiting */
 .slide.talent{padding:50px 54px 46px;justify-content:flex-start}
 .tal-eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:800;color:var(--ac2);margin-top:24px}
@@ -202,7 +207,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 
   <!-- 1 · COVER -->
   <section class="slide light cover active tex" data-chrome="light">
-    <img class="logo-big" src="assets/robbin-logo.svg" alt="Robbin">
+    <img class="logo-big" src="assets/robbin-black.svg" alt="Robbin">
     <div class="eyebrow">Time Robbin · 2º trimestre 2026</div>
     <h1>All Hands</h1>
     <p class="cover-sub">Onde a gente chegou — e pra onde vamos juntos.</p>
@@ -238,13 +243,13 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     <div class="runway">
       <div class="num">60</div><div class="u">meses de runway&nbsp;·&nbsp;~5 anos</div>
     </div>
-    <p class="sub" style="margin-top:14px">Rodada esclarecida, caixa saudável: dá pra executar com calma e foco, sem corrida atrás de capital.</p>
     <div class="stats" style="margin-top:22px">
       <div class="stat"><div class="v">8</div><div class="l">marcas Fortune 500 live</div></div>
       <div class="stat"><div class="v">~4.000</div><div class="l">varejistas na rede</div></div>
       <div class="stat"><div class="v">US$ 3,07M</div><div class="l">ARR (1Q26) · ~9× vs 4Q24</div></div>
       <div class="stat"><div class="v">100%</div><div class="l">trilho PIX próprio</div></div>
     </div>
+    <div class="invband" style="margin-top:16px"><div class="ihead">Marcas parceiras</div><div class="invrow"><img src="assets/logos/cantu.png" alt="Cantu"><img src="assets/logos/brinox.png" alt="Brinox"><img src="assets/logos/chilli.png" alt="Chilli Beans"><img src="assets/logos/malwee.png" alt="Malwee"><img src="assets/logos/moura.png" alt="Moura"><img src="assets/logos/tigre.png" alt="Tigre"><img src="assets/logos/gerdau.png" alt="Gerdau"><img src="assets/logos/votorantim.png" alt="Votorantim"></div></div>
     <div class="callout"><small>O que muda na cabeça</small>Não queremos TPV pelo TPV, como no passado. Queremos <b>TPV + Receita + Pulverização</b> — crescer com qualidade, não só com volume.</div>
   </section>
 
@@ -283,9 +288,9 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     <div class="kicker"><span class="knum">03</span><span class="ktxt">O conceito dos 3 clientes</span></div>
     <h2 class="head">A gente serve <span class="hi">três</span> ao mesmo tempo</h2>
     <div class="cols three" style="margin-top:24px">
-      <div class="card"><span class="tagn">Cliente 1</span><h3>🏭 Indústria âncora</h3><p>A marca/fornecedor. Quer vender mais pro canal e receber à vista, sem risco de crédito no balanço.</p></div>
-      <div class="card"><span class="tagn">Cliente 2</span><h3>🏪 Varejista PME</h3><p>O revendedor. Quer prazo e crédito pra comprar estoque que gera caixa, de forma simples.</p></div>
-      <div class="card"><span class="tagn">Cliente 3</span><h3>🏦 Funding / FIDC</h3><p>Bancos e investidores do fundo. Querem um ativo de crédito de qualidade, bem originado.</p></div>
+      <div class="card"><span class="tagn">Cliente 1</span><h3>🏭 Indústria / Âncora</h3><p>A marca/fornecedor. Quer vender mais pro canal e receber à vista, sem risco de crédito no balanço.</p></div>
+      <div class="card"><span class="tagn">Cliente 2</span><h3>🏪 PME / Varejista</h3><p>O revendedor. Quer prazo e crédito pra comprar estoque que gera caixa, de forma simples.</p></div>
+      <div class="card"><span class="tagn">Cliente 3</span><h3>🧑‍💼 Representante de Vendas</h3><p>O vendedor da indústria, no balcão do varejista. Quer fechar mais pedidos — com crédito aprovado na hora (AI SDR decide em 18s).</p></div>
     </div>
     <div class="callout"><small>Por que todo mundo precisa dessa visão</small>Ao desenhar qualquer projeto ou necessidade, pergunte: <b>o que isso resolve para cada um dos três?</b> Se um lado quebra, a rede inteira para.</div>
   </section>
@@ -341,7 +346,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     <div class="invband">
       <div class="ihead">Investors · Seed Round + FIDC</div>
       <div class="invrow">
-        <span>ATLÂNTICO</span><span>CANARY</span><span>CARAVELA</span><span>ABSeed <small>Ventures</small></span><span>CLOCKTOWER</span><span>NORTE</span><span>Tomorrow <small>Capital</small></span><span>XP <small>Inc.</small></span>
+        <img src="assets/logos/atlantico.png" alt="Atlântico"><img src="assets/logos/canary.png" alt="Canary"><img src="assets/logos/caravela.png" alt="Caravela"><img src="assets/logos/abseed.webp" alt="ABSeed"><img src="assets/logos/clocktower.webp" alt="Clocktower"><img src="assets/logos/tomorrow.svg" alt="Tomorrow Capital"><img src="assets/logos/xp.png" alt="XP Inc.">
       </div>
     </div>
   </section>
@@ -360,13 +365,13 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
           <div><div class="ml">Formato</div><div class="mv">Palestras · Mentorias</div></div>
           <div><div class="ml">Próximo</div><div class="mv">Robbin Talks 01</div></div>
         </div>
-        <div class="tal-unis"><span class="uni">USP</span><span class="uni">ITA</span><span class="uni">FGV</span><span class="uni">FEA-USP</span><span class="uni">Insper</span></div>
+        <div class="tal-unis"><span class="uni"><img src="assets/logos/usp.png" alt="USP"></span><span class="uni"><img src="assets/logos/ita.png" alt="ITA"></span><span class="uni"><img src="assets/logos/fgv.png" alt="FGV"></span><span class="uni"><img src="assets/logos/feausp.jpg" alt="FEA-USP"></span></div>
       </div>
       <div class="tal-right">
         <div class="tal-photos">
-          <div class="photo big">Robbin Talks · founder no palco</div>
-          <div class="photo">Turma · auditório</div>
-          <div class="photo">Mentoria</div>
+          <div class="photo big"><img src="assets/photos/talk-stage.jpg" alt=""></div>
+          <div class="photo"><img src="assets/photos/talk-aud.jpg" alt=""></div>
+          <div class="photo"><img src="assets/photos/talk-group.jpg" alt=""></div>
         </div>
         <div class="tal-cap">
           <div class="ck">Palestra · FEA-USP · 2026</div>
@@ -552,7 +557,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 
   <!-- 21 · FECHAMENTO -->
   <section class="slide light closing tex" data-chrome="light">
-    <img class="logo-big" src="assets/robbin-logo.svg" alt="Robbin" style="width:300px;margin-bottom:34px">
+    <img class="logo-big" src="assets/robbin-black.svg" alt="Robbin" style="width:300px;margin-bottom:34px">
     <div class="accentbar"></div>
     <h2 class="head" style="font-size:64px">All Hands</h2>
   </section>
@@ -560,7 +565,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 </div></div>
 
 <div id="chrome">
-  <div class="brandmark"><img src="assets/robbin-logo-w.svg" alt="Robbin"></div>
+  <div class="brandmark"><img src="assets/robbin-white.svg" alt="Robbin"></div>
   <div class="deck-label">All Hands · Jun 26</div>
   <div class="pagenum"><span id="cur">01</span> / <span id="tot">21</span></div>
   <div class="progress" id="bar"></div>
