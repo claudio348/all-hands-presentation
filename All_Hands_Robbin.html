@@ -243,6 +243,9 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .bar.hl .col{background:var(--ac)}
 .bar.hl .val{color:var(--fg);font-size:19px}
 .bar.hl .lab{color:var(--fg)}
+.leg{display:flex;gap:26px;margin-top:14px;font-size:13px;font-weight:700;color:var(--ac2)}
+.leg i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px}
+.leg .d1{background:#bdb8ad}.leg .d2{background:#141210}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -584,16 +587,34 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     <div class="chart"><div class="bar"><div class="val">319</div><div class="col" style="height:30px"></div><div class="lab">3Q24</div></div><div class="bar"><div class="val">550</div><div class="col" style="height:52px"></div><div class="lab">4Q24</div></div><div class="bar"><div class="val">1.427</div><div class="col" style="height:135px"></div><div class="lab">1Q25</div></div><div class="bar"><div class="val">1.716</div><div class="col" style="height:162px"></div><div class="lab">2Q25</div></div><div class="bar"><div class="val">2.077</div><div class="col" style="height:196px"></div><div class="lab">3Q25</div></div><div class="bar"><div class="val">2.532</div><div class="col" style="height:239px"></div><div class="lab">4Q25</div></div><div class="bar"><div class="val">2.976</div><div class="col" style="height:281px"></div><div class="lab">1Q26</div></div><div class="bar hl"><div class="val">3.176</div><div class="col" style="height:300px"></div><div class="lab">Abr/26</div></div></div>
   </section>
 
+  <!-- 18c · TPV x RECEITA (monetização) -->
+  <section class="slide light" data-chrome="light">
+    <div class="kicker"><span class="knum">11</span><span class="ktxt">Receita · monetização</span></div>
+    <h2 class="head">Originamos menos. <span class="hi">Faturamos mais.</span></h2>
+    <div class="leg"><span><i class="d1"></i> TPV · R$/mês</span><span><i class="d2"></i> Receita · run rate (US$ mil)</span></div>
+    <svg viewBox="0 0 1040 340" style="width:100%;height:300px;margin-top:14px" preserveAspectRatio="xMidYMid meet">
+<line x1="70" y1="300" x2="1000" y2="300" stroke="rgba(0,0,0,.18)" stroke-width="2"/>
+<polyline fill="none" stroke="#bdb8ad" stroke-width="4" points="80,163 380,40 680,158 980,201"/>
+<polyline fill="none" stroke="#141210" stroke-width="4" points="80,130 380,93 680,56 980,40"/>
+<circle cx="80" cy="163" r="6" fill="#bdb8ad"/><circle cx="380" cy="40" r="6" fill="#bdb8ad"/><circle cx="680" cy="158" r="6" fill="#bdb8ad"/><circle cx="980" cy="201" r="6" fill="#bdb8ad"/><circle cx="80" cy="130" r="6" fill="#141210"/><circle cx="380" cy="93" r="6" fill="#141210"/><circle cx="680" cy="56" r="6" fill="#141210"/><circle cx="980" cy="40" r="6" fill="#141210"/>
+<text x="380" y="28" text-anchor="middle" font-size="16" font-weight="800" fill="#8a857b">R$ 15,7M · pico</text>
+<text x="975" y="222" text-anchor="end" font-size="16" font-weight="800" fill="#8a857b">R$ 6,0M</text>
+<text x="975" y="30" text-anchor="end" font-size="17" font-weight="900" fill="#141210">US$ 3,2M</text>
+<text x="80" y="326" text-anchor="middle" font-size="15" font-weight="700" fill="#5a554f">Jul/25</text><text x="380" y="326" text-anchor="middle" font-size="15" font-weight="700" fill="#5a554f">Out/25</text><text x="680" y="326" text-anchor="middle" font-size="15" font-weight="700" fill="#5a554f">Jan/26</text><text x="980" y="326" text-anchor="middle" font-size="15" font-weight="700" fill="#5a554f">Abr/26</text>
+</svg>
+    <div class="callout">Mesmo com o TPV bem abaixo do pico, a receita não parou de subir — porque <b>monetizamos muito melhor</b> no arranjo do PIX.</div>
+  </section>
+
   <!-- 19 · RECEITA composição -->
   <section class="slide light" data-chrome="light">
-    <div class="kicker"><span class="knum">11</span><span class="ktxt">Receita · como se compõe</span></div>
-    <h2 class="head" style="font-size:42px">Desde o 1Q26, Receita = <span class="hi">duas linhas</span></h2>
-    <div class="cols two" style="margin-top:22px">
-      <div class="card"><span class="tagn">Linha 1</span><h3>Partner Fees</h3><p>Interchange · PIX Rails · Setup Fees · Partner Pay (Cantu INC Pay)</p></div>
-      <div class="card"><span class="tagn">Linha 2</span><h3>Financial Income</h3><p>Collateral Float · Early Payments · Refinancings · Late Fees</p></div>
+    <div class="kicker"><span class="knum">11</span><span class="ktxt">Receita · de onde vem</span></div>
+    <h2 class="head">A Receita vem de <span class="hi">duas fontes</span></h2>
+    <div class="cols two" style="margin-top:24px">
+      <div class="card"><span class="tagn">Fonte 1 · Partner Fees</span><h3 class="sm">Taxas dos parceiros</h3><p>O que a indústria e os parceiros pagam pra Robbin pelo serviço — principalmente o <b>MDR que a indústria banca</b> (Cantu INC Pay e outros programas), além de setup e taxas das transações no PIX.</p></div>
+      <div class="card"><span class="tagn">Fonte 2 · Financial Income</span><h3 class="sm">Ganhos do crédito</h3><p>O que a Robbin ganha ao <b>financiar as compras</b> do varejista — juros, antecipações de pagamento, refinanciamentos e multas por atraso.</p></div>
     </div>
-    <div class="eqrow"><span>Partner Fees</span><span class="op">+</span><span>Financial Income</span><span class="op">=</span><span class="hi">Receita</span></div>
-    <p class="sub" style="text-align:center;margin:14px auto 0">Quebras por linha são visão gerencial. Pra fora e pro time: estas duas linhas.</p>
+    <div class="eqrow"><span>Taxas dos parceiros</span><span class="op">+</span><span>Ganhos do crédito</span><span class="op">=</span><span class="hi">Receita</span></div>
+    <p class="sub" style="text-align:center;margin:16px auto 0">Resumindo: tudo que a Robbin ganha cai numa dessas duas.</p>
   </section>
 
   <!-- 20 · CRESCIMENTO SAUDÁVEL -->
