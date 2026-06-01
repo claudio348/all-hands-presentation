@@ -235,6 +235,14 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .vtag{background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-size:14px;font-weight:700;color:var(--fg)}
 .qa{align-items:center;text-align:center;justify-content:center}
 .qa .qahead{font-size:140px;max-width:none;letter-spacing:-.04em}
+.chart{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;height:380px;margin-top:34px;border-bottom:2px solid var(--line)}
+.bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
+.bar .val{font-size:17px;font-weight:800;color:var(--ac2);margin-bottom:8px}
+.bar .col{width:100%;max-width:70px;background:#c4bfb4;border-radius:5px 5px 0 0}
+.bar .lab{font-size:12.5px;font-weight:700;color:var(--ac2);margin-top:12px}
+.bar.hl .col{background:var(--ac)}
+.bar.hl .val{color:var(--fg);font-size:19px}
+.bar.hl .lab{color:var(--fg)}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -566,7 +574,14 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     <div class="kicker"><span class="knum">11</span><span class="ktxt">A métrica do time</span></div>
     <div class="northstar"><div class="big">Receita</div>
       <div class="side"><p>Uma régua principal. Quando o time pergunta “estamos indo bem?”, a resposta tem nome: <b>Receita</b>.</p></div></div>
-    <div class="callout"><small>Por que dizer isso em voz alta</small>Se a gente não der uma métrica, o time escolhe uma sozinho — e hoje muita gente ainda acha que é TPV. Vamos controlar a narrativa.</div>
+    <div class="callout"><small>Onde estamos hoje</small>O run rate de receita já está em <b>US$ 3,2M</b> (Abr/26) — e subindo todo trimestre.</div>
+  </section>
+
+  <!-- 18b · REVENUE RUN RATE -->
+  <section class="slide light" data-chrome="light">
+    <div class="kicker"><span class="knum">11</span><span class="ktxt">Receita · run rate · USD mil</span></div>
+    <h2 class="head" style="font-size:40px">Revenue Run Rate</h2>
+    <div class="chart"><div class="bar"><div class="val">319</div><div class="col" style="height:30px"></div><div class="lab">3Q24</div></div><div class="bar"><div class="val">550</div><div class="col" style="height:52px"></div><div class="lab">4Q24</div></div><div class="bar"><div class="val">1.427</div><div class="col" style="height:135px"></div><div class="lab">1Q25</div></div><div class="bar"><div class="val">1.716</div><div class="col" style="height:162px"></div><div class="lab">2Q25</div></div><div class="bar"><div class="val">2.077</div><div class="col" style="height:196px"></div><div class="lab">3Q25</div></div><div class="bar"><div class="val">2.532</div><div class="col" style="height:239px"></div><div class="lab">4Q25</div></div><div class="bar"><div class="val">2.976</div><div class="col" style="height:281px"></div><div class="lab">1Q26</div></div><div class="bar hl"><div class="val">3.176</div><div class="col" style="height:300px"></div><div class="lab">Abr/26</div></div></div>
   </section>
 
   <!-- 19 · RECEITA composição -->
