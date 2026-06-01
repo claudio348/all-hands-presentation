@@ -254,6 +254,18 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .slide.pauta .head{font-size:40px;margin-bottom:4px}
 .slide.pauta .agenda{gap:4px 44px;margin-top:10px}
 .slide.pauta .ag-item{padding:8px 4px}
+.price-row{display:flex;align-items:center;gap:22px;margin-top:24px}
+.price-row .pp{display:flex;flex-direction:column;gap:3px}
+.price-row .pp span{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ac2)}
+.price-row .pp b{font-size:30px;font-weight:900;color:var(--fg);line-height:1}
+.price-row .arrow{font-size:26px;color:var(--ac2)}
+.price-row .mult{margin-left:auto;font-size:23px;font-weight:900;background:var(--ac);color:var(--bg);padding:7px 16px;border-radius:9px}
+.cmp{margin-top:28px;display:flex;flex-direction:column;gap:14px}
+.cmprow{display:grid;grid-template-columns:96px 1fr 86px;align-items:center;gap:16px}
+.cmprow .cl{font-size:15px;font-weight:800;color:var(--fg)}
+.cmprow .ct{height:30px;border-radius:6px;background:#cfcabf;min-width:6px}
+.cmprow.hl .ct{background:var(--ac)}
+.cmprow .cv{font-size:18px;font-weight:900;color:var(--fg);text-align:right}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -440,20 +452,26 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     <img class="bird-wm" src="assets/robbin-bird-white.png" alt="" style="width:300px;opacity:.07">
     <div class="kicker"><span class="knum">07</span><span class="ktxt">SOP · o que é</span></div>
     <h2 class="head">SOP = <span class="hi">Stock Options Plan</span></h2>
-    <p class="lead" style="margin-top:20px;max-width:56ch">O direito de comprar uma fatia da Robbin no futuro, a um preço travado hoje. Se a empresa vale mais lá na frente, a diferença é <b>sua</b>.</p>
+    <p class="lead" style="margin-top:20px;max-width:58ch">Em português: o <b>direito de comprar uma ação</b> da Robbin no futuro, a um preço travado hoje. Se a empresa vale mais lá na frente, a diferença é <b>sua</b>.</p>
     <div class="callout"><small>Em uma frase</small>Parte do seu pacote não é salário — é sociedade. Você vira dono de um pedaço do que estamos construindo.</div>
   </section>
 
   <!-- 10 · SOP por que importa -->
   <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">07</span><span class="ktxt">SOP · por que importa</span></div>
-    <h2 class="head">Por que isso <span class="hi">muda o jogo</span> pra você</h2>
-    <div class="cols three" style="margin-top:28px">
-      <div class="card"><h3>🤝 Alinhamento total</h3><p>Quando a Robbin ganha, você ganha. Mesmo barco, mesma régua — Receita.</p></div>
-      <div class="card"><h3>💎 Criação de patrimônio</h3><p>Num evento de liquidez (venda ou IPO), as opções viram dinheiro de verdade.</p></div>
-      <div class="card"><h3>🧭 Pensar como dono</h3><p>Decisão de longo prazo, ownership real. É a cultura virando bolso.</p></div>
+    <h2 class="head">A ação <span class="hi">multiplicou ~4×</span> em 18 meses</h2>
+    <div class="price-row">
+      <div class="pp"><span>Dez/24</span><b>R$ 0,39</b></div>
+      <div class="arrow">→</div>
+      <div class="pp"><span>Jun/26</span><b>R$ 1,59</b></div>
+      <div class="mult">4,08× · +308%</div>
     </div>
-    <div class="callout"><small>Conexão com a rodada</small>A Seed + Extensão definem o valor da Robbin hoje. É esse valor que as suas opções acompanham — e que a gente existe pra multiplicar.</div>
+    <div class="cmp">
+      <div class="cmprow hl"><span class="cl">Robbin</span><div class="ct" style="width:100%"></div><span class="cv">+308%</span></div>
+      <div class="cmprow"><span class="cl">CDI</span><div class="ct" style="width:7%"></div><span class="cv">≈ +22%</span></div>
+      <div class="cmprow"><span class="cl">Bovespa</span><div class="ct" style="width:6%"></div><span class="cv">≈ +18%</span></div>
+    </div>
+    <p class="sub" style="margin-top:18px">É essa valorização que a sua opção acompanha — muito acima da renda fixa (CDI) e da bolsa. <span style="opacity:.55">CDI/Bovespa: estimativas no período.</span></p>
   </section>
 
   <!-- 11 · SOP como funciona -->
