@@ -349,19 +349,28 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .archcard p{font-size:13.5px;line-height:1.4;color:var(--fg);opacity:.72;margin-bottom:11px}
 .archcard .achips{display:flex;flex-wrap:wrap;gap:7px}
 .archcard .achips span{font-size:11px;font-weight:600;color:var(--ac2);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
-.org2{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px;align-items:start}
-.orglead{background:var(--ac);color:var(--bg);border-radius:12px;padding:13px 16px}
-.orglead .nm{font-size:16px;font-weight:900;line-height:1}
-.orglead .ar{font-size:12.5px;font-weight:700;opacity:.9;margin-top:4px}
-.orglead .hc{font-size:11px;font-weight:700;opacity:.65;margin-top:3px}
-.orgsub{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-top:8px;display:flex;justify-content:space-between;align-items:center}
-.orgsub .sn{font-size:14px;font-weight:700;color:var(--fg)}
-.orgsub .sc{font-size:11.5px;font-weight:800;color:var(--ac2);white-space:nowrap}
-.org2 .orglead{margin-bottom:10px}
-.org2 .sq{font-size:12px;line-height:1.5;color:var(--fg);margin-bottom:8px}
-.org2 .sqh{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:var(--ac2);margin-bottom:1px}
-.org2 .sq b{font-weight:800;color:var(--fg)}
-.org2 .sq i{font-style:normal;color:var(--ac2);opacity:.7}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.org2{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:18px;align-items:start}
+.org2 .orglead{background:var(--ac);color:var(--bg);border-radius:12px;padding:13px 16px;margin-bottom:12px}
+.org2 .orglead .nm{font-size:16px;font-weight:900;line-height:1}
+.org2 .orglead .ar{font-size:12.5px;font-weight:700;opacity:.9;margin-top:4px}
+.org2 .sq{margin-bottom:12px}
+.org2 .sqh{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--ac2);margin-bottom:6px}
+.org2 .sqm{display:flex;flex-wrap:wrap;gap:7px 9px;align-items:center}
+.org2 .pm{font-size:13.5px;font-weight:600;color:var(--fg);opacity:.78}
+.org2 .np{font-size:13px;font-weight:800;color:var(--bg);background:var(--ac);border-radius:999px;padding:3px 11px;white-space:nowrap}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -628,11 +637,11 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     <div class="kicker"><span class="knum">09</span><span class="ktxt">Pessoas · estrutura do time</span></div>
     <h2 class="head" style="font-size:32px">Quem faz a Robbin acontecer</h2>
     <div class="org2">
-      <div class="orgcol"><div class="orglead"><div class="nm">Leonardo Diniz</div><div class="ar">Finance &amp; Credit</div></div><div class="sq"><span class="sqh">Credit</span>Luís Henrique · Max · <b>Naiara</b> · Weslley · <b>Shay</b></div><div class="sq"><span class="sqh">Finance</span><b>Eric · Head</b> · Claudio</div></div>
-      <div class="orgcol"><div class="orglead"><div class="nm">Henrique Meyer</div><div class="ar">Ops &amp; Clientes</div></div><div class="sq"><span class="sqh">Ops · CX</span>Isa Raquel · Beatriz · Larissa · <b>Danton</b> · <b>Marina</b></div><div class="sq"><span class="sqh">Growth &amp; Com.</span>Marina · Danillo · Maria Eduarda</div><div class="sq"><span class="sqh">Comercial</span>Amanda · Lucas · Lucca</div><div class="sq"><span class="sqh">Produtos</span>Pedro · Marcio</div></div>
-      <div class="orgcol"><div class="orglead"><div class="nm">Tomás Corrêa</div><div class="ar">Engenharia</div></div><div class="sq"><span class="sqh">Dados</span>Marcos · Mateus</div><div class="sq"><span class="sqh">Experience</span>Estevão · Joel · Lucas · Weslley P.</div><div class="sq"><span class="sqh">Plataforma</span>José Theodoro · José Edmario · Vinicius · Matheus · Rafael</div></div>
+      <div class="orgcol"><div class="orglead"><div class="nm">Leonardo Diniz</div><div class="ar">Finance &amp; Credit</div></div><div class="sq"><span class="sqh">Credit</span><div class="sqm"><span class="pm">Luís Henrique</span><span class="pm">Max</span><span class="np">Naiara</span><span class="pm">Weslley</span><span class="np">Shay</span></div></div><div class="sq"><span class="sqh">Finance</span><div class="sqm"><span class="np">Eric · Head</span><span class="pm">Claudio</span></div></div></div>
+      <div class="orgcol"><div class="orglead"><div class="nm">Henrique Meyer</div><div class="ar">Ops &amp; Clientes</div></div><div class="sq"><span class="sqh">Ops · CX</span><div class="sqm"><span class="pm">Isa Raquel</span><span class="pm">Beatriz</span><span class="pm">Larissa</span><span class="np">Danton</span><span class="np">Marina</span></div></div><div class="sq"><span class="sqh">Growth &amp; Com.</span><div class="sqm"><span class="pm">Marina</span><span class="pm">Danillo</span><span class="pm">Maria Eduarda</span></div></div><div class="sq"><span class="sqh">Comercial</span><div class="sqm"><span class="pm">Amanda</span><span class="pm">Lucas</span><span class="pm">Lucca</span></div></div><div class="sq"><span class="sqh">Produtos</span><div class="sqm"><span class="pm">Pedro</span><span class="pm">Marcio</span></div></div></div>
+      <div class="orgcol"><div class="orglead"><div class="nm">Tomás Corrêa</div><div class="ar">Engenharia</div></div><div class="sq"><span class="sqh">Dados</span><div class="sqm"><span class="pm">Marcos</span><span class="pm">Mateus</span></div></div><div class="sq"><span class="sqh">Experience</span><div class="sqm"><span class="pm">Estevão</span><span class="pm">Joel</span><span class="pm">Lucas</span><span class="pm">Weslley P.</span></div></div><div class="sq"><span class="sqh">Plataforma</span><div class="sqm"><span class="pm">José Theodoro</span><span class="pm">José Edmario</span><span class="pm">Vinicius</span><span class="pm">Matheus</span><span class="pm">Rafael</span></div></div></div>
     </div>
-    <p class="sub" style="margin-top:16px;font-size:13.5px"><b>Em negrito</b>, quem chegou agora · Avaliação formal retomada · vagas abertas (indique gente boa!).</p>
+    <p class="sub" style="margin-top:18px;font-size:13.5px">Os nomes <span class="np" style="padding:1px 9px">em preto</span> chegaram agora · Avaliação formal retomada · vagas abertas (indique gente boa!).</p>
   </section>
 
   <!-- 15b · NOVOS INTEGRANTES -->
