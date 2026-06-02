@@ -283,6 +283,14 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .okrleg{display:flex;gap:22px;align-items:center;margin-top:14px;font-size:13.5px;font-weight:700;color:var(--ac2)}
 .okrleg i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px}
 .okrleg .c1{background:var(--ac)}.okrleg .c2{background:#d4cfc5}
+.cmptbl{width:100%;border-collapse:collapse;margin-top:20px;font-size:15.5px}
+.cmptbl th,.cmptbl td{padding:9px 18px;text-align:right;border-bottom:1px solid var(--line)}
+.cmptbl th:first-child,.cmptbl td:first-child{text-align:left;font-weight:600;color:var(--fg)}
+.cmptbl thead th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ac2);border-bottom:2px solid var(--line);font-weight:800}
+.cmptbl thead th.pixh{background:var(--ac);color:var(--bg);border-radius:8px 8px 0 0}
+.cmptbl td.pixcol{background:rgba(0,0,0,.05);font-weight:800;color:var(--fg)}
+.cmptbl td.cardcol{color:var(--ac2)}
+.cmptbl tr.roi td{font-weight:900;font-size:18px;border-bottom:none;border-top:2px solid var(--line);padding-top:12px}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -376,15 +384,22 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 
   <!-- 7 · PIX vs CARTÃO -->
   <section class="slide light" data-chrome="light">
-    <div class="kicker"><span class="knum">04</span><span class="ktxt">PIX vs Cartão · recado que não pode faltar</span></div>
-    <h2 class="head">O cartão foi o começo. <span class="hi">O PIX é o caminho.</span></h2>
-    <div class="vs" style="margin-top:22px">
-      <div class="col"><h3>Cartão: ponto de partida</h3>
-        <ul><li><span class="ic">×</span>Economics ficou inviável (regulação, bandeira, adquirente)</li><li><span class="ic">×</span>Securitização complexa, custo transacional alto</li><li><span class="ic">×</span>Não atendia bem os pagamentos B2B fora do arranjo</li></ul></div>
-      <div class="col"><h3>PIX: presente e futuro</h3>
-        <ul><li><span class="ic ok">✓</span>Settlement real-time pra indústria, sem MDR</li><li><span class="ic ok">✓</span>ROI anualizado superior · yield em all-time high</li><li><span class="ic ok">✓</span>First-mover: lançamos 5 meses antes da regra do BC</li></ul></div>
-    </div>
-    <div class="callout"><small>O recado</small>Notícia velha, mas vale repetir: migramos 100% pro trilho PIX próprio. O cartão foi ponto de partida, não destino.</div>
+    <div class="kicker"><span class="knum">04</span><span class="ktxt">PIX vs Cartão</span></div>
+    <h2 class="head" style="font-size:38px">No PIX, o mesmo capital rende <span class="hi">~20× mais</span></h2>
+    <table class="cmptbl">
+      <thead><tr><th></th><th class="pixh">PIX</th><th>Cartão</th></tr></thead>
+      <tbody>
+        <tr><td>Valor da transação</td><td class="pixcol">R$ 100</td><td class="cardcol">R$ 100</td></tr>
+        <tr><td>Parcelas</td><td class="pixcol">6x</td><td class="cardcol">6x</td></tr>
+        <tr><td>Interchange</td><td class="pixcol">0,00%</td><td class="cardcol">2,20%</td></tr>
+        <tr><td>Yield mensal</td><td class="pixcol">2,50%</td><td class="cardcol">0,00%</td></tr>
+        <tr><td>Receita</td><td class="pixcol">R$ 7,50</td><td class="cardcol">R$ 2,20</td></tr>
+        <tr><td>Lucro bruto</td><td class="pixcol">R$ 3,00</td><td class="cardcol">R$ 1,54</td></tr>
+        <tr><td>Capital necessário</td><td class="pixcol">R$ 15</td><td class="cardcol">R$ 100</td></tr>
+        <tr class="roi"><td>ROI anualizado</td><td class="pixcol">125,2%</td><td class="cardcol">6,3%</td></tr>
+      </tbody>
+    </table>
+    <p class="sub" style="margin-top:14px"><b>20× mais retorno</b> pro mesmo capital no PIX. O cartão foi ponto de partida, não destino.</p>
   </section>
 
   <!-- 8 · HORA DE IR PRA RUA · PRESS COVERAGE -->
