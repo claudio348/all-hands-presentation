@@ -323,6 +323,11 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .archrow .achips{display:flex;flex-wrap:wrap;gap:7px;margin-top:7px}
 .archrow .achips span{font-size:11px;font-weight:600;color:var(--ac2);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
 .archrow .atag{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--ac);border-radius:999px;padding:5px 12px;color:var(--fg);white-space:nowrap}
+.tbox.tdrv{text-align:left;padding:24px 26px}
+.tbox.tdrv .tk{text-align:left}
+.drv{list-style:none;margin-top:14px}
+.drv li{font-size:16px;line-height:1.45;padding:8px 0 8px 24px;position:relative;font-weight:600;color:var(--fg)}
+.drv li::before{content:"";position:absolute;left:2px;top:14px;width:8px;height:8px;background:var(--ac);transform:rotate(45deg)}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -662,14 +667,15 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 
   <!-- 20 · CRESCIMENTO SAUDÁVEL -->
   <section class="slide light" data-chrome="light">
-    <div class="kicker"><span class="knum">11</span><span class="ktxt">Crescimento saudável</span></div>
-    <h2 class="head">TPV pelo TPV, <span class="hi">não.</span></h2>
-    <div class="trio">
-      <div class="tbox"><div class="tk">Volume</div><div class="th">TPV</div><p>Quanto passa na rede. Importa, mas sozinho não diz se ganhamos dinheiro.</p></div>
-      <div class="tbox"><div class="tk">Valor</div><div class="th">Receita</div><p>O que de fato fica. Captura yield, pricing e qualidade de crédito.</p></div>
-      <div class="tbox"><div class="tk">Risco</div><div class="th">Pulverização</div><p>Espalhado em muitos clientes. Menos concentração, rede mais resiliente.</p></div>
+    <div class="kicker"><span class="knum">11</span><span class="ktxt">A régua do time</span></div>
+    <h2 class="head">Receita = <span class="hi">TPV + Carteira</span></h2>
+    <div class="trio" style="grid-template-columns:1fr 1fr;gap:24px">
+      <div class="tbox tdrv"><div class="tk">Volume</div><div class="th">TPV</div>
+        <ul class="drv"><li>+ PMEs (varejistas)</li><li>+ Parcerias (convênios)</li></ul></div>
+      <div class="tbox tdrv"><div class="tk">Saldo que rende</div><div class="th">Carteira</div>
+        <ul class="drv"><li>Risco pulverizado (mais parcerias e mais PMEs)</li><li>Inadimplência (concessão de crédito)</li></ul></div>
     </div>
-    <div class="callout"><small>A leitura certa</small>No passado foi TPV por TPV. Agora crescimento saudável é <b>TPV + Receita + Pulverização</b>: os três juntos, com a Receita como régua principal.</div>
+    <div class="callout"><small>A leitura certa</small>No passado foi TPV por TPV. Agora a régua é a <b>Receita</b>, e ela cresce por dois caminhos: mais <b>TPV</b> e mais <b>Carteira</b>.</div>
   </section>
 
   <!-- 20b · Q&A -->
