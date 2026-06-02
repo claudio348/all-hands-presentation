@@ -309,6 +309,13 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .glegend i{display:inline-block;width:14px;height:11px;border-radius:3px;vertical-align:-1px;margin-right:6px}
 .glegend .lr{background:var(--ac2)}
 .glegend .lp{background:repeating-linear-gradient(45deg,#cdc8be,#cdc8be 4px,#e8e4dc 4px,#e8e4dc 8px)}
+.chartcol{flex:1;min-width:0;display:flex;flex-direction:column}
+.chartcol .chart.compact{height:226px;margin-top:8px}
+.zonelabels{display:flex;gap:6px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.zonelabels .zr{flex:2;color:var(--fg);border-bottom:3px solid var(--ac2);padding-bottom:5px}
+.zonelabels .zp{flex:3;color:var(--ac2);border-bottom:3px dashed #b8b2a6;padding-bottom:5px}
+.bar .bprice{font-size:18px;font-weight:900;color:var(--fg);line-height:1}
+.bar .bval{font-size:12px;font-weight:600;color:var(--ac2);margin-top:3px;margin-bottom:8px}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -502,21 +509,16 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">07</span><span class="ktxt">SOP · por que importa</span></div>
     <h2 class="head" style="font-size:40px">A ação <span class="hi">multiplica ~4×</span> a cada salto</h2>
-    <div class="price-row">
-      <div class="pp"><b>R$ 0,39</b></div><div class="arrow">→</div>
-      <div class="pp"><b>R$ 1,59</b></div><div class="arrow">→</div>
-      <div class="pp"><b>R$ 6,48</b></div><div class="arrow">→</div>
-      <div class="pp"><b>R$ 26,43</b></div><div class="arrow">→</div>
-      <div class="pp"><b>R$ 108</b></div>
-      <div class="mult">×4,08 por salto</div>
-    </div>
     <div class="growthrow">
-      <div class="chart compact">
-        <div class="bar"><div class="val">R$ 10 mil</div><div class="col real" style="height:6px"></div><div class="lab">2024</div></div>
-        <div class="bar"><div class="val">R$ 41 mil</div><div class="col real" style="height:6px"></div><div class="lab">2025</div></div>
-        <div class="bar"><div class="val">R$ 166 mil</div><div class="col proj" style="height:12px"></div><div class="lab">+1 salto</div></div>
-        <div class="bar"><div class="val">R$ 678 mil</div><div class="col proj" style="height:49px"></div><div class="lab">+2 saltos</div></div>
-        <div class="bar"><div class="val">R$ 2,8 mi</div><div class="col proj" style="height:200px"></div><div class="lab">+3 saltos</div></div>
+      <div class="chartcol">
+        <div class="zonelabels"><span class="zr">Realizado</span><span class="zp">Projeção · ilustrativa, sem prazo</span></div>
+        <div class="chart compact">
+          <div class="bar"><div class="bprice">R$ 0,39</div><div class="bval">R$ 10 mil</div><div class="col real" style="height:6px"></div><div class="lab">2024</div></div>
+          <div class="bar"><div class="bprice">R$ 1,59</div><div class="bval">R$ 41 mil</div><div class="col real" style="height:6px"></div><div class="lab">2025</div></div>
+          <div class="bar"><div class="bprice">R$ 6,48</div><div class="bval">R$ 166 mil</div><div class="col proj" style="height:11px"></div><div class="lab">+1 salto</div></div>
+          <div class="bar"><div class="bprice">R$ 26,43</div><div class="bval">R$ 678 mil</div><div class="col proj" style="height:44px"></div><div class="lab">+2 saltos</div></div>
+          <div class="bar"><div class="bprice">R$ 108</div><div class="bval">R$ 2,8 mi</div><div class="col proj" style="height:180px"></div><div class="lab">+3 saltos</div></div>
+        </div>
       </div>
       <div class="cmppanel">
         <div class="ct">Os mesmos R$ 10 mil, no período real, renderiam:</div>
@@ -525,7 +527,7 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
         <div class="ci"><div class="top"><span>Ibovespa</span><b>R$ 11,8 mil</b></div><div class="b2"><i style="width:29%"></i></div></div>
       </div>
     </div>
-    <div class="glegend"><span><i class="lr"></i> Real (2024 e 2025)</span><span><i class="lp"></i> Projeção (ilustrativa, sem prazo)</span><span style="margin-left:auto;color:var(--fg)"><b>4,08×</b> = R$ 1,59 ÷ R$ 0,39 (valorização real da ação)</span></div>
+    <div class="glegend"><span><i class="lr"></i> Real (2024 e 2025)</span><span><i class="lp"></i> Projeção</span><span style="margin-left:auto;color:var(--fg)"><b>4,08×</b> por salto = R$ 1,59 ÷ R$ 0,39 (valorização real)</span></div>
   </section>
 
   <!-- 11b · COMO A ROBBIN OPERA (IA) -->
