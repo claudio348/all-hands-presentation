@@ -291,6 +291,24 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .cmptbl td.pixcol{background:rgba(0,0,0,.05);font-weight:800;color:var(--fg)}
 .cmptbl td.cardcol{color:var(--ac2)}
 .cmptbl tr.roi td{font-weight:900;font-size:18px;border-bottom:none;border-top:2px solid var(--line);padding-top:12px}
+.growthrow{display:flex;gap:30px;margin-top:18px;align-items:flex-end}
+.growthrow .chart.compact{flex:1;min-width:0;height:250px;margin-top:0}
+.col.real{background:var(--ac2)}
+.col.proj{background:repeating-linear-gradient(45deg,#cdc8be,#cdc8be 6px,#e8e4dc 6px,#e8e4dc 12px)}
+.cmppanel{flex:0 0 320px;border-left:2px solid var(--line);padding-left:24px;align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+.cmppanel .ct{font-size:13px;font-weight:700;color:var(--ac2);margin-bottom:18px;line-height:1.35}
+.ci{margin-bottom:16px}
+.ci .top{display:flex;justify-content:space-between;align-items:baseline}
+.ci .top span{font-size:14.5px;font-weight:700;color:var(--fg)}
+.ci .top b{font-size:18px;font-weight:900;color:var(--fg)}
+.ci .b2{height:9px;border-radius:5px;background:#e3dfd6;margin-top:6px;overflow:hidden}
+.ci .b2 i{display:block;height:100%;background:var(--ac2);border-radius:5px}
+.ci.hl .top b{font-size:23px}
+.ci.hl .b2 i{background:var(--ac)}
+.glegend{display:flex;gap:22px;align-items:center;margin-top:16px;font-size:12.5px;font-weight:700;color:var(--ac2)}
+.glegend i{display:inline-block;width:14px;height:11px;border-radius:3px;vertical-align:-1px;margin-right:6px}
+.glegend .lr{background:var(--ac2)}
+.glegend .lp{background:repeating-linear-gradient(45deg,#cdc8be,#cdc8be 4px,#e8e4dc 4px,#e8e4dc 8px)}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -337,10 +355,10 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
     <div class="kicker"><span class="knum">02</span><span class="ktxt">Esclarecer a rodada</span></div>
     <h2 class="head" style="font-size:38px">US$ 108M na manchete: <span class="hi">o que é o quê</span></h2>
     <div class="fund">
-      <div class="seg fidc"><div class="amt">US$ 100M</div><div class="lbl">FIDC: fundo pra <b>emprestar</b> aos varejistas. Não é dinheiro da Robbin pra gastar.</div></div>
+      <div class="seg fidc"><div class="amt">US$ 100M</div><div class="lbl">FIDC · fundo de crédito (~R$ 500M)</div></div>
       <div class="seg eq"><div class="amt">US$ 8M</div><div class="lbl">Equity</div></div>
     </div>
-    <div class="callout"><small>Em uma frase</small>Dos US$ 108M, só <b>US$ 8M</b> entrou na empresa. Os US$ 100M são um fundo pra financiar crédito. <b>Não é caixa</b>.</div>
+    <div class="callout" style="font-size:27px;line-height:1.4"><small>Em uma frase</small>Um fundo pra <b>emprestar</b> aos varejistas. <b>Não é dinheiro da Robbin pra gastar.</b></div>
   </section>
 
   <!-- 5 · FIDC + ALAVANCAGEM -->
@@ -492,14 +510,22 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
       <div class="pp"><b>R$ 108</b></div>
       <div class="mult">×4,08 por salto</div>
     </div>
-    <div class="chart compact">
-      <div class="bar"><div class="val">R$ 10 mil</div><div class="col" style="height:6px"></div><div class="lab">início</div></div>
-      <div class="bar"><div class="val">R$ 41 mil</div><div class="col" style="height:6px"></div><div class="lab">+1 salto</div></div>
-      <div class="bar"><div class="val">R$ 166 mil</div><div class="col" style="height:12px"></div><div class="lab">+2 saltos</div></div>
-      <div class="bar"><div class="val">R$ 678 mil</div><div class="col" style="height:49px"></div><div class="lab">+3 saltos</div></div>
-      <div class="bar hl"><div class="val">R$ 2,8 mi</div><div class="col" style="height:200px"></div><div class="lab">+4 saltos</div></div>
+    <div class="growthrow">
+      <div class="chart compact">
+        <div class="bar"><div class="val">R$ 10 mil</div><div class="col real" style="height:6px"></div><div class="lab">2024</div></div>
+        <div class="bar"><div class="val">R$ 41 mil</div><div class="col real" style="height:6px"></div><div class="lab">2025</div></div>
+        <div class="bar"><div class="val">R$ 166 mil</div><div class="col proj" style="height:12px"></div><div class="lab">+1 salto</div></div>
+        <div class="bar"><div class="val">R$ 678 mil</div><div class="col proj" style="height:49px"></div><div class="lab">+2 saltos</div></div>
+        <div class="bar"><div class="val">R$ 2,8 mi</div><div class="col proj" style="height:200px"></div><div class="lab">+3 saltos</div></div>
+      </div>
+      <div class="cmppanel">
+        <div class="ct">Os mesmos R$ 10 mil, no período real, renderiam:</div>
+        <div class="ci hl"><div class="top"><span>Robbin</span><b>R$ 41 mil</b></div><div class="b2"><i style="width:100%"></i></div></div>
+        <div class="ci"><div class="top"><span>CDI</span><b>R$ 12,2 mil</b></div><div class="b2"><i style="width:30%"></i></div></div>
+        <div class="ci"><div class="top"><span>Ibovespa</span><b>R$ 11,8 mil</b></div><div class="b2"><i style="width:29%"></i></div></div>
+      </div>
     </div>
-    <p class="sub" style="margin-top:18px"><b>4,08×</b> = R$ 1,59 ÷ R$ 0,39, quanto a ação subiu em 18 meses. Cada salto do gráfico repete essa mesma valorização (ilustrativo, sem prazo). No mesmo período: <b>CDI ≈ +22%</b> · <b>Bovespa ≈ +18%</b>.</p>
+    <div class="glegend"><span><i class="lr"></i> Real (2024 e 2025)</span><span><i class="lp"></i> Projeção (ilustrativa, sem prazo)</span><span style="margin-left:auto;color:var(--fg)"><b>4,08×</b> = R$ 1,59 ÷ R$ 0,39 (valorização real da ação)</span></div>
   </section>
 
   <!-- 11b · COMO A ROBBIN OPERA (IA) -->
