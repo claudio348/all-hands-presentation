@@ -341,6 +341,14 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .fstep .frole{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ac2)}
 .fstep .ftext{font-size:16.5px;font-weight:700;color:var(--fg);margin-top:2px}
 .fstep .fsub{font-size:13px;color:var(--ac2);margin-top:3px;font-weight:600}
+.archcard{padding:18px 20px}
+.archtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.archtop .an{font-size:12px;font-weight:800;color:var(--ac2)}
+.archtop .atag{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--ac);border-radius:999px;padding:3px 11px;color:var(--fg)}
+.archcard h3{font-size:18px;font-weight:800;color:var(--fg);margin-bottom:5px}
+.archcard p{font-size:13.5px;line-height:1.4;color:var(--fg);opacity:.72;margin-bottom:11px}
+.archcard .achips{display:flex;flex-wrap:wrap;gap:7px}
+.archcard .achips span{font-size:11px;font-weight:600;color:var(--ac2);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -556,14 +564,16 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
   </section>
 
   <!-- 11b · COMO A ROBBIN OPERA (IA) -->
-  <section class="slide light" data-chrome="light" style="justify-content:flex-start;padding-top:54px">
+  <section class="slide light" data-chrome="light">
     <div class="kicker"><span class="knum">08</span><span class="ktxt">Como a Robbin opera</span></div>
     <h2 class="head" style="font-size:30px;max-width:none">Empoderar o time não-técnico, sem abrir mão de segurança e acuracidade.</h2>
-    <p class="sub" style="margin-top:8px;font-size:15px">4 camadas que separam o que muda rápido do que precisa ser estável. Qualquer pessoa cria, a plataforma garante.</p>
-      <div class="archrow"><div class="an">01</div><div class="amain"><h3>Vibe code + AI tools</h3><p>Qualquer pessoa do time cria apps completos com IA. Skills e rules embutem o contexto da Robbin: a IA age como alguém do time, não como estranho.</p><div class="achips"><span>velocidade máxima</span><span>tools.robbin.com.br</span><span>skills &amp; rules</span><span>Claude · Cursor</span></div></div><div class="atag">move fast</div></div>
-      <div class="archrow"><div class="an">02</div><div class="amain"><h3>BFF: Ops / Client / Partner</h3><p>Três backends por audiência. O vibe code consome contratos estáveis, nunca acessa a lógica interna diretamente.</p><div class="achips"><span>contratos por audiência</span><span>single ALB</span></div></div><div class="atag">fronteira</div></div>
-      <div class="archrow"><div class="an">03</div><div class="amain"><h3>Platform: transacional + gerencial</h3><p>7 micro-monólitos por fronteira de time. Data lake em 4 camadas para dados confiáveis. A estabilidade que deixa o vibe code voar.</p><div class="achips"><span>auth</span><span>crédito</span><span>pagamentos</span><span>cartões</span><span>Kafka · Temporal</span><span>Snowflake · dbt</span></div></div><div class="atag">estabilidade</div></div>
-      <div class="archrow"><div class="an">04</div><div class="amain"><h3>Knowledge system: rules, skills, Ganesha</h3><p>Contexto acumulado da Robbin disponível para qualquer IA. Sem isso, cada vibe code seria uma aposta.</p><div class="achips"><span>behavioral rules</span><span>reusable skills</span><span>Ganesha · API catalog</span></div></div><div class="atag">guardrail</div></div>
+    <p class="sub" style="margin-top:6px;font-size:14px">4 camadas: o que muda rápido fica separado do que precisa ser estável.</p>
+    <div class="cols two" style="margin-top:18px;gap:16px">
+      <div class="card archcard"><div class="archtop"><span class="an">01</span><span class="atag">move fast</span></div><h3>Vibe code + AI tools</h3><p>Qualquer pessoa cria apps completos com IA, já com o contexto da Robbin.</p><div class="achips"><span>skills &amp; rules</span><span>Claude · Cursor</span></div></div>
+      <div class="card archcard"><div class="archtop"><span class="an">02</span><span class="atag">fronteira</span></div><h3>BFF: Ops / Client / Partner</h3><p>Backends por audiência. O vibe code só consome contratos estáveis.</p><div class="achips"><span>contratos</span><span>single ALB</span></div></div>
+      <div class="card archcard"><div class="archtop"><span class="an">03</span><span class="atag">estabilidade</span></div><h3>Platform: transacional + gerencial</h3><p>Núcleo estável: micro-monólitos + data lake confiável.</p><div class="achips"><span>Kafka · Temporal</span><span>Snowflake · dbt</span></div></div>
+      <div class="card archcard"><div class="archtop"><span class="an">04</span><span class="atag">guardrail</span></div><h3>Knowledge system</h3><p>Contexto da Robbin disponível pra qualquer IA.</p><div class="achips"><span>rules · skills</span><span>Ganesha</span></div></div>
+    </div>
   </section>
 
   <!-- 13b · ROBBIN TOOLS (criar é só pedir) -->
