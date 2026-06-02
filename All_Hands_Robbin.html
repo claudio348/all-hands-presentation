@@ -329,6 +329,18 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
 .drv{list-style:none;margin-top:14px}
 .drv li{font-size:16px;line-height:1.45;padding:8px 0 8px 24px;position:relative;font-weight:600;color:var(--fg)}
 .drv li::before{content:"";position:absolute;left:2px;top:14px;width:8px;height:8px;background:var(--ac);transform:rotate(45deg)}
+.toolflow{display:grid;grid-template-columns:.82fr 1.18fr;gap:44px;align-items:center;width:100%}
+.tf-tag{display:inline-block;margin-top:22px;font-size:13px;font-weight:700;color:var(--fg);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:8px 16px}
+.flow{position:relative;display:flex;flex-direction:column}
+.flow::before{content:"";position:absolute;left:13px;top:22px;bottom:22px;width:2px;background:var(--line)}
+.fstep{display:grid;grid-template-columns:28px 1fr;gap:18px;padding:11px 0;position:relative}
+.fstep .fdot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;z-index:2;flex:none}
+.fstep .fdot.you{background:var(--bg);border:2px solid var(--ac2)}
+.fstep .fdot.claude{background:var(--ac2)}
+.fstep .fdot.done{background:var(--ac);color:var(--bg)}
+.fstep .frole{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ac2)}
+.fstep .ftext{font-size:16.5px;font-weight:700;color:var(--fg);margin-top:2px}
+.fstep .fsub{font-size:13px;color:var(--ac2);margin-top:3px;font-weight:600}
 .navbtn{position:fixed;bottom:18px;z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(20,20,20,.7);color:#fff;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:.15s}
 .navbtn:hover{background:#fff;color:#000;border-color:#fff}
 #prev{left:18px}#next{left:66px}
@@ -552,6 +564,25 @@ h2.head{font-weight:900;font-size:52px;line-height:1.02;letter-spacing:-.025em;m
       <div class="archrow"><div class="an">02</div><div class="amain"><h3>BFF: Ops / Client / Partner</h3><p>Três backends por audiência. O vibe code consome contratos estáveis, nunca acessa a lógica interna diretamente.</p><div class="achips"><span>contratos por audiência</span><span>single ALB</span></div></div><div class="atag">fronteira</div></div>
       <div class="archrow"><div class="an">03</div><div class="amain"><h3>Platform: transacional + gerencial</h3><p>7 micro-monólitos por fronteira de time. Data lake em 4 camadas para dados confiáveis. A estabilidade que deixa o vibe code voar.</p><div class="achips"><span>auth</span><span>crédito</span><span>pagamentos</span><span>cartões</span><span>Kafka · Temporal</span><span>Snowflake · dbt</span></div></div><div class="atag">estabilidade</div></div>
       <div class="archrow"><div class="an">04</div><div class="amain"><h3>Knowledge system: rules, skills, Ganesha</h3><p>Contexto acumulado da Robbin disponível para qualquer IA. Sem isso, cada vibe code seria uma aposta.</p><div class="achips"><span>behavioral rules</span><span>reusable skills</span><span>Ganesha · API catalog</span></div></div><div class="atag">guardrail</div></div>
+  </section>
+
+  <!-- 13b · ROBBIN TOOLS (criar é só pedir) -->
+  <section class="slide light" data-chrome="light" style="justify-content:center">
+    <div class="toolflow">
+      <div class="tf-left">
+        <div class="kicker"><span class="knum">08</span><span class="ktxt">Robbin Tools</span></div>
+        <h2 class="head" style="font-size:42px">Criar uma ferramenta é só <span class="hi">pedir</span></h2>
+        <p class="sub">O Claude cuida do setup técnico. Você só descreve o que precisa.</p>
+        <div class="tf-tag">tools.robbin.com.br</div>
+      </div>
+      <div class="flow">
+        <div class="fstep"><div class="fdot you"></div><div class="fbody"><div class="frole">Você</div><div class="ftext">“Quero uma Robbin Tool pro time de ops”</div></div></div>
+        <div class="fstep"><div class="fdot claude"></div><div class="fbody"><div class="frole">Claude · automático</div><div class="ftext">Prepara o ambiente sozinho</div><div class="fsub">Git · GitHub · repo · skill create-robbin-tool</div></div></div>
+        <div class="fstep"><div class="fdot you"></div><div class="fbody"><div class="frole">Você</div><div class="ftext">Diz o que ela faz e quem vai usar</div></div></div>
+        <div class="fstep"><div class="fdot claude"></div><div class="fbody"><div class="frole">Claude</div><div class="ftext">Escreve o código e publica</div></div></div>
+        <div class="fstep"><div class="fdot done">✓</div><div class="fbody"><div class="frole" style="color:var(--fg)">No ar</div><div class="ftext">Pronta pro time em tools.robbin.com.br</div></div></div>
+      </div>
+    </div>
   </section>
 
   <!-- 12 · GESTÃO DO CONHECIMENTO -->
